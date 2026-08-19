@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBanner();
   init3DTilt();
   initCapabilityCockpit();
+  initFlipPillars();
 });
 
 /* ==========================================================================
@@ -501,7 +502,7 @@ function initCookieBanner() {
    10. 3D Card Tilt & Glare Effects
    ========================================================================== */
 function init3DTilt() {
-  if (window.matchMedia('(pointer: coarse)').matches) return; // Disable on touch devices
+  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 1024) return;
 
   const tiltCards = document.querySelectorAll('[data-tilt]');
   tiltCards.forEach(card => {
@@ -572,4 +573,22 @@ function initCapabilityCockpit() {
     });
   });
 }
+
+/* ==========================================================================
+   12. 3D Flip Pillars Touch/Tap Controller (Mobile & Tablet)
+   ========================================================================== */
+function initFlipPillars() {
+  const pillars = document.querySelectorAll('.flip-pillar-container');
+  pillars.forEach(pillar => {
+    pillar.addEventListener('click', (e) => {
+      // If clicking directly on a link inside the card, allow default navigation
+      if (e.target.closest('a')) return;
+
+      if (window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches) {
+        pillar.classList.toggle('is-flipped');
+      }
+    });
+  });
+}
+
 

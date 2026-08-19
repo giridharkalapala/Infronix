@@ -120,7 +120,7 @@ function initLightbox() {
 
   // Backdrop click to close
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+    if (e.target === lightbox) {
       closeLightbox();
     }
   });

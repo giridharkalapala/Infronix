@@ -143,25 +143,26 @@
   <div class="mobile-nav-backdrop" aria-hidden="true"></div>
   <div class="mobile-nav-drawer" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div>
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <img src="./assets/logo/logo.png" alt="Infronix Logo" width="180" height="48">
+      <div class="mobile-nav-header">
+        <img src="./assets/logo/logo.png" alt="Infronix Logo" width="160" height="42">
+        <button class="mobile-nav-close-btn" aria-label="Close Mobile Menu" data-close-nav>✕</button>
       </div>
       <div class="mobile-nav-list">
-        <a href="./index.html" class="mobile-nav-link ">Home</a>
-        <a href="./services.html" class="mobile-nav-link ">What We Do (Services)</a>
-        <a href="./about.html" class="mobile-nav-link ">Who We Are (About)</a>
+        <a href="./index.html" class="mobile-nav-link">Home</a>
+        <a href="./services.html" class="mobile-nav-link">What We Do (Services)</a>
+        <a href="./about.html" class="mobile-nav-link">Who We Are (About)</a>
         <a href="./gallery.html" class="mobile-nav-link active">Gallery</a>
-        <a href="./contact.html" class="mobile-nav-link ">Contact</a>
+        <a href="./contact.html" class="mobile-nav-link">Contact</a>
       </div>
     </div>
 
-    <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+    <div style="margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1.5rem;">
       <button class="btn btn-accent" style="width: 100%; margin-bottom: 1rem;" data-open-modal="consultation-modal">
         REQUEST CONSULTATION
       </button>
-      <p style="font-size: 0.85rem; text-align: center; color: #94a3b8; line-height: 1.6;">
-        Email: <a href="mailto:info@trysol.com" style="color: var(--color-accent);">info@trysol.com</a><br>
-        Direct: <a href="tel:+919908387005" style="color: #ffffff;">+91 99083 87005</a>
+      <p style="font-size: 0.85rem; text-align: center; color: var(--text-muted); line-height: 1.6;">
+        Email: <a href="mailto:info@trysol.com" style="color: var(--color-secondary);">info@trysol.com</a><br>
+        Direct: <a href="tel:+919908387005" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
       </p>
     </div>
   </div>

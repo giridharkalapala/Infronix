@@ -165,7 +165,7 @@ ol {
 }
 
 /* ==========================================================================
-   Typography System
+   Typography System (Fluid Responsive Scales)
    ========================================================================== */
 h1,
 h2,
@@ -178,45 +178,52 @@ h6 {
   line-height: 1.18;
   color: var(--text-main);
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+  font-size: clamp(2.1rem, 4.5vw + 0.75rem, 4rem);
   letter-spacing: -0.03em;
+  line-height: 1.14;
 }
 
 h2 {
-  font-size: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 2.75rem);
+  line-height: 1.2;
 }
 
 h3 {
-  font-size: clamp(1.4rem, 2vw + 0.5rem, 1.875rem);
+  font-size: clamp(1.25rem, 1.8vw + 0.4rem, 1.75rem);
+  line-height: 1.28;
 }
 
 h4 {
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 1.2vw + 0.3rem, 1.35rem);
+  line-height: 1.35;
 }
 
 h5 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 h6 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 p {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 0.4vw + 0.85rem, 1.05rem);
   color: var(--text-muted);
   line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 .text-lead {
-  font-size: clamp(1.15rem, 1.2vw + 0.5rem, 1.35rem);
+  font-size: clamp(1.05rem, 1vw + 0.5rem, 1.3rem);
   line-height: 1.6;
   color: var(--text-muted);
+  overflow-wrap: break-word;
 }
 
 /* Gradient Text Utilities */
@@ -257,6 +264,7 @@ p {
   background: rgba(0, 85, 212, 0.08);
   border: 1px solid rgba(0, 85, 212, 0.2);
   border-radius: var(--radius-full);
+  max-width: 100%;
 }
 
 .eyebrow::before {
@@ -266,6 +274,7 @@ p {
   border-radius: 50%;
   background: var(--color-accent);
   box-shadow: 0 0 8px var(--color-accent);
+  flex-shrink: 0;
 }
 
 .eyebrow-dark {
@@ -284,28 +293,31 @@ p {
   letter-spacing: 0.15em;
   color: var(--color-secondary);
   text-transform: uppercase;
+  max-width: 100%;
 }
 
 /* ==========================================================================
    Layout Containers & Grid
    ========================================================================== */
 .container {
-  width: 100%;
-  max-width: var(--container-max);
+  width: min(100% - clamp(1.5rem, 5vw, 3rem), var(--container-max));
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .container-narrow {
-  max-width: var(--container-narrow);
+  width: min(100% - clamp(1.5rem, 5vw, 3rem), var(--container-narrow));
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section {
-  padding-top: clamp(4.5rem, 8vw, 7.5rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+  padding-top: clamp(3.5rem, 7vw, 7rem);
+  padding-bottom: clamp(3.5rem, 7vw, 7rem);
   position: relative;
+  width: 100%;
 }
 
 .section-dark {
@@ -333,7 +345,7 @@ p {
   max-width: 780px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  margin-bottom: clamp(2.5rem, 4.5vw, 4.25rem);
 }
 
 .section-header.text-left {
@@ -345,10 +357,11 @@ p {
   margin-bottom: 1.25rem;
 }
 
-/* Grid Utilities */
+/* Base Responsive Grid Utilities */
 .grid {
   display: grid;
-  gap: 2rem;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
 }
 
 .grid-2 {
@@ -391,6 +404,31 @@ p {
   gap: 2.5rem;
 }
 
+/* Responsive Table Wrapper */
+.table-responsive,
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+}
+
+.table-responsive table,
+.table-wrapper table {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+}
+
+/* Text Wrapping & Overflow Prevention */
+a[href^="mailto:"],
+a[href^="tel:"],
+.footer-link,
+.contact-detail-row a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Accessible Skip Link */
 .skip-link {
   position: absolute;
@@ -416,4 +454,4 @@ p {
 
 #industries {
   display: none;
-}
+}

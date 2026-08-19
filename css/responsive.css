@@ -1,28 +1,95 @@
 /* ==========================================================================
-   TRYSOL GLOBAL SERVICES - RESPONSIVE DESIGN BREAKPOINTS
+   TRYSOL GLOBAL SERVICES - RESPONSIVE DESIGN & MULTI-DEVICE ARCHITECTURE
+   Breakpoints System:
+   - 1440px: Large Desktop
+   - 1280px: Standard Desktop / Laptop
+   - 1024px: Small Laptop / Tablet Landscape
+   - 768px:  Tablet Portrait
+   - 600px:  Large Mobile
+   - 480px:  Standard Mobile
+   - 375px:  Compact Mobile
+   - 320px:  Small Mobile
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   Large Desktops (1440px and below)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   1. Large Desktop (1440px and below)
+   ========================================================================== */
 @media (max-width: 1440px) {
   :root {
-    --container-max: 1240px;
+    --container-max: 1280px;
+    --header-height: 84px;
+  }
+
+  .nav-menu {
+    gap: 1.5rem;
+  }
+
+  .highlight-cards-grid {
+    gap: 1.25rem;
+  }
+
+  .pillars-grid {
+    gap: 1.5rem;
   }
 }
 
-/* --------------------------------------------------------------------------
-   Standard Desktops & Laptops (1280px and below)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   2. Standard Desktop & Laptop (1280px and below)
+   ========================================================================== */
 @media (max-width: 1280px) {
   :root {
     --container-max: 1140px;
   }
 
+  .nav-menu {
+    gap: 1.15rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+
+  .hero-grid {
+    gap: 2.5rem;
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .hero-nodes-grid {
+    gap: 8px;
+  }
+
+  .hero-node-box {
+    padding: 8px 10px;
+  }
+
+  .about-grid {
+    gap: 3rem;
+  }
+
+  .capability-cockpit-grid {
+    gap: 2rem;
+  }
+
+  .cockpit-bento-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .highlight-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
   .trust-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
   }
-  
+
   .trust-item:nth-child(3) {
     border-right: none;
   }
@@ -32,42 +99,53 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .highlight-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .pillars-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .footer-top-grid {
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  }
-  
-  .footer-top-grid .footer-col:nth-child(3) {
-    display: none;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 2rem;
   }
 }
 
-/* --------------------------------------------------------------------------
-   Tablets Landscape & Small Laptops (1024px and below)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   3. Small Laptop / Tablet Landscape (1024px and below)
+   ========================================================================== */
 @media (max-width: 1024px) {
+  :root {
+    --header-height: 76px;
+    --header-height-scrolled: 70px;
+  }
+
+  /* Header & Navigation Switch to Hamburger */
   .nav-menu {
-    display: none;
+    display: none !important;
   }
 
   .nav-phone-link {
-    display: none;
+    display: none !important;
   }
 
   .hamburger-btn {
     display: flex;
   }
 
+  /* Global Grid Utilities on Tablet */
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 2.5rem);
+    padding-bottom: 4rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
     text-align: center;
   }
 
@@ -79,56 +157,72 @@
     justify-content: center;
   }
 
-  .hero-visual-wrapper {
-    height: 420px;
+  .hero-stats-row {
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
   }
 
+  .hero-visual-wrapper {
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* About Section */
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
+  }
+
+  .about-layered-visual {
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .about-editorial-content {
-    border-left: none;
-    border-top: 3px solid var(--color-secondary);
-    padding-left: 0;
-    padding-top: 2rem;
+    text-align: left;
   }
 
+  /* Capability Command Center / Cockpit */
   .capability-cockpit-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
-  .cockpit-bento-strip {
-    grid-template-columns: repeat(2, 1fr);
+  .cockpit-nav-deck {
+    max-height: none;
+    overflow-y: visible;
   }
 
-  .services-asymmetric-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .service-card.featured-card {
-    grid-column: span 2;
-  }
-
+  /* Deep Tech Section (AI & Cyber) */
   .deeptech-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
-  .industries-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .ai-neural-visual,
+  .cyber-radar-visual {
+    max-width: 540px;
+    margin: 0 auto;
+    width: 100%;
   }
 
+  /* Interactive ROI Calculator */
+  .roi-calc-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Talent & Pods */
   .talent-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
+  /* Process Timeline */
   .process-timeline {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 2.5rem;
   }
 
@@ -145,6 +239,7 @@
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
   }
 
   .process-step-num {
@@ -152,25 +247,65 @@
     flex-shrink: 0;
   }
 
-  .tech-matrix-grid {
+  /* Industries Grid */
+  .industries-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Contact Section */
   .contact-section-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
 
+  /* Footer */
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
 }
 
-/* --------------------------------------------------------------------------
-   Tablets Portrait (768px and below)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   4. Tablet Portrait (768px and below)
+   ========================================================================== */
 @media (max-width: 768px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  /* Global Container Spacing */
+  .container {
+    width: min(100% - 2rem, var(--container-max));
+  }
+
+  .container-narrow {
+    width: min(100% - 2rem, var(--container-narrow));
+  }
+
+  /* Global Grid Utilities */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Hero Section */
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .hero-holo-card {
+    padding: 1.5rem;
+  }
+
+  .page-hero-banner {
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 3.5rem;
+  }
+
+  /* Trust Strip */
   .trust-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -183,142 +318,681 @@
     border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .services-asymmetric-grid {
-    grid-template-columns: 1fr;
+  .trust-item:nth-child(4),
+  .trust-item:nth-child(5) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .service-card.featured-card {
-    grid-column: span 1;
-  }
-
-  .highlight-cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-image-frame img {
-    height: 340px;
-  }
-
+  /* About Floating Badges */
   .about-float-badge-top {
-    top: -15px;
-    left: 10px;
-    padding: 10px 14px;
+    top: -10px;
+    left: 8px;
+    padding: 8px 12px;
   }
 
   .about-float-badge-bottom {
-    bottom: -15px;
-    right: 10px;
-    padding: 12px 18px;
+    bottom: -10px;
+    right: 8px;
+    padding: 10px 14px;
+  }
+
+  .about-image-frame img {
+    height: 320px;
+    object-fit: cover;
   }
 
   .about-features-list {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
+  .highlight-cards-grid {
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+
+  /* Capability Cockpit Console */
+  .cockpit-bento-strip {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stage-telemetry-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .cockpit-stage-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* 3D Flip Pillars */
   .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .flip-pillar-container {
+    height: auto;
+    min-height: 400px;
+  }
+
+  .flip-pillar-front,
+  .flip-pillar-back {
+    height: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  /* Tech Matrix */
+  .tech-matrix-nav {
+    width: 100%;
+    justify-content: center;
+    padding: 6px;
+    margin-bottom: 2rem;
+  }
+
+  .tech-tab-btn {
+    padding: 8px 14px;
+    font-size: 0.825rem;
+  }
+
+  .tech-cards-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Industries & Portfolio Grids */
   .industries-grid {
     grid-template-columns: 1fr;
   }
 
   .portfolio-grid {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 
   .gallery-grid {
-    columns: 2 240px;
+    columns: 2 200px;
+    column-gap: 1.25rem;
   }
 
-  .tech-matrix-grid {
-    grid-template-columns: 1fr;
+  .gallery-item {
+    margin-bottom: 1.25rem;
   }
 
+  /* Feature Checklist in AI Deep Tech */
   .feature-checklist {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
+  /* Modals */
+  .modal-dialog {
+    width: min(100% - 24px, 600px);
+    margin: 1rem auto;
+  }
+
+  .modal-header {
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  /* Footer */
   .footer-top-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.25rem;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-    gap: 1.25rem;
+    gap: 1rem;
+  }
+
+  .footer-legal-links {
+    justify-content: center;
+  }
+
+  /* Floating Contact Hub & Back To Top */
+  .floating-contact-widget {
+    bottom: 84px;
+    right: 18px;
+  }
+
+  #back-to-top {
+    bottom: 20px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
   }
 }
 
-/* --------------------------------------------------------------------------
-   Mobile Phones (480px and below)
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .trust-grid {
+/* ==========================================================================
+   5. Large Mobile (600px and below)
+   ========================================================================== */
+@media (max-width: 600px) {
+
+  /* Hero Nodes Grid inside Hologram Card */
+  .hero-nodes-grid {
     grid-template-columns: 1fr;
   }
 
-  .trust-item {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .trust-item:last-child {
-    border-bottom: none;
+  .stage-telemetry-grid {
+    grid-template-columns: 1fr;
   }
 
   .gallery-grid {
     columns: 1 100%;
   }
 
+  .cookie-consent-bar {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    max-width: calc(100% - 24px);
+    padding: 1.25rem;
+  }
+
+  .cookie-actions {
+    width: 100%;
+  }
+
+  .cookie-actions .btn {
+    flex: 1 1 auto;
+  }
+}
+
+/* ==========================================================================
+   6. Standard Mobile Phones (480px and below)
+   ========================================================================== */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 68px;
+  }
+
+  /* Container */
+  .container {
+    width: min(100% - 1.5rem, var(--container-max));
+  }
+
+  .container-narrow {
+    width: min(100% - 1.5rem, var(--container-narrow));
+  }
+
+  /* Brand Logo in Header */
+  .brand-logo img {
+    height: 34px;
+    max-width: 170px;
+  }
+
+  .nav-actions-wrap .btn-sm {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding-top: calc(var(--header-height) + 1.5rem);
+    padding-bottom: 3rem;
+  }
+
+  .hero-live-badge {
+    font-size: 0.725rem;
+    padding: 6px 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
 
   .hero-actions .btn {
     width: 100%;
   }
 
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .hero-stat-num {
+    font-size: 1.5rem;
+  }
+
+  .hero-stat-desc {
+    font-size: 0.725rem;
+  }
+
+  .hero-holo-chips {
+    justify-content: center;
+  }
+
+  /* Trust Strip */
+  .trust-strip {
+    padding: 2rem 0;
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .trust-item {
+    border-right: none !important;
+    border-top: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 0.5rem;
+  }
+
+  .trust-item:last-child {
+    border-bottom: none;
+  }
+
+  .trust-number {
+    font-size: 2.25rem;
+  }
+
+  /* AI Neural Visual in Deep Tech */
+  .ai-neural-visual {
+    height: 320px;
+  }
+
+  .ai-core-sphere {
+    width: 90px;
+    height: 90px;
+  }
+
+  .ai-orbit-ring.ring-1 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .ai-orbit-ring.ring-2 {
+    width: 240px;
+    height: 240px;
+  }
+
+  .ai-node-pill {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .ai-node-pill.node-top {
+    top: 15px;
+    left: 15px;
+  }
+
+  .ai-node-pill.node-right {
+    top: 60px;
+    right: 10px;
+  }
+
+  .ai-node-pill.node-bottom {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .ai-node-pill.node-left {
+    display: none;
+  }
+
+  /* About Section Badges */
+  .about-image-frame img {
+    height: 260px;
+  }
+
+  .about-float-badge-top {
+    position: static;
+    margin-bottom: 1rem;
+    display: inline-flex;
+  }
+
+  .about-float-badge-bottom {
+    position: static;
+    margin-top: 1rem;
+    display: inline-flex;
+  }
+
+  .about-delivery-pill {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  /* Interactive ROI Calculator Card */
+  .roi-calculator-wrapper {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .roi-results-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .roi-metric-val {
+    font-size: 1.85rem;
+  }
+
+  /* CTA Banners */
+  .cta-banner {
+    padding: 2.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
   .cta-actions {
     flex-direction: column;
     width: 100%;
+    gap: 0.75rem;
   }
 
   .cta-actions .btn {
     width: 100%;
   }
 
+  /* Contact Cards & Form */
   .contact-info-card,
   .contact-form-card {
-    padding: 2rem 1.25rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .contact-detail-row {
+    gap: 0.85rem;
+  }
+
+  .contact-icon-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px;
+    /* Prevents auto-zoom on iOS inputs */
+    padding: 12px 14px;
+  }
+
+  /* Lightbox Modal */
+  .lightbox-content {
+    max-width: 96vw;
+    max-height: 90vh;
+  }
+
+  .lightbox-img {
+    max-height: 65vh;
+    border-radius: var(--radius-sm);
+  }
+
+  .lightbox-close-btn {
+    top: -38px;
+    right: 5px;
+    width: 34px;
+    height: 34px;
+    font-size: 1.25rem;
   }
 
   .lightbox-nav-btn {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.25rem;
   }
 
-  .lightbox-prev-btn { left: 10px; }
-  .lightbox-next-btn { right: 10px; }
+  .lightbox-prev-btn {
+    left: 8px;
+  }
+
+  .lightbox-next-btn {
+    right: 8px;
+  }
+
+  .lightbox-caption {
+    font-size: 0.85rem;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  /* Testimonial Box */
+  .testimonial-box {
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  /* FAQ Accordion */
+  .faq-trigger {
+    padding: 1.25rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .faq-content-body {
+    padding: 0 1.25rem;
+  }
+
+  .faq-item.is-active .faq-content-body {
+    padding-bottom: 1.25rem;
+  }
+
+  /* Toast Notification */
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    top: 12px;
+  }
+
+  .toast-msg {
+    max-width: 100%;
+    font-size: 0.85rem;
+    padding: 12px 16px;
+  }
 }
 
-/* --------------------------------------------------------------------------
-   Small Mobile Phones (375px and below)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   7. Compact Mobile Devices (375px and below)
+   ========================================================================== */
 @media (max-width: 375px) {
+
+  /* Typography fine-tuning */
   h1 {
-    font-size: 2.15rem;
+    font-size: 1.95rem;
   }
 
   h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Cards Padding */
+  .service-card,
+  .highlight-card,
+  .cockpit-bento-card,
+  .tech-card-item,
+  .testimonial-box {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  .brand-logo img {
+    height: 30px;
+    max-width: 145px;
+  }
+
+  .nav-actions-wrap .btn-sm {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .speed-dial-trigger {
+    width: 48px;
+    height: 48px;
+  }
+
+  .floating-contact-widget {
+    bottom: 74px;
+    right: 12px;
+  }
+
+  #back-to-top {
+    bottom: 16px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ==========================================================================
+   8. Ultra-Compact Mobile Screens (320px)
+   ========================================================================== */
+@media (max-width: 320px) {
+
+  .container,
+  .container-narrow {
+    width: calc(100% - 16px);
+  }
+
+  h1 {
     font-size: 1.75rem;
   }
 
-  .service-card,
-  .highlight-card,
-  .pillar-card {
-    padding: 1.75rem 1.25rem;
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  .eyebrow {
+    font-size: 0.725rem;
+    padding: 4px 10px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stat-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.75rem;
+  }
+
+  .hero-stat-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .brand-logo img {
+    height: 28px;
+    max-width: 130px;
+  }
+
+  .nav-actions-wrap .btn-sm {
+    display: none;
+    /* Reserve header space exclusively for logo & hamburger */
+  }
+
+  .mobile-nav-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ==========================================================================
+   9. Touch & Accessibility Optimizations
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Provide comfortable tap targets */
+  .nav-link,
+  .mobile-nav-link,
+  .footer-link,
+  .btn,
+  .speed-dial-btn,
+  .filter-btn,
+  .tech-tab-btn,
+  .faq-trigger {
+    min-height: 44px;
+  }
+
+  /* Industry overlay baseline contrast on touch screens */
+  .industry-overlay p {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 3D flip card indicator hint */
+  .flip-prompt {
+    display: flex;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .floating-contact-widget {
+    display: none;
+  }
+
+  .process-step {
+    display: block;
+    text-align: center;
+  }
+
+  .process-step h4 {
+    margin-top: 15px;
+  }
+
+  .process-step-num {
+    margin: 0 auto 1.5rem;
+
+  }
+
+  /* .cockpit-nav-item {
+    width: 80%;
+  } */
+  .cockpit-nav-header {
+    display: block;
+  }
+
+  .cockpit-nav-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: normal;
+    line-height: 21px;
   }
 }

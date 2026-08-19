@@ -151,7 +151,11 @@ function initHeroCanvas() {
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  window.addEventListener('resize', resizeCanvas);
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeCanvas, 150);
+  }, { passive: true });
   
   canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
