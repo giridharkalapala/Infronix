@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="500" height="380" fill="none">
+  <rect width="500" height="380" fill="#08152e"/>
+  <!-- Trysol Team Collaboration Visual -->
+  <g transform="translate(130, 80)">
+    <circle cx="60" cy="60" r="30" fill="#0034a1" stroke="#00f2fe" stroke-width="2"/>
+    <circle cx="180" cy="60" r="30" fill="#0034a1" stroke="#38bdf8" stroke-width="2"/>
+    <circle cx="120" cy="140" r="36" fill="#002270" stroke="#0066ff" stroke-width="3"/>
+    <path d="M60 60 L120 140 M180 60 L120 140" stroke="#00f2fe" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="120" y="210" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Engineering Team Standup</text>
+  </g>
+</svg>

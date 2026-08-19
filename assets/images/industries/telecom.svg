@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" fill="#081020"/>
+  <!-- 5G & Telecom Tower Network -->
+  <g transform="translate(130, 60)" stroke="#00f2fe" stroke-width="2.5" fill="none">
+    <path d="M70 30 L30 150 M70 30 L110 150 M45 100 L95 100 M35 130 L105 130" stroke="#0066ff" stroke-width="2.5"/>
+    <circle cx="70" cy="30" r="8" fill="#00f2fe"/>
+    <!-- Signal waves -->
+    <path d="M45 15 C55 5 85 5 95 15" stroke="#38bdf8" stroke-dasharray="3 3"/>
+    <path d="M30 0 C50 -15 90 -15 110 0" stroke="#00f2fe" stroke-dasharray="4 4"/>
+  </g>
+</svg>

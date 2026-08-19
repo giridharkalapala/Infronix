@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380" fill="none">
+  <rect width="600" height="380" fill="#060e20"/>
+  <!-- Mobile App Mockup Vector -->
+  <g transform="translate(180, 40)">
+    <rect x="0" y="0" width="160" height="290" rx="24" fill="#0b1528" stroke="#0066ff" stroke-width="3"/>
+    <rect x="50" y="10" width="60" height="6" rx="3" fill="#38bdf8"/>
+    <rect x="15" y="35" width="130" height="80" rx="10" fill="linear-gradient(135deg, #0034a1, #0066ff)"/>
+    <circle cx="80" cy="75" r="18" fill="#00f2fe"/>
+    <rect x="15" y="130" width="130" height="35" rx="6" fill="#11203b"/>
+    <rect x="15" y="175" width="130" height="35" rx="6" fill="#11203b"/>
+    <rect x="15" y="220" width="130" height="35" rx="6" fill="#11203b"/>
+  </g>
+  <g transform="translate(300, 70)">
+    <rect x="0" y="0" width="130" height="230" rx="20" fill="#0b1528" stroke="#00f2fe" stroke-width="2" opacity="0.9"/>
+    <rect x="40" y="8" width="50" height="4" rx="2" fill="#38bdf8"/>
+    <rect x="12" y="28" width="106" height="65" rx="8" fill="linear-gradient(135deg, #0066ff, #00f2fe)"/>
+  </g>
+</svg>

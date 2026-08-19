@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 380" width="500" height="380" fill="none">
+  <rect width="500" height="380" fill="#060c18"/>
+  <!-- Technology Summit & Global Hackathon -->
+  <g transform="translate(100, 60)">
+    <polygon points="150,20 280,100 150,180 20,100" fill="#0034a1" stroke="#00f2fe" stroke-width="2"/>
+    <circle cx="150" cy="100" r="40" fill="#0066ff" stroke="#ffffff" stroke-width="3"/>
+    <path d="M135 90 L165 90 M150 75 L150 105" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <text x="150" y="220" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#00f2fe" text-anchor="middle">Annual Tech Innovation Summit</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" fill="#071326"/>
+  <!-- Healthcare & MedTech Visual -->
+  <g transform="translate(120, 60)" stroke="#00f2fe" stroke-width="2.5" fill="none">
+    <circle cx="80" cy="90" r="65" stroke="#0066ff" stroke-width="2"/>
+    <path d="M60 90 H100 M80 70 V110" stroke="#00f2fe" stroke-width="7" stroke-linecap="round"/>
+    <path d="M20 90 H50 L60 70 L70 110 L80 90 H140" stroke="#38bdf8" stroke-width="2.5"/>
+  </g>
+</svg>

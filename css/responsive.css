@@ -1,0 +1,324 @@
+/* ==========================================================================
+   TRYSOL GLOBAL SERVICES - RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Large Desktops (1440px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1440px) {
+  :root {
+    --container-max: 1240px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Standard Desktops & Laptops (1280px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  :root {
+    --container-max: 1140px;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .trust-item:nth-child(3) {
+    border-right: none;
+  }
+
+  .trust-item:nth-child(4),
+  .trust-item:nth-child(5) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .highlight-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  }
+  
+  .footer-top-grid .footer-col:nth-child(3) {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets Landscape & Small Laptops (1024px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-phone-link {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual-wrapper {
+    height: 420px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-editorial-content {
+    border-left: none;
+    border-top: 3px solid var(--color-secondary);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+
+  .capability-cockpit-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .cockpit-bento-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-asymmetric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-card.featured-card {
+    grid-column: span 2;
+  }
+
+  .deeptech-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .talent-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .process-timeline::before {
+    display: none;
+  }
+
+  .process-step {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .process-step-num {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .tech-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-section-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets Portrait (768px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .trust-item:nth-child(3) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .services-asymmetric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card.featured-card {
+    grid-column: span 1;
+  }
+
+  .highlight-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image-frame img {
+    height: 340px;
+  }
+
+  .about-float-badge-top {
+    top: -15px;
+    left: 10px;
+    padding: 10px 14px;
+  }
+
+  .about-float-badge-bottom {
+    bottom: -15px;
+    right: 10px;
+    padding: 12px 18px;
+  }
+
+  .about-features-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    columns: 2 240px;
+  }
+
+  .tech-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Phones (480px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .trust-item:last-child {
+    border-bottom: none;
+  }
+
+  .gallery-grid {
+    columns: 1 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .lightbox-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lightbox-prev-btn { left: 10px; }
+  .lightbox-next-btn { right: 10px; }
+}
+
+/* --------------------------------------------------------------------------
+   Small Mobile Phones (375px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 375px) {
+  h1 {
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .service-card,
+  .highlight-card,
+  .pillar-card {
+    padding: 1.75rem 1.25rem;
+  }
+}

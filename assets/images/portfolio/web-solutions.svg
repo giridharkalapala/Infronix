@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380" fill="none">
+  <rect width="600" height="380" fill="#09142a"/>
+  <!-- Enterprise SaaS Web Portal Vector -->
+  <g transform="translate(100, 50)">
+    <rect x="0" y="0" width="400" height="260" rx="14" fill="#0b1528" stroke="#0066ff" stroke-width="2"/>
+    <line x1="0" y1="36" x2="400" y2="36" stroke="#16294d" stroke-width="2"/>
+    <circle cx="20" cy="18" r="4" fill="#38bdf8"/>
+    <circle cx="35" cy="18" r="4" fill="#0066ff"/>
+    <rect x="70" y="10" width="200" height="16" rx="8" fill="#16294d"/>
+    <!-- Analytics Chart -->
+    <path d="M40 220 L100 160 L160 190 L240 110 L300 140 L360 80" stroke="#00f2fe" stroke-width="3.5" fill="none"/>
+    <circle cx="360" cy="80" r="6" fill="#ffffff"/>
+  </g>
+</svg>

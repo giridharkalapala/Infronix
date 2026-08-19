@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" fill="#08152e"/>
+  <!-- Retail & Omnichannel Storefront -->
+  <g transform="translate(120, 60)" stroke="#00f2fe" stroke-width="2.5" fill="none">
+    <path d="M20 50 L140 50 L130 130 L30 130 Z" stroke="#0066ff" fill="#0b1528"/>
+    <path d="M20 50 L35 25 L125 25 L140 50" stroke="#38bdf8" fill="#0034a1"/>
+    <path d="M60 70 V130 M100 70 V130" stroke="#00f2fe"/>
+  </g>
+</svg>
