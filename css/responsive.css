@@ -168,6 +168,30 @@
     width: 100%;
   }
 
+  /* About Hero */
+  .about-hero-shell {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-hero-copy {
+    max-width: 100%;
+  }
+
+  .about-hero-visual {
+    min-height: 540px;
+  }
+
+  .hero-building-frame {
+    width: min(100%, 680px);
+    height: 500px;
+  }
+
+  .hero-floating-badge {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
   /* About Section */
   .about-grid {
     grid-template-columns: 1fr;
@@ -263,6 +287,28 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
+
+  .about-story-grid,
+  .about-mission-grid,
+  .about-strategy-grid,
+  .about-feature-block,
+  .about-feature-block.reverse {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-feature-block.reverse .about-feature-copy,
+  .about-feature-block.reverse .about-feature-visual {
+    order: initial;
+  }
+
+  .about-spotlight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .client-logo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* ==========================================================================
@@ -349,6 +395,30 @@
   .highlight-cards-grid {
     grid-template-columns: 1fr;
     margin-top: 2.5rem;
+  }
+
+  .about-spotlight-grid,
+  .client-logo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-tab-panel,
+  .about-tab-panel.active {
+    flex-direction: column;
+  }
+
+  .about-tab-copy,
+  .about-tab-visual {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .about-feature-visual img {
+    height: 300px;
+  }
+
+  .story-visual-card img {
+    height: 420px;
   }
 
   /* Capability Cockpit Console */
@@ -994,5 +1064,10 @@
     color: #ffffff;
     letter-spacing: normal;
     line-height: 21px;
+  }
+
+  .deeptech-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 }

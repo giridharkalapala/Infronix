@@ -4,57 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initFiltering();
   initLightbox();
 });
-
-/**
- * 1. Client-Side Filtering Tabs (Portfolio & Gallery)
- */
-function initFiltering() {
-  const filterContainers = document.querySelectorAll('.filter-tabs');
-
-  filterContainers.forEach((container) => {
-    const buttons = container.querySelectorAll('.filter-btn');
-    const targetGridId = container.getAttribute('data-target-grid');
-    const grid = document.getElementById(targetGridId);
-
-    if (!grid) return;
-
-    const items = grid.querySelectorAll('.filter-item');
-
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        // Toggle active button
-        buttons.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filterVal = btn.getAttribute('data-filter');
-
-        items.forEach((item) => {
-          const category = item.getAttribute('data-category');
-
-          if (filterVal === 'all' || category === filterVal) {
-            item.style.opacity = '0';
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-              item.style.opacity = '1';
-              item.style.transform = 'scale(1)';
-            }, 50);
-          } else {
-            item.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 250);
-          }
-        });
-      });
-    });
-  });
-}
 
 /**
  * 2. Accessible Lightbox Modal
@@ -68,14 +19,62 @@ function initLightbox() {
   const closeBtn = lightbox.querySelector('.lightbox-close-btn');
   const prevBtn = lightbox.querySelector('.lightbox-prev-btn');
   const nextBtn = lightbox.querySelector('.lightbox-next-btn');
+  const zoomInBtn = lightbox.querySelector('.lightbox-zoom-in');
+  const zoomOutBtn = lightbox.querySelector('.lightbox-zoom-out');
+  const resetZoomBtn = lightbox.querySelector('.lightbox-zoom-reset');
+  const fullscreenBtn = lightbox.querySelector('.lightbox-fullscreen');
+  const shareBtn = lightbox.querySelector('.lightbox-share-btn');
 
   let currentItems = [];
   let currentIndex = 0;
+  let zoomLevel = 1;
+  const minZoom = 1;
+  const maxZoom = 3;
 
   function updateItemsList() {
     currentItems = Array.from(document.querySelectorAll('.gallery-item')).filter(
       (item) => item.style.display !== 'none'
     );
+  }
+
+  function setZoom(nextZoom) {
+    zoomLevel = Math.min(maxZoom, Math.max(minZoom, Number(nextZoom.toFixed(2))));
+    lightboxImg.style.transform = `scale(${zoomLevel})`;
+    if (resetZoomBtn) {
+      resetZoomBtn.textContent = `${Math.round(zoomLevel * 100)}%`;
+    }
+  }
+
+  function resetZoom() {
+    setZoom(1);
+  }
+
+  async function shareCurrentImage() {
+    const imageUrl = lightboxImg.src;
+    const title = lightboxCaption.textContent || 'Trysol Gallery Image';
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, url: imageUrl });
+        return;
+      }
+
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(imageUrl);
+        if (shareBtn) {
+          const originalText = shareBtn.innerHTML;
+          shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+          setTimeout(() => { shareBtn.innerHTML = originalText; }, 1200);
+        }
+        return;
+      }
+
+      window.open(imageUrl, '_blank', 'noopener,noreferrer');
+    } catch (error) {
+      if (error && error.name !== 'AbortError') {
+        window.open(imageUrl, '_blank', 'noopener,noreferrer');
+      }
+    }
   }
 
   function showImage(index) {
@@ -90,6 +89,7 @@ function initLightbox() {
     lightboxImg.src = img.src;
     lightboxImg.alt = caption;
     lightboxCaption.textContent = caption;
+    resetZoom();
   }
 
   function openLightbox(item) {
@@ -107,9 +107,9 @@ function initLightbox() {
     lightbox.classList.remove('is-active');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
+    resetZoom();
   }
 
-  // Attach click listener to gallery items
   document.querySelectorAll('.gallery-item').forEach((item) => {
     item.addEventListener('click', () => openLightbox(item));
   });
@@ -117,15 +117,35 @@ function initLightbox() {
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
   if (prevBtn) prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
   if (nextBtn) nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+  if (zoomInBtn) zoomInBtn.addEventListener('click', () => setZoom(zoomLevel + 0.2));
+  if (zoomOutBtn) zoomOutBtn.addEventListener('click', () => setZoom(zoomLevel - 0.2));
+  if (resetZoomBtn) resetZoomBtn.addEventListener('click', resetZoom);
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        lightbox.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+  }
+  if (shareBtn) shareBtn.addEventListener('click', shareCurrentImage);
 
-  // Backdrop click to close
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
       closeLightbox();
     }
   });
 
-  // Keyboard navigation (ESC, Left, Right)
+  lightbox.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      setZoom(zoomLevel + 0.1);
+    } else {
+      setZoom(zoomLevel - 0.1);
+    }
+  }, { passive: false });
+
   window.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('is-active')) return;
 
@@ -135,6 +155,10 @@ function initLightbox() {
       showImage(currentIndex - 1);
     } else if (e.key === 'ArrowRight') {
       showImage(currentIndex + 1);
+    } else if (e.key === '+' || e.key === '=') {
+      setZoom(zoomLevel + 0.2);
+    } else if (e.key === '-' || e.key === '_') {
+      setZoom(zoomLevel - 0.2);
     }
   });
 }

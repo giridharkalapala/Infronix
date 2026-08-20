@@ -86,6 +86,7 @@
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 28px;
+  --radius-2xl: 32px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -219,6 +220,9 @@ p {
   overflow-wrap: break-word;
 }
 
+/* b {
+  color:#000;
+} */
 .text-lead {
   font-size: clamp(1.05rem, 1vw + 0.5rem, 1.3rem);
   line-height: 1.6;
@@ -264,7 +268,8 @@ p {
   background: rgba(0, 85, 212, 0.08);
   border: 1px solid rgba(0, 85, 212, 0.2);
   border-radius: var(--radius-full);
-  max-width: 100%;
+  /* max-width: 100%; */
+  max-width: fit-content;
 }
 
 .eyebrow::before {
@@ -281,6 +286,10 @@ p {
   background: rgba(0, 200, 255, 0.1);
   border-color: rgba(0, 200, 255, 0.25);
   color: var(--color-accent);
+}
+
+.owl-carousel {
+  display: grid !important;
 }
 
 /* Tagline Badge */
@@ -314,8 +323,10 @@ p {
 }
 
 .section {
-  padding-top: clamp(3.5rem, 7vw, 7rem);
-  padding-bottom: clamp(3.5rem, 7vw, 7rem);
+  /* padding-top: clamp(3.5rem, 7vw, 7rem);
+  padding-bottom: clamp(3.5rem, 7vw, 7rem); */
+  padding-top: 50px;
+    padding-bottom: 50px;
   position: relative;
   width: 100%;
 }

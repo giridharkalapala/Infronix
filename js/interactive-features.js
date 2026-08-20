@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initUniversalModals();
   initConsultationForm();
   initTechMatrixTabs();
+  initAboutTabs();
+  initClientLogoCarousel();
   initRoiCalculator();
   initTestimonialsSlider();
   initFaqAccordion();
@@ -26,6 +28,72 @@ document.addEventListener('DOMContentLoaded', () => {
   initCapabilityCockpit();
   initFlipPillars();
 });
+
+function initClientLogoCarousel() {
+  const carousel = document.querySelector('.client-logo-carousel');
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.children).filter(item => item.classList.contains('client-logo-item'));
+  if (slides.length < 2) return;
+
+  carousel.classList.add('client-logo-slider-ready');
+  carousel.style.position = 'relative';
+  carousel.style.overflow = 'hidden';
+
+  const track = document.createElement('div');
+  track.className = 'client-logo-track';
+  track.style.display = 'flex';
+  track.style.alignItems = 'center';
+  track.style.gap = '1rem';
+  track.style.width = 'max-content';
+  track.style.transition = 'transform 650ms ease';
+
+  const duplicatedSlides = [...slides, ...slides.map(item => item.cloneNode(true))];
+  duplicatedSlides.forEach(item => {
+    item.setAttribute('aria-hidden', 'true');
+    track.appendChild(item);
+  });
+
+  carousel.innerHTML = '';
+  carousel.appendChild(track);
+
+  const allItems = Array.from(track.children);
+  const itemWidth = () => {
+    const first = allItems[0];
+    if (!first) return 220;
+    const firstStyles = window.getComputedStyle(first);
+    const margin = parseFloat(firstStyles.marginLeft || 0) + parseFloat(firstStyles.marginRight || 0);
+    return first.getBoundingClientRect().width + margin + 10;
+  };
+
+  let currentIndex = 0;
+  const speed = 2000;
+  const originalsCount = slides.length;
+  const totalSlides = allItems.length;
+
+  function slide() {
+    const width = itemWidth();
+    currentIndex += 1;
+
+    if (currentIndex >= originalsCount) {
+      track.style.transition = 'none';
+      track.style.transform = `translateX(${-originalsCount * width}px)`;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          track.style.transition = 'transform 650ms ease';
+          currentIndex = 0;
+          track.style.transform = 'translateX(0)';
+        });
+      });
+      return;
+    }
+
+    track.style.transform = `translateX(${-currentIndex * width}px)`;
+  }
+
+  track.style.transform = 'translateX(0)';
+  setInterval(slide, speed);
+}
 
 /* ==========================================================================
    0. Hero Video Ambient Player Controls
@@ -309,6 +377,31 @@ function initTechMatrixTabs() {
         } else {
           card.style.display = 'none';
         }
+      });
+    });
+  });
+}
+
+function initAboutTabs() {
+  const aboutTabs = document.querySelectorAll('.about-tab-btn');
+  const aboutPanels = document.querySelectorAll('.about-tab-panel');
+
+  if (!aboutTabs.length || !aboutPanels.length) return;
+
+  aboutTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+
+      aboutTabs.forEach(item => {
+        const isActive = item === tab;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-selected', String(isActive));
+      });
+
+      aboutPanels.forEach(panel => {
+        const isActive = panel.id === `panel-${target}`;
+        panel.classList.toggle('active', isActive);
+        panel.hidden = !isActive;
       });
     });
   });
