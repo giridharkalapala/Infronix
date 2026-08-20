@@ -52,59 +52,96 @@
             </svg>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="../services/ai-automation.html" class="dropdown-link" role="menuitem">
+            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🤖</div>
               <div>
                 <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
                 <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
               </div>
             </a>
-            <a href="../services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud &amp; DevOps Transformation</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="../services/data-analytics.html" class="dropdown-link" role="menuitem">
+            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">📊</div>
               <div>
                 <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
                 <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
               </div>
             </a>
-            <a href="../services/cybersecurity.html" class="dropdown-link" role="menuitem">
+            <div class="dropdown-item-has-submenu">
+              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">⚙️</div>
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </div>
+                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                </div>
+              </a>
+              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🌐</span>
+                  <div>
+                    <span class="subdropdown-title">Web Engineering</span>
+                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                  </div>
+                </a>
+                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">📱</span>
+                  <div>
+                    <span class="subdropdown-title">Mobile Engineering</span>
+                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                  </div>
+                </a>
+                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🧩</span>
+                  <div>
+                    <span class="subdropdown-title">Custom Software Development</span>
+                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🛡️</div>
               <div>
                 <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
                 <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
               </div>
             </a>
-            <a href="../services/application-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">⚙️</div>
+            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">☁️</div>
               <div>
-                <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                <span class="dropdown-link-desc">Microservices &amp; custom software</span>
+                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
               </div>
             </a>
-            <a href="../services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">✨</div>
               <div>
-                <span class="dropdown-link-title">Experience &amp; UI/UX Design</span>
+                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
                 <span class="dropdown-link-desc">Enterprise design systems</span>
               </div>
             </a>
-            <a href="../services/global-talent.html" class="dropdown-link" role="menuitem">
+            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">👥</div>
               <div>
-                <span class="dropdown-link-title">Global Talent &amp; Pods</span>
+                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
                 <span class="dropdown-link-desc">Dedicated offshore engineering</span>
               </div>
             </a>
-            <a href="../services/quality-engineering.html" class="dropdown-link" role="menuitem">
+            <a href="./project-management.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">📋</div>
+              <div>
+                <span class="dropdown-link-title">Project Management</span>
+                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+              </div>
+            </a>
+            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🎯</div>
               <div>
-                <span class="dropdown-link-title">Quality Assurance &amp; QA</span>
+                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
                 <span class="dropdown-link-desc">CMMI-3 automated regression</span>
               </div>
             </a>
@@ -176,69 +213,549 @@
 
 
   <main id="main-content">
+    <!-- ==========================================================================
+         Section 1: Hero Section (Ambient 20s Looping Background Video & Centered Typography)
+         ========================================================================== -->
+    <section class="ai-ref-hero">
+      <!-- 20-Second Ambient Tech Video Background -->
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+        <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+      </video>
 
-    <!-- Page Hero Banner with Background Image & Breadcrumbs -->
-    <section class="section page-hero-banner services-banner">
-      <div class="container container-narrow reveal">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-container" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link">🏠 Home</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item"><a href="../services.html" class="breadcrumb-link">Services</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item active" aria-current="page">QA & Testing</li>
-          </ol>
-        </nav>
-        <div class="eyebrow eyebrow-dark">CMMI LEVEL 3 STANDARDS</div>
-        <h1>Quality Engineering &amp; <span class="grad-text">Assurance</span></h1>
-        <p class="text-lead" style="margin-top: 1.25rem;">
-          Continuous automated regression testing, JMeter load simulation, Cypress end-to-end suites, and CMMI Level 3 quality verification.
-        </p>
-      </div>
-    </section>
+      <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
+      <canvas id="ai-neural-hero-canvas" class="ai-hero-canvas"></canvas>
 
-    <section class="section">
+      <!-- Gradient Light Overlay -->
+      <div class="ai-hero-video-overlay"></div>
+
       <div class="container">
-        <div class="grid grid-3">
-          <div class="highlight-card reveal stagger-1">
-            <h4>Automated Regression Suites</h4>
-            <p>End-to-end test automation using Playwright, Selenium, and Cypress integrated directly into CI/CD pipelines for instant feedback.</p>
+        <div class="ai-ref-hero-content reveal">
+          <div class="ai-ref-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../services.html">What We Do</a>
+            <span>/</span>
+            <strong style="color: #ffffff;">Quality Engineering &amp; Assurance</strong>
           </div>
 
-          <div class="highlight-card reveal stagger-2">
-            <h4>Performance &amp; Load Testing</h4>
-            <p>Simulating hundreds of thousands of concurrent users with JMeter and k6 to identify bottlenecks and validate high-traffic stability.</p>
-          </div>
+          <h1>Quality Engineering &amp; Assurance</h1>
 
-          <div class="highlight-card reveal stagger-3">
-            <h4>API &amp; Microservice Testing</h4>
-            <p>Automated contract testing (Pact), boundary validation, payload mutation testing, and mock virtualization for complex API meshes.</p>
-          </div>
+          <p>
+            Achieve zero-defect software velocity with automated CI/CD regression suites, k6 high-concurrency load testing, AI-driven test orchestration, and CMMI Level 3 quality verification.
+          </p>
 
-          <div class="highlight-card reveal stagger-4">
-            <h4>Mobile App Device Testing</h4>
-            <p>Real-device cloud testing across hundreds of iOS and Android hardware configurations, OS versions, and network constraints.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-5">
-            <h4>Security &amp; Vulnerability QA</h4>
-            <p>Static application security testing (SAST), software composition analysis (SCA), and OWASP validation before code deployment.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-6">
-            <h4>Continuous QA Governance</h4>
-            <p>Defect tracking metrics, test coverage dashboards, and zero-defect SLA compliance based on our CMMI Level 3 quality standards.</p>
+          <div class="ai-ref-hero-btns">
+            <button type="button" class="ai-ref-btn-primary" data-open-modal="consultation-modal">
+              <span>Request QA Consultation</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="#qa-solutions" class="ai-ref-btn-outline">
+              <span>Explore QA Framework</span>
+              <i class="fa-solid fa-layer-group"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==========================================================================
+         Section 2: Floating 3-Pillar Feature Bar (White Overlapping Card)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
       <div class="container">
-        <div class="cta-banner reveal">
-          <div class="cta-banner-content">
-            <h2>Achieve Zero-Defect Software Releases</h2>
-            <p>Integrate Trysol's automated quality engineering into your development lifecycle.</p>
-            <a href="../contact.html" class="btn btn-accent btn-lg">Request QA Consultation</a>
+        <div class="ai-feature-floating-bar reveal">
+          <div class="ai-feature-floating-grid">
+
+            <!-- Column 1 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <div>
+                  <h3>Automating</h3>
+                  <span class="ai-feature-floating-sub">Continuous CI/CD Test Automation</span>
+                </div>
+              </div>
+              <p>
+                Eliminate repetitive manual testing with self-healing automation frameworks in Playwright, Cypress, and Selenium. Our automated suites run on every commit to catch regressions in minutes.
+              </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <div>
+                  <h3>Stress-Testing</h3>
+                  <span class="ai-feature-floating-sub">High-Concurrency Performance &amp; k6</span>
+                </div>
+              </div>
+              <p>
+                Validate application stability under heavy load. We simulate hundreds of thousands of concurrent user journeys using k6 and JMeter, diagnosing database connection pool bottlenecks and API latency spikes.
+              </p>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-shield-check"></i>
+                </div>
+                <div>
+                  <h3>Verifying</h3>
+                  <span class="ai-feature-floating-sub">CMMI Level 3 &amp; Zero-Defect SLAs</span>
+                </div>
+              </div>
+              <p>
+                Backed by CMMI Level 3 quality standards, we enforce strict test coverage thresholds, ISO 25010 software quality models, and multi-device cloud compatibility testing across real iOS and Android devices.
+              </p>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: 6-Card Solutions Image Grid
+         ========================================================================== -->
+    <section id="qa-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; QA &amp; TESTING CAPABILITIES &bull;</span>
+          <h2>Comprehensive Quality Engineering Solutions</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-solutions-image-grid reveal">
+
+          <!-- Card 1: Automated Regression Suites -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Automated Regression Suites">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Automated Regression Suites" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Automated Regression Suites</h4>
+            </div>
+          </div>
+
+          <!-- Card 2: Performance & Load Testing (k6) -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Performance &amp; Load Testing">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Performance &amp; Load Testing" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Performance &amp; Load Testing</h4>
+            </div>
+          </div>
+
+          <!-- Card 3: API & Microservice Contract QA -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="API &amp; Microservice Contract QA">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="API &amp; Microservice Contract QA" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>API &amp; Microservice Contract QA</h4>
+            </div>
+          </div>
+
+          <!-- Card 4: Cross-Device Mobile Testing -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Cross-Device Mobile Testing">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Cross-Device Mobile Testing" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Cross-Device Mobile Testing</h4>
+            </div>
+          </div>
+
+          <!-- Card 5: DevSecOps & SAST Code Auditing -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="DevSecOps &amp; SAST Code Auditing">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="DevSecOps &amp; SAST Code Auditing" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>DevSecOps &amp; SAST Code Auditing</h4>
+            </div>
+          </div>
+
+          <!-- Card 6: CMMI Level 3 QA Governance -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="CMMI Level 3 QA Governance">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="CMMI Level 3 QA Governance" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>CMMI Level 3 QA Governance</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: 6-Step Methodology & Tech Stack (2x3 Grid)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 4.5rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; METHODOLOGY &amp; AUTOMATION STACK &bull;</span>
+          <h2>Quality Engineering &amp; Test Framework</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-process-grid reveal">
+
+          <!-- Step 01 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-clipboard-check"></i>
+              </div>
+              <div>
+                <h4>QA Strategy &amp; Risk Matrix</h4>
+                <p>Test Plan Architecture, Coverage Metrics, Risk-Based Test Scenario Mapping</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">01</span>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <h4>Test Automation Engineering</h4>
+                <p>Playwright, Cypress, Selenium, Appium, PyTest, TestNG, Jest</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">02</span>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+              </div>
+              <div>
+                <h4>CI/CD Pipeline Integration</h4>
+                <p>GitHub Actions, GitLab CI, Jenkins Parallel Triggers, Automated PR Gates</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">03</span>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <h4>Performance &amp; Contract QA</h4>
+                <p>k6 Load Simulation, Apache JMeter, Postman Newman, Pact Contract Testing</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">04</span>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-mobile-screen"></i>
+              </div>
+              <div>
+                <h4>Real-Device Cloud Testing</h4>
+                <p>BrowserStack, Sauce Labs, Cross-Browser Compatibility &amp; Real Hardware</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">05</span>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4>Quality Gates &amp; SLA Sign-Off</h4>
+                <p>SonarQube Coverage, Jira Xray, Zero-Defect Release Certification</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">06</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Industries We Served (Pill Carousel Slider)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+      <div class="container">
+
+        <div class="industries-empower-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; INDUSTRIES WE VALIDATE &bull;</span>
+
+          <div class="industries-carousel-container">
+            <!-- Left Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-prev-btn" aria-label="Previous Industry">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Mask Wrapper -->
+            <div class="industries-carousel-wrapper">
+              <div class="industries-carousel-track">
+
+                <!-- Pill 1: FinTech & Banking -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+
+                <!-- Pill 2: Healthcare & MedTech -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; MedTech</span>
+                </div>
+
+                <!-- Pill 3: E-Commerce & Retail -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+
+                <!-- Pill 4: Automotive & IoT -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-car"></i>
+                  <span>Automotive &amp; IoT</span>
+                </div>
+
+                <!-- Pill 5: Telecommunications -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-tower-broadcast"></i>
+                  <span>Telecommunications</span>
+                </div>
+
+                <!-- Pill 6: Aviation & Defense -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-plane"></i>
+                  <span>Aviation &amp; Defense</span>
+                </div>
+
+                <!-- Pill 7: Enterprise SaaS -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+                <!-- Duplicated Set for Infinite Seamless Looping -->
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; MedTech</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-car"></i>
+                  <span>Automotive &amp; IoT</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-tower-broadcast"></i>
+                  <span>Telecommunications</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-plane"></i>
+                  <span>Aviation &amp; Defense</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-next-btn" aria-label="Next Industry">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Dark Midnight FAQ Container
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="dark-faq-container reveal">
+
+          <div class="dark-faq-header">
+            <span class="dark-faq-eyebrow">&bull; FREQUENTLY ASKED QUESTIONS &bull;</span>
+            <h2>Quality Engineering &amp; Assurance FAQs</h2>
+          </div>
+
+          <div class="dark-faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What is the typical test automation coverage you achieve?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We aim for 85% to 95% automated test coverage across critical user paths, regression suites, and backend APIs, complemented by exploratory manual testing for newly introduced features.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How do you integrate automated testing into our existing CI/CD pipelines?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We configure lightweight smoke tests to execute on pull request creation, full regression runs on merge to staging, and automated rollback triggers in GitHub Actions, GitLab CI, or Jenkins if quality thresholds fail.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Can you conduct high-concurrency load testing before our product launch?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Yes. Using distributed k6 and Apache JMeter runners, we simulate up to 500,000+ simultaneous virtual users to evaluate throughput, API response times, database locks, and auto-scaling triggers.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Do you test on real mobile hardware or emulators?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We utilize BrowserStack and Sauce Labs device clouds to run automated and manual test suites across hundreds of real physical iOS and Android devices, testing across network throttles, screen sizes, and OS versions.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What are your quality benchmarks under CMMI Level 3?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Our CMMI Level 3 framework enforces standardized traceability matrices, strict defect severity categorizations, mandatory peer reviews, and automated SonarQube static code quality gates.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Ready to Get Started? (Split Partner CTA Box)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 5.5rem;">
+      <div class="container">
+        <div class="ai-partner-cta-box reveal">
+
+          <!-- Left Content -->
+          <div class="ai-partner-left-content">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Quality Engineering Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <span class="ai-partner-eyebrow">&bull; ZERO-DEFECT QUALITY &bull;</span>
+            <h2>Ready to Achieve Zero-Defect Software Releases?</h2>
+
+            <div class="ai-partner-stats-row">
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-bug-slash"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">99.4%</div>
+                  <div class="ai-partner-stat-label">Defect-Free Releases</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">85%+</div>
+                  <div class="ai-partner-stat-label">Test Automation</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">500k+</div>
+                  <div class="ai-partner-stat-label">Users Simulated</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Form Card -->
+          <div class="ai-partner-form-card">
+            <h3>Get in Touch</h3>
+            <p>Schedule a quality engineering audit session with our Lead QA Architects.</p>
+
+            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" rows="3" placeholder="Tell us about your test suite, CI/CD pipelines, or performance goals..." required></textarea>
+              </div>
+              <button type="submit" class="ai-partner-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>

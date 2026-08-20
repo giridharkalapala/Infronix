@@ -52,59 +52,96 @@
             </svg>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="../services/ai-automation.html" class="dropdown-link" role="menuitem">
+            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🤖</div>
               <div>
                 <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
                 <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
               </div>
             </a>
-            <a href="../services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud &amp; DevOps Transformation</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="../services/data-analytics.html" class="dropdown-link" role="menuitem">
+            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">📊</div>
               <div>
                 <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
                 <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
               </div>
             </a>
-            <a href="../services/cybersecurity.html" class="dropdown-link" role="menuitem">
+            <div class="dropdown-item-has-submenu">
+              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">⚙️</div>
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </div>
+                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                </div>
+              </a>
+              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🌐</span>
+                  <div>
+                    <span class="subdropdown-title">Web Engineering</span>
+                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                  </div>
+                </a>
+                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">📱</span>
+                  <div>
+                    <span class="subdropdown-title">Mobile Engineering</span>
+                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                  </div>
+                </a>
+                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🧩</span>
+                  <div>
+                    <span class="subdropdown-title">Custom Software Development</span>
+                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🛡️</div>
               <div>
                 <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
                 <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
               </div>
             </a>
-            <a href="../services/application-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">⚙️</div>
+            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">☁️</div>
               <div>
-                <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                <span class="dropdown-link-desc">Microservices &amp; custom software</span>
+                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
               </div>
             </a>
-            <a href="../services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">✨</div>
               <div>
-                <span class="dropdown-link-title">Experience &amp; UI/UX Design</span>
+                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
                 <span class="dropdown-link-desc">Enterprise design systems</span>
               </div>
             </a>
-            <a href="../services/global-talent.html" class="dropdown-link" role="menuitem">
+            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">👥</div>
               <div>
-                <span class="dropdown-link-title">Global Talent &amp; Pods</span>
+                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
                 <span class="dropdown-link-desc">Dedicated offshore engineering</span>
               </div>
             </a>
-            <a href="../services/quality-engineering.html" class="dropdown-link" role="menuitem">
+            <a href="./project-management.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">📋</div>
+              <div>
+                <span class="dropdown-link-title">Project Management</span>
+                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+              </div>
+            </a>
+            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🎯</div>
               <div>
-                <span class="dropdown-link-title">Quality Assurance &amp; QA</span>
+                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
                 <span class="dropdown-link-desc">CMMI-3 automated regression</span>
               </div>
             </a>
@@ -176,69 +213,549 @@
 
 
   <main id="main-content">
+    <!-- ==========================================================================
+         Section 1: Hero Section (Ambient 20s Looping Background Video & Centered Typography)
+         ========================================================================== -->
+    <section class="ai-ref-hero">
+      <!-- 20-Second Ambient Tech Video Background -->
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+        <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+      </video>
 
-    <!-- Page Hero Banner with Background Image & Breadcrumbs -->
-    <section class="section page-hero-banner services-banner">
-      <div class="container container-narrow reveal">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-container" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link">🏠 Home</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item"><a href="../services.html" class="breadcrumb-link">Services</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item active" aria-current="page">Project Management</li>
-          </ol>
-        </nav>
-        <div class="eyebrow eyebrow-dark">DELIVERY EXCELLENCE</div>
-        <h1>Project Management &amp; <span class="grad-text">Agile Delivery</span></h1>
-        <p class="text-lead" style="margin-top: 1.25rem;">
-          Certified Scrum Masters, Agile delivery leads, and technical project managers ensuring on-time, within-budget enterprise execution.
-        </p>
-      </div>
-    </section>
+      <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
+      <canvas id="ai-neural-hero-canvas" class="ai-hero-canvas"></canvas>
 
-    <section class="section">
+      <!-- Gradient Light Overlay -->
+      <div class="ai-hero-video-overlay"></div>
+
       <div class="container">
-        <div class="grid grid-3">
-          <div class="highlight-card reveal stagger-1">
-            <h4>Agile &amp; Scrum Frameworks</h4>
-            <p>Certified Scrum Masters leading 2-week sprint cadences, daily standups, sprint retrospectives, and continuous velocity tracking.</p>
+        <div class="ai-ref-hero-content reveal">
+          <div class="ai-ref-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../services.html">What We Do</a>
+            <span>/</span>
+            <strong style="color: #ffffff;">Project Management &amp; Delivery</strong>
           </div>
 
-          <div class="highlight-card reveal stagger-2">
-            <h4>CMMI Level 3 Quality Controls</h4>
-            <p>Standardized organizational processes, peer code reviews, formal risk registers, and structured phase-gate approval milestones.</p>
-          </div>
+          <h1>Project Management &amp; Agile Delivery</h1>
 
-          <div class="highlight-card reveal stagger-3">
-            <h4>Transparent Program Dashboards</h4>
-            <p>Real-time Jira and Azure DevOps tracking giving executive stakeholders full visibility into sprint progress, burndown charts, and blockers.</p>
-          </div>
+          <p>
+            Certified Agile Scrum Masters, PMP leaders, and Technical Program Managers driving on-time, within-budget digital transformation through CMMI Level 3 quality controls.
+          </p>
 
-          <div class="highlight-card reveal stagger-4">
-            <h4>Resource &amp; Budget Optimization</h4>
-            <p>Dynamic capacity planning and skill matching that optimizes engineering costs and prevents timeline slippages.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-5">
-            <h4>Vendor &amp; Contract Governance</h4>
-            <p>End-to-end management of third-party software licensing, cloud provider commitments, and SLA enforcement.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-6">
-            <h4>Change Management &amp; Rollout</h4>
-            <p>User training workshops, technical documentation, rollout runbooks, and hypercare support during live go-live transitions.</p>
+          <div class="ai-ref-hero-btns">
+            <button type="button" class="ai-ref-btn-primary" data-open-modal="consultation-modal">
+              <span>Consult Delivery Experts</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="#pm-solutions" class="ai-ref-btn-outline">
+              <span>Explore Agile Framework</span>
+              <i class="fa-solid fa-layer-group"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==========================================================================
+         Section 2: Floating 3-Pillar Feature Bar (White Overlapping Card)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
       <div class="container">
-        <div class="cta-banner reveal">
-          <div class="cta-banner-content">
-            <h2>Streamline Your Enterprise Delivery</h2>
-            <p>Partner with Trysol's project management practice for flawless technology execution.</p>
-            <a href="../contact.html" class="btn btn-accent btn-lg">Consult Delivery Experts</a>
+        <div class="ai-feature-floating-bar reveal">
+          <div class="ai-feature-floating-grid">
+
+            <!-- Column 1 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-arrows-spin"></i>
+                </div>
+                <div>
+                  <h3>Structuring</h3>
+                  <span class="ai-feature-floating-sub">Agile Frameworks &amp; Scrum Discipline</span>
+                </div>
+              </div>
+              <p>
+                We execute with certified Scrum Masters leading strict 2-week sprint cadences, daily standups, backlog refinement, sprint reviews, and automated burndown tracking to ensure high developer velocity.
+              </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                  <h3>Governing</h3>
+                  <span class="ai-feature-floating-sub">CMMI Level 3 &amp; Risk Mitigation</span>
+                </div>
+              </div>
+              <p>
+                Our delivery lifecycle is grounded in CMMI Level 3 process maturity. We implement standardized phase-gate approvals, continuous risk registers, and automated QA gates that prevent project slippage.
+              </p>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-chart-gantt"></i>
+                </div>
+                <div>
+                  <h3>Observing</h3>
+                  <span class="ai-feature-floating-sub">Real-Time Executive Transparency</span>
+                </div>
+              </div>
+              <p>
+                Maintain total program visibility. We provide interactive Jira and Azure DevOps dashboards detailing real-time sprint progress, epic roadmaps, budget variance, and resource utilization.
+              </p>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: 6-Card Solutions Image Grid
+         ========================================================================== -->
+    <section id="pm-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; DELIVERY PRACTICES &bull;</span>
+          <h2>Enterprise Program &amp; Agile Delivery Solutions</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-solutions-image-grid reveal">
+
+          <!-- Card 1: Agile & Scrum Delivery -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Agile &amp; Scrum Delivery">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Agile &amp; Scrum Delivery" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Agile &amp; Scrum Delivery</h4>
+            </div>
+          </div>
+
+          <!-- Card 2: Technical Program Management -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Technical Program Management">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Technical Program Management" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Technical Program Management</h4>
+            </div>
+          </div>
+
+          <!-- Card 3: CMMI Level 3 Governance -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="CMMI Level 3 Governance">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="CMMI Level 3 Governance" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>CMMI Level 3 Governance</h4>
+            </div>
+          </div>
+
+          <!-- Card 4: Resource & Budget Tracking -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Resource &amp; Budget Tracking">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Resource &amp; Budget Tracking" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Resource &amp; Budget Tracking</h4>
+            </div>
+          </div>
+
+          <!-- Card 5: Vendor & Contract Management -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Vendor &amp; Contract Management">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80" alt="Vendor &amp; Contract Management" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Vendor &amp; Contract Management</h4>
+            </div>
+          </div>
+
+          <!-- Card 6: Change Management & Hypercare -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Change Management &amp; Hypercare">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Change Management &amp; Hypercare" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Change Management &amp; Hypercare</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: 6-Step Methodology & Tech Stack (2x3 Grid)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 4.5rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; METHODOLOGY &amp; TOOLING &bull;</span>
+          <h2>Agile Delivery &amp; Governance Framework</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-process-grid reveal">
+
+          <!-- Step 01 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <div>
+                <h4>Charter Scoping &amp; Alignment</h4>
+                <p>WBS Mapping, Stakeholder Matrix, KPI/OKR Formulation, Budget Baseline</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">01</span>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-list-ol"></i>
+              </div>
+              <div>
+                <h4>Roadmap &amp; Backlog Refinement</h4>
+                <p>Jira Software, Azure DevOps, Story Point Estimation, Epics Structuring</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">02</span>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-person-running"></i>
+              </div>
+              <div>
+                <h4>2-Week Sprint Execution</h4>
+                <p>Daily Scrum Standups, Blocker Resolution, Continuous CI/CD Deployments</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">03</span>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-square-check"></i>
+              </div>
+              <div>
+                <h4>Quality Gates &amp; CMMI Audits</h4>
+                <p>SonarQube Gates, Peer Code Reviews, Acceptance Criteria Sign-Off</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">04</span>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <h4>Sprint Review &amp; Retrospective</h4>
+                <p>Live Stakeholder Demos, Velocity Analytics, Process Refinement Sprints</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">05</span>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-rocket"></i>
+              </div>
+              <div>
+                <h4>Go-Live &amp; 24/7 Hypercare</h4>
+                <p>Cutover Runbooks, User Training Workshops, Post-Launch SLA Monitoring</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">06</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Industries We Served (Pill Carousel Slider)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+      <div class="container">
+
+        <div class="industries-empower-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; INDUSTRIES WE EMPOWER &bull;</span>
+
+          <div class="industries-carousel-container">
+            <!-- Left Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-prev-btn" aria-label="Previous Industry">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Mask Wrapper -->
+            <div class="industries-carousel-wrapper">
+              <div class="industries-carousel-track">
+
+                <!-- Pill 1: Financial Services -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>Financial Services</span>
+                </div>
+
+                <!-- Pill 2: Healthcare & Pharma -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; Pharma</span>
+                </div>
+
+                <!-- Pill 3: Global Logistics -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Global Logistics</span>
+                </div>
+
+                <!-- Pill 4: Government & Public Sector -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-landmark"></i>
+                  <span>Government &amp; Public Sector</span>
+                </div>
+
+                <!-- Pill 5: E-Commerce & Retail -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+
+                <!-- Pill 6: Manufacturing -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-industry"></i>
+                  <span>Manufacturing</span>
+                </div>
+
+                <!-- Pill 7: Enterprise SaaS -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+                <!-- Duplicated Set for Infinite Seamless Looping -->
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>Financial Services</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; Pharma</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Global Logistics</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-landmark"></i>
+                  <span>Government &amp; Public Sector</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-industry"></i>
+                  <span>Manufacturing</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-next-btn" aria-label="Next Industry">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Dark Midnight FAQ Container
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="dark-faq-container reveal">
+
+          <div class="dark-faq-header">
+            <span class="dark-faq-eyebrow">&bull; FREQUENTLY ASKED QUESTIONS &bull;</span>
+            <h2>Project Management &amp; Agile Delivery FAQs</h2>
+          </div>
+
+          <div class="dark-faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What project management methodologies do you support?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We primarily operate using Agile Scrum for fast-paced feature development, Kanban for continuous support/operations, and Hybrid Waterfall-Agile frameworks for highly regulated enterprise implementations.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How do you handle scope creep and changing requirements?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Through structured backlog grooming and trade-off matrices. When new requirements arise, our Scrum Masters work with your Product Owner to re-prioritize stories within the sprint backlog without compromising target delivery dates.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What visibility will our executive team have during execution?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Full 24/7 visibility. You receive direct access to live Jira/Azure DevOps dashboards, weekly executive status reports, sprint demo sessions, and automated risk/budget burndown charts.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What certifications do your Project Managers possess?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Our project leaders hold industry-standard certifications including PMP (Project Management Professional), PMI-ACP, Certified Scrum Master (CSM), SAFe Program Consultant (SPC), and PRINCE2 Practitioner.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What does your post-launch Hypercare phase include?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Our Hypercare package provides 2 to 4 weeks of dedicated 24/7 technical on-call support, immediate bug resolution, user adoption monitoring, and complete operational handover to your internal teams.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Ready to Get Started? (Split Partner CTA Box)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 5.5rem;">
+      <div class="container">
+        <div class="ai-partner-cta-box reveal">
+
+          <!-- Left Content -->
+          <div class="ai-partner-left-content">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Project Management Delivery Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <span class="ai-partner-eyebrow">&bull; DELIVERY EXCELLENCE &bull;</span>
+            <h2>Ready to Streamline Your Enterprise Delivery?</h2>
+
+            <div class="ai-partner-stats-row">
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">98.5%</div>
+                  <div class="ai-partner-stat-label">On-Time Delivery</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">CMMI L3</div>
+                  <div class="ai-partner-stat-label">Quality Maturity</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">150+</div>
+                  <div class="ai-partner-stat-label">Enterprise Releases</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Form Card -->
+          <div class="ai-partner-form-card">
+            <h3>Get in Touch</h3>
+            <p>Schedule a delivery consultation session with our certified Scrum Masters and Program Directors.</p>
+
+            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" rows="3" placeholder="Tell us about your project roadmap, timeline, or agile transformation goals..." required></textarea>
+              </div>
+              <button type="submit" class="ai-partner-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>

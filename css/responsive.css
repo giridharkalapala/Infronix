@@ -978,12 +978,8 @@
 
   .process-step-num {
     margin: 0 auto 1.5rem;
-
   }
 
-  /* .cockpit-nav-item {
-    width: 80%;
-  } */
   .cockpit-nav-header {
     display: block;
   }
@@ -994,5 +990,292 @@
     color: #ffffff;
     letter-spacing: normal;
     line-height: 21px;
+  }
+
+  #services-grid-section {
+    display: none;
+  }
+
+  .section.services {
+    padding-top: 25px;
+  }
+
+  .section-services {
+    padding-top: 30px !important;
+  }
+
+}
+
+.section-services {
+  padding: 0;
+}
+
+/* ==========================================================================
+   10. Dedicated Services Hub Responsive Architecture
+   ========================================================================== */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .modern-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .engagement-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cockpit-grid,
+  .estimator-card {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+}
+
+/* Standard Mobile & Phablet (768px and below) */
+@media (max-width: 768px) {
+  .services-hero-modern {
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 3.5rem;
+    text-align: center;
+  }
+
+  .services-control-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  .services-search-group {
+    min-width: 100%;
+  }
+
+  .services-filter-pills {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .filter-pill-btn {
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.825rem;
+  }
+
+  .modern-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .modern-service-card {
+    padding: 1.5rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .hero-stat-badge {
+    padding: 1rem 1.25rem;
+  }
+
+  .cockpit-tabs-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cockpit-tab-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .cockpit-tab-panel {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cockpit-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .engagement-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .engagement-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .estimator-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .services-faq-header {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .services-faq-body {
+    padding: 0 1.25rem;
+  }
+
+  .services-faq-item.is-open .services-faq-body {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+  }
+
+  .services-cta-banner {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .services-hero-modern h1 {
+    font-size: 1.85rem;
+  }
+
+  .services-control-wrapper {
+    margin-top: -1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-card-header {
+    margin-bottom: 1rem;
+  }
+
+  .service-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 14px;
+  }
+
+  .service-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .service-primary-link {
+    justify-content: center;
+  }
+
+  .service-brief-btn {
+    width: 100%;
+    text-align: center;
+    padding: 8px 14px;
+  }
+}
+
+/* ==========================================================================
+   AI & Cognitive Automation Service Page Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .ai-ref-hero {
+    padding: 4.5rem 0 7rem 0;
+  }
+
+  .ai-ref-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .ai-ref-breadcrumb {
+    justify-content: center;
+  }
+
+  .ai-ref-hero p {
+    margin: 0 auto 2rem auto;
+  }
+
+  .ai-ref-hero-btns {
+    justify-content: center;
+  }
+
+  .ai-solutions-image-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ai-partner-cta-box {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .ai-partner-cube-img {
+    margin: 0 auto 1.5rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-feature-floating-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ai-feature-floating-col {
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .ai-feature-floating-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .ai-solutions-image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dark-faq-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .ai-partner-stats-row {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-ref-hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .ai-solutions-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-partner-form-card {
+    padding: 1.75rem 1.25rem;
   }
 }

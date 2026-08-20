@@ -52,59 +52,96 @@
             </svg>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="../services/ai-automation.html" class="dropdown-link" role="menuitem">
+            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🤖</div>
               <div>
                 <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
                 <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
               </div>
             </a>
-            <a href="../services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud &amp; DevOps Transformation</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="../services/data-analytics.html" class="dropdown-link" role="menuitem">
+            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">📊</div>
               <div>
                 <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
                 <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
               </div>
             </a>
-            <a href="../services/cybersecurity.html" class="dropdown-link" role="menuitem">
+            <div class="dropdown-item-has-submenu">
+              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">⚙️</div>
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </div>
+                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                </div>
+              </a>
+              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🌐</span>
+                  <div>
+                    <span class="subdropdown-title">Web Engineering</span>
+                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                  </div>
+                </a>
+                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">📱</span>
+                  <div>
+                    <span class="subdropdown-title">Mobile Engineering</span>
+                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                  </div>
+                </a>
+                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🧩</span>
+                  <div>
+                    <span class="subdropdown-title">Custom Software Development</span>
+                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🛡️</div>
               <div>
                 <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
                 <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
               </div>
             </a>
-            <a href="../services/application-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">⚙️</div>
+            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">☁️</div>
               <div>
-                <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                <span class="dropdown-link-desc">Microservices &amp; custom software</span>
+                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
               </div>
             </a>
-            <a href="../services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">✨</div>
               <div>
-                <span class="dropdown-link-title">Experience &amp; UI/UX Design</span>
+                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
                 <span class="dropdown-link-desc">Enterprise design systems</span>
               </div>
             </a>
-            <a href="../services/global-talent.html" class="dropdown-link" role="menuitem">
+            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">👥</div>
               <div>
-                <span class="dropdown-link-title">Global Talent &amp; Pods</span>
+                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
                 <span class="dropdown-link-desc">Dedicated offshore engineering</span>
               </div>
             </a>
-            <a href="../services/quality-engineering.html" class="dropdown-link" role="menuitem">
+            <a href="./project-management.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">📋</div>
+              <div>
+                <span class="dropdown-link-title">Project Management</span>
+                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+              </div>
+            </a>
+            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🎯</div>
               <div>
-                <span class="dropdown-link-title">Quality Assurance &amp; QA</span>
+                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
                 <span class="dropdown-link-desc">CMMI-3 automated regression</span>
               </div>
             </a>
@@ -167,78 +204,550 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
   <main id="main-content">
+    <!-- ==========================================================================
+         Section 1: Hero Section (Ambient 20s Looping Background Video & Centered Typography)
+         ========================================================================== -->
+    <section class="ai-ref-hero">
+      <!-- 20-Second Ambient Tech Video Background -->
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+        <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+      </video>
 
-    <!-- Page Hero Banner with Background Image & Breadcrumbs -->
-    <section class="section page-hero-banner services-banner">
-      <div class="container container-narrow reveal">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-container" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link">🏠 Home</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item"><a href="../services.html" class="breadcrumb-link">Services</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item active" aria-current="page">App Engineering</li>
-          </ol>
-        </nav>
-        <div class="eyebrow eyebrow-dark">PRODUCT DEVELOPMENT</div>
-        <h1>Product &amp; Application <span class="grad-text">Engineering</span></h1>
-        <p class="text-lead" style="margin-top: 1.25rem;">
-          From concept to multi-tenant deployment, we design, build, and scale custom web and enterprise software platforms designed for high throughput.
-        </p>
-      </div>
-    </section>
+      <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
+      <canvas id="ai-neural-hero-canvas" class="ai-hero-canvas"></canvas>
 
-    <section class="section">
+      <!-- Gradient Light Overlay -->
+      <div class="ai-hero-video-overlay"></div>
+
       <div class="container">
-        <div class="grid grid-3">
-          <div class="highlight-card reveal stagger-1">
-            <h4>Full-Stack Web Platforms</h4>
-            <p>High-performance SaaS web applications engineered with modern frontend frameworks and resilient Node.js / Java Spring backends.</p>
+        <div class="ai-ref-hero-content reveal">
+          <div class="ai-ref-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../services.html">What We Do</a>
+            <span>/</span>
+            <strong style="color: #ffffff;">Product &amp; App Engineering</strong>
           </div>
 
-          <div class="highlight-card reveal stagger-2">
-            <h4>Cross-Platform Mobile Apps</h4>
-            <p>Intuitive iOS and Android applications developed with Flutter and React Native, featuring native performance and unified codebases.</p>
-          </div>
+          <h1>Product &amp; Application Engineering</h1>
 
-          <div class="highlight-card reveal stagger-3">
-            <h4>Microservices &amp; API Architecture</h4>
-            <p>Decoupled, event-driven REST and GraphQL microservice architectures designed for high throughput and modular maintenance.</p>
-          </div>
+          <p>
+            Architecting resilient, high-concurrency enterprise software, multi-tenant SaaS platforms, modern microservices ecosystems, and mission-critical cloud applications with rapid time-to-market.
+          </p>
 
-          <div class="highlight-card reveal stagger-4">
-            <h4>Legacy Modernization</h4>
-            <p>Refactor legacy monolithic codebases into cloud-native architectures without disrupting ongoing business operations.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-5">
-            <h4>Enterprise ERP &amp; CRM Integrations</h4>
-            <p>Custom middleware and integration connectors for SAP, Salesforce, Oracle, and proprietary transactional databases.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-6">
-            <h4>High-Concurrency Optimization</h4>
-            <p>Database query tuning, distributed caching (Redis), asynchronous task queues, and performance benchmarking for millions of users.</p>
+          <div class="ai-ref-hero-btns">
+            <button type="button" class="ai-ref-btn-primary" data-open-modal="consultation-modal">
+              <span>Schedule Architecture Review</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="#app-solutions" class="ai-ref-btn-outline">
+              <span>Explore Capabilities</span>
+              <i class="fa-solid fa-layer-group"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==========================================================================
+         Section 2: Floating 3-Pillar Feature Bar (White Overlapping Card)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
       <div class="container">
-        <div class="cta-banner reveal">
-          <div class="cta-banner-content">
-            <h2>Build Your Next Flagship Product With Trysol</h2>
-            <p>Discuss your product architecture, wireframes, or sprint roadmap with our engineering leads.</p>
-            <a href="../contact.html" class="btn btn-accent btn-lg">Start Project Discussion</a>
+        <div class="ai-feature-floating-bar reveal">
+          <div class="ai-feature-floating-grid">
+
+            <!-- Column 1 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+                <div>
+                  <h3>Architecting</h3>
+                  <span class="ai-feature-floating-sub">Next-Gen Enterprise Applications</span>
+                </div>
+              </div>
+              <p>
+                We design and build cloud-native, multi-tenant architectures engineered for extreme scalability and fault tolerance. From microservices to distributed caching, our systems are built to process millions of concurrent transactions with sub-second response times.
+              </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div>
+                  <h3>Accelerating</h3>
+                  <span class="ai-feature-floating-sub">Agile Product Lifecycle Engineering</span>
+                </div>
+              </div>
+              <p>
+                Our cross-functional dedicated engineering pods deliver end-to-end product lifecycles from rapid MVP prototyping to enterprise feature roadmaps, leveraging automated CI/CD pipelines, containerization, and test-driven engineering discipline.
+              </p>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <div>
+                  <h3>Modernizing</h3>
+                  <span class="ai-feature-floating-sub">Legacy Monoliths &amp; Scalable SaaS</span>
+                </div>
+              </div>
+              <p>
+                Transform rigid legacy codebases into high-velocity microservices ecosystems. We re-architect, re-platform, and migrate legacy enterprise systems into modern cloud ecosystems with zero business disruption and guaranteed data fidelity.
+              </p>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: 6-Card Solutions Image Grid
+         ========================================================================== -->
+    <section id="app-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; PRODUCT ENGINEERING CAPABILITIES &bull;</span>
+          <h2>End-to-End Application Engineering Solutions</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-solutions-image-grid reveal">
+
+          <!-- Card 1: Web Application Engineering -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Web Application Engineering">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Web Application Engineering" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Web Application Engineering</h4>
+            </div>
+          </div>
+
+          <!-- Card 2: Mobile Application Engineering -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Mobile Application Engineering">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Mobile Application Engineering" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Mobile Application Engineering</h4>
+            </div>
+          </div>
+
+          <!-- Card 3: Custom Enterprise Software -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Custom Enterprise Software">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=600&q=80" alt="Custom Enterprise Software" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Custom Enterprise Software</h4>
+            </div>
+          </div>
+
+          <!-- Card 4: Microservices & Cloud APIs -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Microservices &amp; Cloud APIs">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80" alt="Microservices &amp; Cloud APIs" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Microservices &amp; Cloud APIs</h4>
+            </div>
+          </div>
+
+          <!-- Card 5: Legacy Modernization & Refactoring -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Legacy Modernization &amp; Refactoring">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=600&q=80" alt="Legacy Modernization &amp; Refactoring" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Legacy Modernization &amp; Refactoring</h4>
+            </div>
+          </div>
+
+          <!-- Card 6: Multi-Tenant SaaS Platforms -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Multi-Tenant SaaS Platforms">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Multi-Tenant SaaS Platforms" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Multi-Tenant SaaS Platforms</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: 6-Step Methodology & Tech Stack (2x3 Grid)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 4.5rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; METHODOLOGY &amp; TECH STACK &bull;</span>
+          <h2>Product Engineering &amp; Architecture Roadmap</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-process-grid reveal">
+
+          <!-- Step 01 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <div>
+                <h4>Discovery &amp; System Design</h4>
+                <p>UML Architecture, Domain-Driven Design, Cloud Blueprints</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">01</span>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <h4>Frontend &amp; Mobile Engineering</h4>
+                <p>React, Next.js, TypeScript, Flutter, Swift, Kotlin</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">02</span>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <div>
+                <h4>Backend &amp; Microservices</h4>
+                <p>Node.js, Go, Python, Java Spring Boot, GraphQL</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">03</span>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <div>
+                <h4>Databases &amp; Event Streaming</h4>
+                <p>PostgreSQL, MongoDB, Redis, Apache Kafka, DynamoDB</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">04</span>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+              <div>
+                <h4>Cloud Infrastructure &amp; DevOps</h4>
+                <p>Docker, Kubernetes, AWS, Terraform, GitHub Actions</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">05</span>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4>Automated QA &amp; Performance Tuning</h4>
+                <p>Cypress, Playwright, Jest, k6 Load Testing, SonarQube</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">06</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Industries We Served (Pill Carousel Slider)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+      <div class="container">
+
+        <div class="industries-empower-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; INDUSTRIES WE EMPOWER &bull;</span>
+
+          <div class="industries-carousel-container">
+            <!-- Left Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-prev-btn" aria-label="Previous Industry">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Mask Wrapper -->
+            <div class="industries-carousel-wrapper">
+              <div class="industries-carousel-track">
+
+                <!-- Pill 1: FinTech & Banking -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+
+                <!-- Pill 2: Healthcare & Life Sciences -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; Life Sciences</span>
+                </div>
+
+                <!-- Pill 3: Enterprise SaaS -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+                <!-- Pill 4: E-Commerce & Retail -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+
+                <!-- Pill 5: Logistics & Supply Chain -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Logistics &amp; Supply Chain</span>
+                </div>
+
+                <!-- Pill 6: Manufacturing & IoT -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-industry"></i>
+                  <span>Manufacturing &amp; IoT</span>
+                </div>
+
+                <!-- Pill 7: High-Growth Startups -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-rocket"></i>
+                  <span>High-Growth Startups</span>
+                </div>
+
+                <!-- Duplicated Set for Infinite Seamless Looping -->
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; Life Sciences</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Logistics &amp; Supply Chain</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-industry"></i>
+                  <span>Manufacturing &amp; IoT</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-rocket"></i>
+                  <span>High-Growth Startups</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-next-btn" aria-label="Next Industry">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Dark Midnight FAQ Container
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="dark-faq-container reveal">
+
+          <div class="dark-faq-header">
+            <span class="dark-faq-eyebrow">&bull; FREQUENTLY ASKED QUESTIONS &bull;</span>
+            <h2>Product &amp; Application Engineering FAQs</h2>
+          </div>
+
+          <div class="dark-faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What methodologies do you follow for enterprise software engineering?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We operate with battle-tested Agile Scrum and Kanban methodologies with 2-week sprint cadences, automated CI/CD pipeline deployments, test-driven development (TDD), daily standups, and full transparency via Jira and GitHub enterprise dashboards.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How do you guarantee system scalability and high concurrency?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We engineer horizontally scalable distributed systems using stateless microservices, containerization (Docker &amp; Kubernetes), asynchronous event streaming (Kafka/RabbitMQ), distributed Redis caching, and automated database read replicas with sharding.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Who owns the Intellectual Property (IP) and source code?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  100% of the Intellectual Property, custom algorithms, architecture designs, and source code belong entirely to you from day one. Full transfer is legally guaranteed in our Master Services Agreement (MSA) and Mutual Non-Disclosure Agreement (NDA).
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Can you modernize our existing legacy software without downtime?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Yes. We utilize the Strangler Fig pattern to progressively migrate monolithic legacy components into decoupled microservices. This ensures continuous zero-downtime production operations while modernizing the backend tech stack.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How quickly can you deploy a dedicated engineering pod?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  For standard staff augmentation and dedicated engineering pods, we can onboard pre-vetted senior software engineers, architects, and QA specialists within 48 to 72 hours.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Ready to Get Started? (Split Partner CTA Box)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 5.5rem;">
+      <div class="container">
+        <div class="ai-partner-cta-box reveal">
+
+          <!-- Left Content -->
+          <div class="ai-partner-left-content">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=600&q=80" alt="Product Engineering Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <span class="ai-partner-eyebrow">&bull; ENTERPRISE SOFTWARE DELIVERY &bull;</span>
+            <h2>Ready to Build Your Flagship Enterprise Product?</h2>
+
+            <div class="ai-partner-stats-row">
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">120+</div>
+                  <div class="ai-partner-stat-label">Products Shipped</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">99.99%</div>
+                  <div class="ai-partner-stat-label">App Reliability</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">4.5x</div>
+                  <div class="ai-partner-stat-label">Faster Delivery</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Form Card -->
+          <div class="ai-partner-form-card">
+            <h3>Get in Touch</h3>
+            <p>Schedule a technical discovery session with our Principal Solutions Architects.</p>
+
+            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" rows="3" placeholder="Tell us about your product roadmap, tech stack, or engineering requirements..." required></textarea>
+              </div>
+              <button type="submit" class="ai-partner-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
