@@ -62,7 +62,7 @@
   --grad-dark: linear-gradient(180deg, #030a1c 0%, #08173d 100%);
   --grad-glow: radial-gradient(circle at 50% 50%, rgba(0, 85, 212, 0.18) 0%, rgba(3, 16, 56, 0) 70%);
   --grad-card-hover: linear-gradient(135deg, rgba(0, 85, 212, 0.08) 0%, rgba(0, 200, 255, 0.04) 100%);
-  --grad-text: linear-gradient(135deg, #031038 0%, #0055d4 50%, #00c8ff 100%);
+  --grad-text: linear-gradient(135deg, #0055d4 0%, #0055d4 50%, #00c8ff 100%);
   --grad-text-light: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #38bdf8 100%);
 
   /* Shadows */
@@ -454,4 +454,4 @@ a[href^="tel:"],
 
 #industries {
   display: none;
-}
+}
