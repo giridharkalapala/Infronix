@@ -52,59 +52,96 @@
             </svg>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="../services/ai-automation.html" class="dropdown-link" role="menuitem">
+            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🤖</div>
               <div>
                 <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
                 <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
               </div>
             </a>
-            <a href="../services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud &amp; DevOps Transformation</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="../services/data-analytics.html" class="dropdown-link" role="menuitem">
+            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">📊</div>
               <div>
                 <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
                 <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
               </div>
             </a>
-            <a href="../services/cybersecurity.html" class="dropdown-link" role="menuitem">
+            <div class="dropdown-item-has-submenu">
+              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">⚙️</div>
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </div>
+                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                </div>
+              </a>
+              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🌐</span>
+                  <div>
+                    <span class="subdropdown-title">Web Engineering</span>
+                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                  </div>
+                </a>
+                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">📱</span>
+                  <div>
+                    <span class="subdropdown-title">Mobile Engineering</span>
+                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                  </div>
+                </a>
+                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🧩</span>
+                  <div>
+                    <span class="subdropdown-title">Custom Software Development</span>
+                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🛡️</div>
               <div>
                 <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
                 <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
               </div>
             </a>
-            <a href="../services/application-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">⚙️</div>
+            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">☁️</div>
               <div>
-                <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                <span class="dropdown-link-desc">Microservices &amp; custom software</span>
+                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
               </div>
             </a>
-            <a href="../services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">✨</div>
               <div>
-                <span class="dropdown-link-title">Experience &amp; UI/UX Design</span>
+                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
                 <span class="dropdown-link-desc">Enterprise design systems</span>
               </div>
             </a>
-            <a href="../services/global-talent.html" class="dropdown-link" role="menuitem">
+            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">👥</div>
               <div>
-                <span class="dropdown-link-title">Global Talent &amp; Pods</span>
+                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
                 <span class="dropdown-link-desc">Dedicated offshore engineering</span>
               </div>
             </a>
-            <a href="../services/quality-engineering.html" class="dropdown-link" role="menuitem">
+            <a href="./project-management.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">📋</div>
+              <div>
+                <span class="dropdown-link-title">Project Management</span>
+                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+              </div>
+            </a>
+            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🎯</div>
               <div>
-                <span class="dropdown-link-title">Quality Assurance &amp; QA</span>
+                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
                 <span class="dropdown-link-desc">CMMI-3 automated regression</span>
               </div>
             </a>
@@ -176,69 +213,549 @@
 
 
   <main id="main-content">
+    <!-- ==========================================================================
+         Section 1: Hero Section (Ambient 20s Looping Background Video & Centered Typography)
+         ========================================================================== -->
+    <section class="ai-ref-hero">
+      <!-- 20-Second Ambient Tech Video Background -->
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+        <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+      </video>
 
-    <!-- Page Hero Banner with Background Image & Breadcrumbs -->
-    <section class="section page-hero-banner services-banner">
-      <div class="container container-narrow reveal">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-container" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link">🏠 Home</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item"><a href="../services.html" class="breadcrumb-link">Services</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item active" aria-current="page">UI/UX Design</li>
-          </ol>
-        </nav>
-        <div class="eyebrow eyebrow-dark">HUMAN-CENTERED DESIGN</div>
-        <h1>Experience &amp; <span class="grad-text">Interface Design</span></h1>
-        <p class="text-lead" style="margin-top: 1.25rem;">
-          We create intuitive, high-converting digital product experiences, enterprise design systems, and seamless user journeys.
-        </p>
-      </div>
-    </section>
+      <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
+      <canvas id="ai-neural-hero-canvas" class="ai-hero-canvas"></canvas>
 
-    <section class="section">
+      <!-- Gradient Light Overlay -->
+      <div class="ai-hero-video-overlay"></div>
+
       <div class="container">
-        <div class="grid grid-3">
-          <div class="highlight-card reveal stagger-1">
-            <h4>User Research &amp; Journey Mapping</h4>
-            <p>Quantitative analytics, qualitative stakeholder interviews, persona creation, and empathy mapping that identify key friction points.</p>
+        <div class="ai-ref-hero-content reveal">
+          <div class="ai-ref-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../services.html">What We Do</a>
+            <span>/</span>
+            <strong style="color: #ffffff;">Experience &amp; Interface Design</strong>
           </div>
 
-          <div class="highlight-card reveal stagger-2">
-            <h4>Enterprise Design Systems</h4>
-            <p>Comprehensive Figma component libraries and tokenized style guides that ensure unified branding and accelerate engineering velocity.</p>
-          </div>
+          <h1>Experience &amp; Interface Design</h1>
 
-          <div class="highlight-card reveal stagger-3">
-            <h4>Interactive Prototyping</h4>
-            <p>High-fidelity clickable prototypes that allow stakeholders and end-users to validate UX flows before a single line of code is written.</p>
-          </div>
+          <p>
+            Transform complex enterprise software into intuitive, elegant digital products with human-centered user research, scalable Figma design systems, and conversion-focused UX architecture.
+          </p>
 
-          <div class="highlight-card reveal stagger-4">
-            <h4>Accessibility &amp; WCAG Auditing</h4>
-            <p>Color contrast validation, keyboard navigation testing, screen reader optimization, and compliance with WCAG 2.1 AA guidelines.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-5">
-            <h4>Micro-Interactions &amp; Motion</h4>
-            <p>Subtle, purposeful animations and feedback cues that guide user attention and make digital products feel responsive and alive.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-6">
-            <h4>Conversion Rate Optimization</h4>
-            <p>Iterative UX audits, funnel friction analysis, and A/B test variations designed to lift checkout, onboarding, and sign-up conversions.</p>
+          <div class="ai-ref-hero-btns">
+            <button type="button" class="ai-ref-btn-primary" data-open-modal="consultation-modal">
+              <span>Schedule Design Review</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="#ux-solutions" class="ai-ref-btn-outline">
+              <span>Explore Capabilities</span>
+              <i class="fa-solid fa-layer-group"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==========================================================================
+         Section 2: Floating 3-Pillar Feature Bar (White Overlapping Card)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
       <div class="container">
-        <div class="cta-banner reveal">
-          <div class="cta-banner-content">
-            <h2>Elevate Your Digital Experience</h2>
-            <p>Collaborate with our product design team to create interfaces users love.</p>
-            <a href="../contact.html" class="btn btn-accent btn-lg">Schedule Design Review</a>
+        <div class="ai-feature-floating-bar reveal">
+          <div class="ai-feature-floating-grid">
+
+            <!-- Column 1 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                  <h3>Researching</h3>
+                  <span class="ai-feature-floating-sub">User Psychology &amp; Journey Mapping</span>
+                </div>
+              </div>
+              <p>
+                We conduct in-depth stakeholder interviews, persona definitions, and quantitative analytics audits. By uncovering user pain points early, we design frictionless customer journeys that maximize engagement and loyalty.
+              </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+                <div>
+                  <h3>Systematizing</h3>
+                  <span class="ai-feature-floating-sub">Scalable Enterprise Design Systems</span>
+                </div>
+              </div>
+              <p>
+                Accelerate frontend engineering velocity by 40% with tokenized Figma design libraries, atomic UI components, and accessible color palettes that maintain cohesive enterprise branding across web and mobile platforms.
+              </p>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div>
+                  <h3>Validating</h3>
+                  <span class="ai-feature-floating-sub">Interactive Prototyping &amp; Testing</span>
+                </div>
+              </div>
+              <p>
+                Eliminate development rework through high-fidelity interactive prototypes. We conduct rigorous user testing sessions and WCAG 2.1 AA accessibility audits to validate workflows before committing to production code.
+              </p>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: 6-Card Solutions Image Grid
+         ========================================================================== -->
+    <section id="ux-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; UI/UX DESIGN CAPABILITIES &bull;</span>
+          <h2>Human-Centered Product Design Solutions</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-solutions-image-grid reveal">
+
+          <!-- Card 1: User Research & Personas -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="User Research &amp; Personas">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="User Research &amp; Personas" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>User Research &amp; Personas</h4>
+            </div>
+          </div>
+
+          <!-- Card 2: Enterprise Design Systems -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Enterprise Design Systems">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Enterprise Design Systems" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Enterprise Design Systems</h4>
+            </div>
+          </div>
+
+          <!-- Card 3: Interactive Clickable Prototypes -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Interactive Clickable Prototypes">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="Interactive Clickable Prototypes" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Interactive Clickable Prototypes</h4>
+            </div>
+          </div>
+
+          <!-- Card 4: SaaS & Web App UI/UX -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="SaaS &amp; Web App UI/UX">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=600&q=80" alt="SaaS &amp; Web App UI/UX" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>SaaS &amp; Web App UI/UX</h4>
+            </div>
+          </div>
+
+          <!-- Card 5: Mobile App Experience Design -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Mobile App Experience Design">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" alt="Mobile App Experience Design" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Mobile App Experience Design</h4>
+            </div>
+          </div>
+
+          <!-- Card 6: Conversion (CRO) & WCAG Audits -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Conversion (CRO) &amp; WCAG Audits">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Conversion (CRO) &amp; WCAG Audits" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Conversion (CRO) &amp; WCAG Audits</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: 6-Step Methodology & Tech Stack (2x3 Grid)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 4.5rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; METHODOLOGY &amp; DESIGN STACK &bull;</span>
+          <h2>Product Design &amp; User Experience Framework</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-process-grid reveal">
+
+          <!-- Step 01 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-users-viewfinder"></i>
+              </div>
+              <div>
+                <h4>Discovery &amp; User Empathy</h4>
+                <p>Stakeholder Workshops, User Personas, UX Benchmarking, Analytics</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">01</span>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-sitemap"></i>
+              </div>
+              <div>
+                <h4>Information Architecture</h4>
+                <p>Miro, FigJam, User Flow Sitemaps, Low-Fidelity Wireframes</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">02</span>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-palette"></i>
+              </div>
+              <div>
+                <h4>Design System &amp; UI Kits</h4>
+                <p>Figma Tokens, Storybook UI, Atomic Design, CSS Tokens</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">03</span>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <div>
+                <h4>Interactive Prototyping</h4>
+                <p>ProtoPie, Framer, Principle, Micro-Animations &amp; Motion UI</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">04</span>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-universal-access"></i>
+              </div>
+              <div>
+                <h4>Usability Testing &amp; WCAG</h4>
+                <p>Maze Usability, UserTesting.com, Stark (WCAG 2.1 AA Compliance)</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">05</span>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-file-code"></i>
+              </div>
+              <div>
+                <h4>Developer Handoff &amp; QA</h4>
+                <p>Zeplin, GitHub Spec, Tailwind CSS Tokens, Component Inspections</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">06</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Industries We Served (Pill Carousel Slider)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+      <div class="container">
+
+        <div class="industries-empower-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; INDUSTRIES WE DESIGN FOR &bull;</span>
+
+          <div class="industries-carousel-container">
+            <!-- Left Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-prev-btn" aria-label="Previous Industry">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Mask Wrapper -->
+            <div class="industries-carousel-wrapper">
+              <div class="industries-carousel-track">
+
+                <!-- Pill 1: Enterprise SaaS -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+
+                <!-- Pill 2: FinTech & Banking -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+
+                <!-- Pill 3: Healthcare & MedTech -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; MedTech</span>
+                </div>
+
+                <!-- Pill 4: E-Commerce & D2C -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; D2C</span>
+                </div>
+
+                <!-- Pill 5: Logistics & Fleet -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Logistics &amp; Fleet</span>
+                </div>
+
+                <!-- Pill 6: EdTech & Learning -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>EdTech &amp; Learning</span>
+                </div>
+
+                <!-- Pill 7: Consumer Mobile Apps -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-mobile-screen"></i>
+                  <span>Consumer Mobile Apps</span>
+                </div>
+
+                <!-- Duplicated Set for Infinite Seamless Looping -->
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cloud"></i>
+                  <span>Enterprise SaaS</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>FinTech &amp; Banking</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <span>Healthcare &amp; MedTech</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; D2C</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <span>Logistics &amp; Fleet</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>EdTech &amp; Learning</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-mobile-screen"></i>
+                  <span>Consumer Mobile Apps</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-next-btn" aria-label="Next Industry">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Dark Midnight FAQ Container
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="dark-faq-container reveal">
+
+          <div class="dark-faq-header">
+            <span class="dark-faq-eyebrow">&bull; FREQUENTLY ASKED QUESTIONS &bull;</span>
+            <h2>Experience &amp; Interface Design FAQs</h2>
+          </div>
+
+          <div class="dark-faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How long does an enterprise UI/UX design project take?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Typical design sprint cycles range from 3 to 6 weeks for MVP prototyping and wireframing, up to 10 to 14 weeks for comprehensive enterprise multi-platform redesigns and tokenized design system creation.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How do you ensure accessibility (WCAG) compliance in your designs?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Every color token, typographic scale, interactive focus state, and touch target is tested against WCAG 2.1 AA and Section 508 standards using automated tooling (Stark, Axe) and manual keyboard navigation audits.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What deliverables do you provide during developer handoff?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We provide fully documented Figma master files with auto-layout components, design token JSON exports, interactive clickable prototypes, micro-animation specs, and complete Storybook/CSS guidelines for frontend developers.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Can you conduct UX audits on our existing live applications?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Yes. Our UX heuristic evaluation reviews user drop-off funnels, cognitive load, navigation flow bottlenecks, accessibility gaps, and delivers an actionable prioritization matrix to boost conversion rates.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Do you build design systems from scratch or migrate existing UI kits?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Both. We build brand-new modular atomic design systems in Figma from scratch as well as audit, refactor, and tokenize legacy component libraries for unified cross-platform consistency.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Ready to Get Started? (Split Partner CTA Box)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 5.5rem;">
+      <div class="container">
+        <div class="ai-partner-cta-box reveal">
+
+          <!-- Left Content -->
+          <div class="ai-partner-left-content">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="UI/UX Design Systems Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <span class="ai-partner-eyebrow">&bull; HUMAN-CENTERED INNOVATION &bull;</span>
+            <h2>Ready to Elevate Your Product User Experience?</h2>
+
+            <div class="ai-partner-stats-row">
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">3.8x</div>
+                  <div class="ai-partner-stat-label">Conversion Lift</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-universal-access"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">100%</div>
+                  <div class="ai-partner-stat-label">WCAG 2.1 AA</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">40+</div>
+                  <div class="ai-partner-stat-label">Design Awards</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Form Card -->
+          <div class="ai-partner-form-card">
+            <h3>Get in Touch</h3>
+            <p>Schedule a product design review session with our Principal Design Directors.</p>
+
+            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" rows="3" placeholder="Tell us about your product, target audience, or UI/UX goals..." required></textarea>
+              </div>
+              <button type="submit" class="ai-partner-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>

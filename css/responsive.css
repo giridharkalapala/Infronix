@@ -1048,12 +1048,8 @@
 
   .process-step-num {
     margin: 0 auto 1.5rem;
-
   }
 
-  /* .cockpit-nav-item {
-    width: 80%;
-  } */
   .cockpit-nav-header {
     display: block;
   }
@@ -1064,10 +1060,5 @@
     color: #ffffff;
     letter-spacing: normal;
     line-height: 21px;
-  }
-
-  .deeptech-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
   }
 }

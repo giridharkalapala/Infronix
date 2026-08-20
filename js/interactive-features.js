@@ -10,6 +10,11 @@
  * 7. FAQ Accordion
  * 8. Cookie Privacy Banner
  * 9. 3D Tilt Card Effects
+ * 10. Capability Command Center & Interactive Cockpit Console
+ * 11. 3D Flip Pillars Touch/Tap Controller (Mobile & Tablet)
+ * 12. Modern Services Hub Page Controller (Search, Filter, Cockpit, Estimator)
+ * 13. Industries We Empower Pill Carousel Slider
+ * 14. 20-Second Dynamic AI Neural Plexus & Matrix Simulation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTilt();
   initCapabilityCockpit();
   initFlipPillars();
+  initServicesPageFeatures();
+  initIndustryCarouselSlider();
+  initAiHeroCanvas();
+  initAiPartnerForm();
 });
 
 function initClientLogoCarousel() {
@@ -210,13 +219,13 @@ function initUniversalModals() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      const activeModal = document.querySelector('.app-modal.is-active');
+      const activeModal = document.querySelector('.app-modal.is-active, .app-modal.is-open');
       if (activeModal) closeModal(activeModal);
     }
   });
 
   function openModal(modal) {
-    modal.classList.add('is-active');
+    modal.classList.add('is-active', 'is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
     const firstInput = modal.querySelector('input:not([type="hidden"]), select, textarea, button:not(.modal-close-btn)');
@@ -224,7 +233,7 @@ function initUniversalModals() {
   }
 
   function closeModal(modal) {
-    modal.classList.remove('is-active');
+    modal.classList.remove('is-active', 'is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
 
@@ -278,49 +287,59 @@ function initConsultationForm() {
 
     let isValid = true;
 
-    if (!nameInput.value.trim()) {
-      showInputError(nameInput, 'Please enter your name');
-      isValid = false;
-    } else {
-      clearInputError(nameInput);
+    if (nameInput) {
+      if (!nameInput.value.trim()) {
+        showInputError(nameInput, 'Please enter your name');
+        isValid = false;
+      } else {
+        clearInputError(nameInput);
+      }
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailInput.value.trim())) {
-      showInputError(emailInput, 'Please enter a valid work email');
-      isValid = false;
-    } else {
-      clearInputError(emailInput);
+    if (emailInput) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        showInputError(emailInput, 'Please enter a valid work email');
+        isValid = false;
+      } else {
+        clearInputError(emailInput);
+      }
     }
 
-    if (!phoneInput.value.trim() || phoneInput.value.trim().length < 6) {
-      showInputError(phoneInput, 'Please enter a valid phone number');
-      isValid = false;
-    } else {
-      clearInputError(phoneInput);
+    if (phoneInput && phoneInput.hasAttribute('required')) {
+      if (!phoneInput.value.trim() || phoneInput.value.trim().length < 6) {
+        showInputError(phoneInput, 'Please enter a valid phone number');
+        isValid = false;
+      } else {
+        clearInputError(phoneInput);
+      }
     }
 
     if (!isValid) return;
 
     const submitBtn = form.querySelector('button[type="submit"]');
-    const origText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `
-      <span class="btn-spinner" style="display:inline-block; width:16px; height:16px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; animation:spinSlow 0.6s linear infinite; margin-right:8px;"></span>
-      Processing Strategy...
-    `;
+    const origText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="btn-spinner" style="display:inline-block; width:16px; height:16px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; animation:spinSlow 0.6s linear infinite; margin-right:8px;"></span>
+        Processing Strategy...
+      `;
+    }
 
     setTimeout(() => {
       const formFields = form.querySelector('.modal-form-fields');
-      const successScreen = modal.querySelector('.modal-success-screen');
+      const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
 
       if (formFields) formFields.style.display = 'none';
       if (successScreen) successScreen.classList.add('show');
 
       showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = origText;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
       form.reset();
       pillLabels.forEach(l => l.classList.remove('selected'));
     }, 1200);
@@ -346,6 +365,51 @@ function initConsultationForm() {
       if (successScreen) successScreen.classList.remove('show');
     });
   }
+}
+
+/**
+ * AI Partner Bottom Contact Form Handler
+ */
+function initAiPartnerForm() {
+  const form = document.getElementById('ai-partner-contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const inputs = form.querySelectorAll('input, textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (input.hasAttribute('required') && !input.value.trim()) {
+        input.style.borderColor = '#ef4444';
+        isValid = false;
+      } else {
+        input.style.borderColor = '';
+      }
+    });
+
+    if (!isValid) {
+      showToast('⚠️ Please fill in all required fields.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const origText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `Sending Strategy...`;
+    }
+
+    setTimeout(() => {
+      showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
+    }, 1000);
+  });
 }
 
 /* ==========================================================================
@@ -533,27 +597,31 @@ function initTestimonialsSlider() {
    8. Enterprise FAQ Accordion
    ========================================================================== */
 function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
+  const faqItems = document.querySelectorAll('.faq-item, .dark-faq-item, .services-faq-item');
   if (!faqItems.length) return;
 
   faqItems.forEach(item => {
-    const trigger = item.querySelector('.faq-trigger');
+    const trigger = item.querySelector('.faq-trigger, .dark-faq-trigger, .services-faq-trigger');
     if (!trigger) return;
 
     trigger.addEventListener('click', () => {
-      const isActive = item.classList.contains('is-active');
+      const isOpen = item.classList.contains('is-open') || item.classList.contains('is-active');
 
-      // Close all other accordions for clean single accordion state
-      faqItems.forEach(other => {
-        if (other !== item) {
-          other.classList.remove('is-active');
-          const otherTrigger = other.querySelector('.faq-trigger');
-          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
-        }
-      });
+      // Close other accordions in the same container
+      const container = item.closest('.dark-faq-list, .services-faq-list, .faq-accordion');
+      if (container) {
+        container.querySelectorAll('.faq-item, .dark-faq-item, .services-faq-item').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('is-open', 'is-active');
+            const otherTrigger = other.querySelector('.faq-trigger, .dark-faq-trigger, .services-faq-trigger');
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
 
-      item.classList.toggle('is-active', !isActive);
-      trigger.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+      item.classList.toggle('is-open', !isOpen);
+      item.classList.toggle('is-active', !isOpen);
+      trigger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
     });
   });
 }
@@ -671,11 +739,11 @@ function initCapabilityCockpit() {
    12. 3D Flip Pillars Touch/Tap Controller (Mobile & Tablet)
    ========================================================================== */
 function initFlipPillars() {
-  const pillars = document.querySelectorAll('.flip-pillar-container');
+  const pillars = document.querySelectorAll('.flip-pillar-container, .ai-flip-card');
   pillars.forEach(pillar => {
     pillar.addEventListener('click', (e) => {
       // If clicking directly on a link inside the card, allow default navigation
-      if (e.target.closest('a')) return;
+      if (e.target.closest('a') || e.target.closest('button')) return;
 
       if (window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches) {
         pillar.classList.toggle('is-flipped');
@@ -684,4 +752,348 @@ function initFlipPillars() {
   });
 }
 
+/* ==========================================================================
+   13. Modern Services Hub Page Controller (Search, Filter, Cockpit, Estimator)
+   ========================================================================== */
+function initServicesPageFeatures() {
+  initServicesFilterAndSearch();
+  initServicesCockpitTabs();
+  initServicesEstimator();
+  initServicesBriefButtons();
+}
 
+/**
+ * Live search and Category Filtering for the 9 Services Grid
+ */
+function initServicesFilterAndSearch() {
+  const searchInput = document.getElementById('services-search-input');
+  const clearBtn = document.getElementById('services-search-clear');
+  const filterPills = document.querySelectorAll('.filter-pill-btn');
+  const serviceCards = document.querySelectorAll('.modern-service-card');
+  const emptyState = document.getElementById('services-empty-state');
+  const resetBtn = document.getElementById('services-reset-filter');
+
+  if (!serviceCards.length) return;
+
+  let currentCategory = 'all';
+  let searchQuery = '';
+
+  function filterCards() {
+    let visibleCount = 0;
+
+    serviceCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category') || '';
+      const cardTitle = (card.querySelector('h3')?.textContent || '').toLowerCase();
+      const cardDesc = (card.querySelector('.service-card-desc')?.textContent || '').toLowerCase();
+      const cardTech = (card.querySelector('.service-tech-tags')?.textContent || '').toLowerCase();
+      const cardText = `${cardTitle} ${cardDesc} ${cardTech}`;
+
+      const matchesCategory = currentCategory === 'all' || cardCategory.includes(currentCategory);
+      const matchesSearch = !searchQuery || cardText.includes(searchQuery.toLowerCase().trim());
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = 'flex';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('is-visible');
+      } else {
+        emptyState.classList.remove('is-visible');
+      }
+    }
+  }
+
+  // Category Pill Buttons
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCategory = pill.getAttribute('data-filter') || 'all';
+      filterCards();
+    });
+  });
+
+  // Search Input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (clearBtn) {
+        if (searchQuery.length > 0) {
+          clearBtn.classList.add('is-visible');
+        } else {
+          clearBtn.classList.remove('is-visible');
+        }
+      }
+      filterCards();
+    });
+  }
+
+  // Clear Search Button
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchQuery = '';
+      }
+      clearBtn.classList.remove('is-visible');
+      filterCards();
+    });
+  }
+
+  // Reset Filters Button in Empty State
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchQuery = '';
+      }
+      if (clearBtn) clearBtn.classList.remove('is-visible');
+      currentCategory = 'all';
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
+        else p.classList.remove('active');
+      });
+      filterCards();
+    });
+  }
+}
+
+/**
+ * Capability Cockpit Interactive Tab Switcher
+ */
+function initServicesCockpitTabs() {
+  const tabButtons = document.querySelectorAll('.cockpit-tab-btn');
+  const tabPanels = document.querySelectorAll('.cockpit-tab-panel');
+
+  if (!tabButtons.length || !tabPanels.length) return;
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-cockpit-target');
+
+      tabButtons.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+}
+
+/**
+ * Interactive Service Scope & Resource Estimator
+ */
+function initServicesEstimator() {
+  const domainSelect = document.getElementById('estimator-domain');
+  const teamSlider = document.getElementById('estimator-team-size');
+  const teamValDisplay = document.getElementById('estimator-team-val');
+  const sprintValDisplay = document.getElementById('estimator-sprints-val');
+  const speedValDisplay = document.getElementById('estimator-speed-val');
+  const podSpecDisplay = document.getElementById('estimator-pod-spec');
+
+  if (!teamSlider || !domainSelect) return;
+
+  function updateEstimates() {
+    const size = parseInt(teamSlider.value, 10);
+    const domain = domainSelect.value;
+
+    if (teamValDisplay) teamValDisplay.textContent = `${size} Engineers`;
+
+    // Calculate approximate sprints based on team bandwidth
+    let estimatedSprints = '3 - 5 Sprints';
+    let velocityMultiplier = '3.5x';
+    let podSpec = '1 Tech Lead, 2 Full-Stack Devs, 1 QA Automation';
+
+    if (size <= 3) {
+      estimatedSprints = '2 - 4 Sprints';
+      velocityMultiplier = '2.5x';
+      podSpec = '1 Lead Engineer, 1 Senior Full-Stack, 1 QA';
+    } else if (size <= 6) {
+      estimatedSprints = '4 - 8 Sprints';
+      velocityMultiplier = '4.2x';
+      podSpec = '1 Solution Architect, 3 Full-Stack/Cloud Devs, 1 DevOps, 1 QA';
+    } else {
+      estimatedSprints = '8 - 14 Sprints';
+      velocityMultiplier = '6.0x Enterprise';
+      podSpec = '2 Tech Leads, 6 Senior Engineers, 2 DevOps, 2 QA & UI/UX Specialist';
+    }
+
+    if (sprintValDisplay) sprintValDisplay.textContent = estimatedSprints;
+    if (speedValDisplay) speedValDisplay.textContent = velocityMultiplier;
+    if (podSpecDisplay) podSpecDisplay.textContent = podSpec;
+  }
+
+  teamSlider.addEventListener('input', updateEstimates);
+  domainSelect.addEventListener('change', updateEstimates);
+}
+
+/**
+ * Pre-fill consultation modal when clicking "Request Brief" on any service card
+ */
+function initServicesBriefButtons() {
+  const briefButtons = document.querySelectorAll('.service-brief-btn');
+  const modal = document.getElementById('consultation-modal');
+
+  if (!briefButtons.length || !modal) return;
+
+  briefButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const serviceName = btn.getAttribute('data-service-name');
+
+      // Check corresponding checkbox inside modal
+      const checkboxes = modal.querySelectorAll('input[name="services"]');
+      checkboxes.forEach(cb => {
+        if (serviceName && cb.value.toLowerCase().includes(serviceName.toLowerCase())) {
+          cb.checked = true;
+        }
+      });
+
+      // Set details placeholder or text
+      const detailsField = modal.querySelector('#modal-details');
+      if (detailsField && serviceName) {
+        detailsField.value = `Interested in exploring ${serviceName} solutions and architecture roadmap.`;
+      }
+
+      // Open Modal
+      modal.classList.add('is-open', 'is-active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+    });
+  });
+}
+
+/**
+ * Interactive 3D Flip Card Handlers for Desktop & Mobile
+ */
+function initAiFlipCards() {
+  const flipCards = document.querySelectorAll('.ai-flip-card, .flip-pillar-container');
+  flipCards.forEach(card => {
+    // Enable touch tap flip for mobile/tablet
+    card.addEventListener('click', (e) => {
+      // If clicking on an actual link or button inside the card, don't toggle flip
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      card.classList.toggle('is-flipped');
+    });
+  });
+}
+
+/**
+ * Industries We Empower Pill Carousel Slider with Button Controls
+ */
+function initIndustryCarouselSlider() {
+  const wrapper = document.querySelector('.industries-carousel-wrapper');
+  const track = document.querySelector('.industries-carousel-track');
+  const prevBtn = document.querySelector('.industries-prev-btn');
+  const nextBtn = document.querySelector('.industries-next-btn');
+
+  if (!wrapper || !track) return;
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.style.animation = 'none';
+      wrapper.scrollBy({ left: -220, behavior: 'smooth' });
+      setTimeout(() => {
+        track.style.animation = 'industryMarqueeScroll 28s linear infinite';
+      }, 3000);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.style.animation = 'none';
+      wrapper.scrollBy({ left: 220, behavior: 'smooth' });
+      setTimeout(() => {
+        track.style.animation = 'industryMarqueeScroll 28s linear infinite';
+      }, 3000);
+    });
+  }
+}
+
+/**
+ * 20-Second Dynamic AI Neural Plexus & Matrix Simulation for Hero
+ */
+function initAiHeroCanvas() {
+  const canvas = document.getElementById('ai-neural-hero-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  function resize() {
+    width = canvas.width = canvas.parentElement.offsetWidth;
+    height = canvas.height = canvas.parentElement.offsetHeight;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  const particleCount = Math.min(Math.floor(width / 16), 70);
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.8,
+      vy: (Math.random() - 0.5) * 0.8,
+      radius: Math.random() * 2 + 1,
+      color: Math.random() > 0.4 ? '#00c8ff' : '#0055d4',
+      pulse: Math.random() * Math.PI
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += 0.03;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      // Draw particle node
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius + Math.sin(p.pulse) * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = p.color;
+      ctx.fill();
+
+      // Connect nearby nodes with neural synaptic lines
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(0, 200, 255, ${0.25 * (1 - dist / 130)})`;
+          ctx.lineWidth = 0.8;
+          ctx.shadowBlur = 0;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}

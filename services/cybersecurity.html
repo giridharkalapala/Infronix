@@ -52,59 +52,96 @@
             </svg>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="../services/ai-automation.html" class="dropdown-link" role="menuitem">
+            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🤖</div>
               <div>
                 <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
                 <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
               </div>
             </a>
-            <a href="../services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud &amp; DevOps Transformation</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="../services/data-analytics.html" class="dropdown-link" role="menuitem">
+            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">📊</div>
               <div>
                 <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
                 <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
               </div>
             </a>
-            <a href="../services/cybersecurity.html" class="dropdown-link" role="menuitem">
+            <div class="dropdown-item-has-submenu">
+              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">⚙️</div>
+                <div style="flex-grow: 1;">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </div>
+                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                </div>
+              </a>
+              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🌐</span>
+                  <div>
+                    <span class="subdropdown-title">Web Engineering</span>
+                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                  </div>
+                </a>
+                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">📱</span>
+                  <div>
+                    <span class="subdropdown-title">Mobile Engineering</span>
+                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                  </div>
+                </a>
+                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                  <span class="subdropdown-icon">🧩</span>
+                  <div>
+                    <span class="subdropdown-title">Custom Software Development</span>
+                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🛡️</div>
               <div>
                 <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
                 <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
               </div>
             </a>
-            <a href="../services/application-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">⚙️</div>
+            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">☁️</div>
               <div>
-                <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                <span class="dropdown-link-desc">Microservices &amp; custom software</span>
+                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
               </div>
             </a>
-            <a href="../services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">✨</div>
               <div>
-                <span class="dropdown-link-title">Experience &amp; UI/UX Design</span>
+                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
                 <span class="dropdown-link-desc">Enterprise design systems</span>
               </div>
             </a>
-            <a href="../services/global-talent.html" class="dropdown-link" role="menuitem">
+            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">👥</div>
               <div>
-                <span class="dropdown-link-title">Global Talent &amp; Pods</span>
+                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
                 <span class="dropdown-link-desc">Dedicated offshore engineering</span>
               </div>
             </a>
-            <a href="../services/quality-engineering.html" class="dropdown-link" role="menuitem">
+            <a href="./project-management.html" class="dropdown-link" role="menuitem">
+              <div class="dropdown-link-icon">📋</div>
+              <div>
+                <span class="dropdown-link-title">Project Management</span>
+                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+              </div>
+            </a>
+            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
               <div class="dropdown-link-icon">🎯</div>
               <div>
-                <span class="dropdown-link-title">Quality Assurance &amp; QA</span>
+                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
                 <span class="dropdown-link-desc">CMMI-3 automated regression</span>
               </div>
             </a>
@@ -167,78 +204,550 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
   <main id="main-content">
+    <!-- ==========================================================================
+         Section 1: Hero Section (Ambient 20s Looping Background Video & Centered Typography)
+         ========================================================================== -->
+    <section class="ai-ref-hero">
+      <!-- 20-Second Ambient Tech Video Background -->
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+        <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+      </video>
 
-    <!-- Page Hero Banner with Background Image & Breadcrumbs -->
-    <section class="section page-hero-banner services-banner">
-      <div class="container container-narrow reveal">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-container" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link">🏠 Home</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item"><a href="../services.html" class="breadcrumb-link">Services</a></li><li class="breadcrumb-separator">/</li><li class="breadcrumb-item active" aria-current="page">Cybersecurity</li>
-          </ol>
-        </nav>
-        <div class="eyebrow eyebrow-dark">DEFENSE & COMPLIANCE</div>
-        <h1>Cybersecurity &amp; <span class="grad-text">Resilience</span></h1>
-        <p class="text-lead" style="margin-top: 1.25rem;">
-          Protect critical data, applications, and cloud workloads with Zero-Trust architectures, continuous VAPT testing, 24/7 SIEM monitoring, and ISO 27001 standards.
-        </p>
-      </div>
-    </section>
+      <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
+      <canvas id="ai-neural-hero-canvas" class="ai-hero-canvas"></canvas>
 
-    <section class="section">
+      <!-- Gradient Light Overlay -->
+      <div class="ai-hero-video-overlay"></div>
+
       <div class="container">
-        <div class="grid grid-3">
-          <div class="highlight-card reveal stagger-1">
-            <h4>Security Operations Center (SOC)</h4>
-            <p>24/7 continuous threat monitoring, SIEM event correlation, and automated incident containment to halt unauthorized intrusions.</p>
+        <div class="ai-ref-hero-content reveal">
+          <div class="ai-ref-breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../services.html">What We Do</a>
+            <span>/</span>
+            <strong style="color: #ffffff;">Cybersecurity &amp; Resilience</strong>
           </div>
 
-          <div class="highlight-card reveal stagger-2">
-            <h4>VAPT &amp; Penetration Testing</h4>
-            <p>Comprehensive vulnerability assessment and ethical red-team penetration testing across web portals, mobile apps, and cloud networks.</p>
-          </div>
+          <h1>Cybersecurity &amp; Resilience</h1>
 
-          <div class="highlight-card reveal stagger-3">
-            <h4>Zero Trust Architecture</h4>
-            <p>Identity-first access controls, micro-segmentation, multi-factor authentication (MFA), and least-privilege credential governance.</p>
-          </div>
+          <p>
+            Protect critical enterprise data, cloud workloads, and digital assets with Zero-Trust architecture, automated threat detection, 24/7 Managed SOC, and global compliance assurance.
+          </p>
 
-          <div class="highlight-card reveal stagger-4">
-            <h4>Application Security (DevSecOps)</h4>
-            <p>Automated SAST/DAST code auditing embedded into CI/CD pipelines to catch vulnerabilities and secrets before production release.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-5">
-            <h4>Incident Response &amp; Forensics</h4>
-            <p>Rapid containment protocols, forensic malware analysis, breach remediation, and business continuity restoration.</p>
-          </div>
-
-          <div class="highlight-card reveal stagger-6">
-            <h4>Compliance &amp; Risk Advisory</h4>
-            <p>Readiness assessments and certification support for ISO 27001, SOC 2 Type II, GDPR, HIPAA, and PCI-DSS requirements.</p>
+          <div class="ai-ref-hero-btns">
+            <button type="button" class="ai-ref-btn-primary" data-open-modal="consultation-modal">
+              <span>Schedule Security Audit</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="#cyber-solutions" class="ai-ref-btn-outline">
+              <span>Explore Capabilities</span>
+              <i class="fa-solid fa-layer-group"></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ==========================================================================
+         Section 2: Floating 3-Pillar Feature Bar (White Overlapping Card)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
       <div class="container">
-        <div class="cta-banner reveal">
-          <div class="cta-banner-content">
-            <h2>Secure Your Enterprise Digital Footprint</h2>
-            <p>Connect with our certified cybersecurity consultants for a confidential security audit.</p>
-            <a href="../contact.html" class="btn btn-accent btn-lg">Schedule Security Consultation</a>
+        <div class="ai-feature-floating-bar reveal">
+          <div class="ai-feature-floating-grid">
+
+            <!-- Column 1 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                  <h3>Securing</h3>
+                  <span class="ai-feature-floating-sub">Zero-Trust Defense &amp; Micro-Segmentation</span>
+                </div>
+              </div>
+              <p>
+                Enforce strict identity verification and micro-segmented perimeter defense across on-premises, hybrid, and multi-cloud environments. We implement least-privilege IAM, biometric MFA, and encrypted network tunnels to stop lateral adversary movement.
+              </p>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-radar"></i>
+                </div>
+                <div>
+                  <h3>Monitoring</h3>
+                  <span class="ai-feature-floating-sub">24/7 Managed SOC &amp; Threat Hunting</span>
+                </div>
+              </div>
+              <p>
+                Our 24/7 Security Operations Center combines next-gen SIEM telemetry with automated SOAR playbooks and AI anomaly detection to identify, isolate, and neutralize advanced persistent threats (APTs) in sub-15-minute response windows.
+              </p>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="ai-feature-floating-col">
+              <div class="ai-feature-floating-header">
+                <div class="ai-feature-floating-icon">
+                  <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div>
+                  <h3>Assuring</h3>
+                  <span class="ai-feature-floating-sub">VAPT &amp; Global Compliance Governance</span>
+                </div>
+              </div>
+              <p>
+                Uncover security vulnerabilities before adversaries do. We conduct rigorous ethical red-team penetration testing, source code security audits (SAST/DAST), and ensure seamless audit readiness for ISO 27001, SOC 2 Type II, HIPAA, and GDPR.
+              </p>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 3: 6-Card Solutions Image Grid
+         ========================================================================== -->
+    <section id="cyber-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; CYBERSECURITY CAPABILITIES &bull;</span>
+          <h2>Enterprise Security &amp; Cyber Defense Solutions</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-solutions-image-grid reveal">
+
+          <!-- Card 1: 24/7 Managed SOC & SIEM -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="24/7 Managed SOC &amp; SIEM">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="24/7 Managed SOC &amp; SIEM" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>24/7 Managed SOC &amp; SIEM</h4>
+            </div>
+          </div>
+
+          <!-- Card 2: Zero Trust & Identity (IAM) -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Zero Trust &amp; Identity (IAM)">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=600&q=80" alt="Zero Trust &amp; Identity (IAM)" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Zero Trust &amp; Identity (IAM)</h4>
+            </div>
+          </div>
+
+          <!-- Card 3: VAPT & Ethical Red Teaming -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="VAPT &amp; Ethical Red Teaming">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="VAPT &amp; Ethical Red Teaming" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>VAPT &amp; Ethical Red Teaming</h4>
+            </div>
+          </div>
+
+          <!-- Card 4: Cloud & AppSec Hardening -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Cloud &amp; AppSec Hardening">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80" alt="Cloud &amp; AppSec Hardening" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Cloud &amp; AppSec Hardening</h4>
+            </div>
+          </div>
+
+          <!-- Card 5: Incident Response & Forensics -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Incident Response &amp; Forensics">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Incident Response &amp; Forensics" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Incident Response &amp; Forensics</h4>
+            </div>
+          </div>
+
+          <!-- Card 6: Compliance & Risk Advisory -->
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Compliance &amp; Risk Advisory">
+            <div class="ai-solution-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Compliance &amp; Risk Advisory" loading="lazy" width="400" height="400">
+            </div>
+            <div class="ai-solution-card-label">
+              <h4>Compliance &amp; Risk Advisory</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 4: 6-Step Methodology & Tech Stack (2x3 Grid)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 4.5rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="ai-section-heading-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; METHODOLOGY &amp; TECH STACK &bull;</span>
+          <h2>Cyber Resilience &amp; Security Architecture</h2>
+          <div class="ai-section-heading-line"></div>
+        </div>
+
+        <div class="ai-process-grid reveal">
+
+          <!-- Step 01 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-crosshairs"></i>
+              </div>
+              <div>
+                <h4>Threat Modeling &amp; Surface Mapping</h4>
+                <p>MITRE ATT&amp;CK, STRIDE Framework, NIST CSF, Attack Surface Audits</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">01</span>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-key"></i>
+              </div>
+              <div>
+                <h4>Identity &amp; Privileged Access (IAM)</h4>
+                <p>Okta, Azure AD, CyberArk, HashiCorp Vault, Zero-Trust MFA</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">02</span>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-cloud-lock"></i>
+              </div>
+              <div>
+                <h4>Cloud &amp; Network Hardening</h4>
+                <p>Palo Alto Networks, Cloudflare WAF, AWS Security Hub, Prisma Cloud</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">03</span>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-bug-slash"></i>
+              </div>
+              <div>
+                <h4>Continuous VAPT &amp; Code Audits</h4>
+                <p>Burp Suite Pro, OWASP ZAP, Snyk SAST/DAST, SonarQube, Metasploit</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">04</span>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-shield-virus"></i>
+              </div>
+              <div>
+                <h4>24/7 SIEM &amp; Automated SOAR</h4>
+                <p>Splunk Enterprise, Microsoft Sentinel, CrowdStrike Falcon, Wazuh</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">05</span>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="ai-process-card">
+            <div class="ai-process-card-content">
+              <div class="ai-process-icon">
+                <i class="fa-solid fa-certificate"></i>
+              </div>
+              <div>
+                <h4>Compliance &amp; Disaster Recovery</h4>
+                <p>ISO 27001, SOC 2 Type II, HIPAA, GDPR, Immutable Backup Sprints</p>
+              </div>
+            </div>
+            <span class="ai-process-watermark">06</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 5: Industries We Served (Pill Carousel Slider)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+      <div class="container">
+
+        <div class="industries-empower-wrap reveal">
+          <span class="ai-section-eyebrow">&bull; INDUSTRIES WE PROTECT &bull;</span>
+
+          <div class="industries-carousel-container">
+            <!-- Left Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-prev-btn" aria-label="Previous Industry">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Carousel Mask Wrapper -->
+            <div class="industries-carousel-wrapper">
+              <div class="industries-carousel-track">
+
+                <!-- Pill 1: Banking & FinTech -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>Banking &amp; FinTech</span>
+                </div>
+
+                <!-- Pill 2: Healthcare & Pharma -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-hospital"></i>
+                  <span>Healthcare &amp; Pharma</span>
+                </div>
+
+                <!-- Pill 3: Critical Infrastructure -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-bolt"></i>
+                  <span>Critical Infrastructure</span>
+                </div>
+
+                <!-- Pill 4: Government & Defense -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-landmark"></i>
+                  <span>Government &amp; Defense</span>
+                </div>
+
+                <!-- Pill 5: E-Commerce & Retail -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+
+                <!-- Pill 6: Telecommunications -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-tower-broadcast"></i>
+                  <span>Telecommunications</span>
+                </div>
+
+                <!-- Pill 7: High-Tech Enterprises -->
+                <div class="industry-pill-item">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>High-Tech Enterprises</span>
+                </div>
+
+                <!-- Duplicated Set for Infinite Seamless Looping -->
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-building-columns"></i>
+                  <span>Banking &amp; FinTech</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-hospital"></i>
+                  <span>Healthcare &amp; Pharma</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-bolt"></i>
+                  <span>Critical Infrastructure</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-landmark"></i>
+                  <span>Government &amp; Defense</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span>E-Commerce &amp; Retail</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-tower-broadcast"></i>
+                  <span>Telecommunications</span>
+                </div>
+                <div class="industry-pill-item" aria-hidden="true">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>High-Tech Enterprises</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button type="button" class="industries-carousel-btn industries-next-btn" aria-label="Next Industry">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 6: Dark Midnight FAQ Container
+         ========================================================================== -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 4.5rem;">
+      <div class="container">
+        <div class="dark-faq-container reveal">
+
+          <div class="dark-faq-header">
+            <span class="dark-faq-eyebrow">&bull; FREQUENTLY ASKED QUESTIONS &bull;</span>
+            <h2>Cybersecurity &amp; Resilience FAQs</h2>
+          </div>
+
+          <div class="dark-faq-list">
+
+            <!-- FAQ Item 1 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What is the response SLA for your 24/7 Managed SOC?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Our 24/7 Managed Security Operations Center maintains a guaranteed sub-15-minute mean time to detect (MTTD) and sub-30-minute mean time to contain (MTTC) for critical threat alerts, supported by automated SOAR playbooks and tier-3 security analysts.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How frequently should our organization perform VAPT penetration testing?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We recommend full-scope black-box and grey-box VAPT at least bi-annually, as well as mandatory delta penetration testing following any major software release or cloud infrastructure modification.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>What compliance standards and certifications do you support?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  We guide enterprises through full gap analysis, remediation, and certification audits for ISO 27001, ISO 9001, SOC 2 Type II, HIPAA, PCI-DSS Level 1, and European Union GDPR data governance.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>How does Zero-Trust architecture prevent ransomware attacks?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Zero-Trust eliminates implicit trust by enforcing micro-segmentation, continuous identity verification, encrypted data planes, and least-privilege role-based access controls (RBAC), preventing ransomware from moving laterally across internal networks.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="dark-faq-item">
+              <button type="button" class="dark-faq-trigger" aria-expanded="false">
+                <span>Can you integrate with our existing SIEM and cloud environments?</span>
+                <span class="dark-faq-icon">+</span>
+              </button>
+              <div class="dark-faq-body">
+                <p>
+                  Yes. Our security engineers integrate effortlessly with AWS Security Hub, Microsoft Sentinel, Splunk, Google Cloud Chronicle, CrowdStrike, and hybrid on-premises firewalls without requiring vendor lock-in.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Section 7: Ready to Get Started? (Split Partner CTA Box)
+         ========================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 5.5rem;">
+      <div class="container">
+        <div class="ai-partner-cta-box reveal">
+
+          <!-- Left Content -->
+          <div class="ai-partner-left-content">
+            <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=600&q=80" alt="Cybersecurity Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <span class="ai-partner-eyebrow">&bull; ZERO TRUST DEFENSE &bull;</span>
+            <h2>Ready to Bulletproof Your Enterprise Cyber Defense?</h2>
+
+            <div class="ai-partner-stats-row">
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-shield-virus"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">100%</div>
+                  <div class="ai-partner-stat-label">Threat Containment</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-stopwatch"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">&lt;15 Min</div>
+                  <div class="ai-partner-stat-label">Incident SLA</div>
+                </div>
+              </div>
+
+              <div class="ai-partner-stat-item">
+                <div class="ai-partner-stat-icon">
+                  <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                  <div class="ai-partner-stat-num">ISO 27001</div>
+                  <div class="ai-partner-stat-label">Certified Framework</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Dark Form Card -->
+          <div class="ai-partner-form-card">
+            <h3>Get in Touch</h3>
+            <p>Schedule a confidential threat surface audit with our Lead Security Architects.</p>
+
+            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-textarea" rows="3" placeholder="Tell us about your infrastructure, compliance goals, or VAPT requirements..." required></textarea>
+              </div>
+              <button type="submit" class="ai-partner-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
