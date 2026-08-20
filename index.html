@@ -91,7 +91,7 @@
   <!-- ==========================================================================
        Redesigned Modern Glassmorphism Header
        ========================================================================== -->
-  <header class="site-header" role="banner">
+    <header class="site-header" role="banner">
     <div class="container header-container">
       <a href="./index.html" class="brand-logo" aria-label="Infronix Global Home">
         <img src="./assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
@@ -129,8 +129,9 @@
                 <div style="flex-grow: 1;">
                   <div style="display: flex; align-items: center; justify-content: space-between;">
                     <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <path d="M9 18l6-6-6-6"/>
+                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5">
+                      <path d="M9 18l6-6-6-6" />
                     </svg>
                   </div>
                   <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
@@ -204,7 +205,7 @@
             </a>
           </div>
         </div>
-
+        <a href="./technologies.html" class="nav-link">Technologies</a>
         <a href="./about.html" class="nav-link">Who We Are</a>
         <a href="./gallery.html" class="nav-link">Gallery</a>
         <a href="./contact.html" class="nav-link">Contact</a>
@@ -244,10 +245,11 @@
       </div>
       <div class="mobile-nav-list">
         <a href="./index.html" class="mobile-nav-link active">Home</a>
-        <a href="#" class="mobile-nav-link ">What We Do (Services)</a>
-        <a href="#" class="mobile-nav-link ">Who We Are (About)</a>
-        <a href="#" class="mobile-nav-link ">Gallery</a>
-        <a href="#" class="mobile-nav-link ">Contact</a>
+        <a href="./services.html" class="mobile-nav-link">What We Do</a>
+        <a href="./technologies.html" class="mobile-nav-link">Technologies</a>
+        <a href="./about.html" class="mobile-nav-link">Who We Are</a>
+        <a href="./gallery.html" class="mobile-nav-link">Gallery</a>
+        <a href="./contact.html" class="mobile-nav-link">Contact</a>
       </div>
     </div>
 
@@ -262,13 +264,18 @@
     </div>
   </div>
 
-
-
-
   <main id="main-content">
 
     <!-- 1. Redesigned Enterprise Hero Section with 3D Holographic Card & Canvas -->
     <section class="hero-section" aria-label="Hero Introduction">
+      <!-- Background Ambient Video -->
+      <video class="hero-bg-video" autoplay muted loop playsinline poster="./assets/images/hero-bg.jpg">
+        <source src="./assets/Infronix-Global.mp4" type="video/mp4">
+      </video>
+
+      <!-- Video Gradient Overlay -->
+      <div class="hero-video-overlay"></div>
+
       <div class="container hero-grid">
         <!-- Hero Left Column: Narrative & Action Hub -->
         <div class="hero-content reveal">
