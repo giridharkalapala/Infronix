@@ -1510,3 +1510,455 @@ iframe {
     font-size: 0.72rem;
   }
 }
+
+/* ==========================================================================
+   12. Services Hub Page Responsiveness (services.html)
+   ========================================================================== */
+
+/* Large Tablet / Small Laptop (1100px and below) */
+@media (max-width: 1100px) {
+  .modern-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .cockpit-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .estimator-card {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .engagement-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Portrait (768px and below) */
+@media (max-width: 768px) {
+  .services-hero-modern {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .services-hero-modern h1 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .services-hero-modern .text-lead {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .services-hero-cta-wrap {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .services-hero-cta-wrap .btn {
+    width: fit-content;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  .hero-stat-badge {
+    padding: 1rem 1.15rem;
+    gap: 0.75rem;
+    border-radius: 14px;
+  }
+
+  .hero-stat-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+
+  .hero-stat-number {
+    font-size: 1.3rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+  }
+
+  .services-control-wrapper {
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .services-control-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.15rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .services-search-group {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .services-search-input {
+    padding: 12px 42px 12px 42px;
+    font-size: 0.9rem;
+  }
+
+  .services-filter-pills {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .services-filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .modern-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .modern-service-card {
+    padding: 1.75rem 1.35rem;
+    border-radius: 18px;
+  }
+
+  .service-card-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .service-card-actions .service-primary-link,
+  .service-card-actions .service-brief-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .cockpit-tabs-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 1.75rem;
+  }
+
+  .cockpit-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cockpit-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    border-radius: 12px;
+  }
+
+  .cockpit-tab-panel {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .cockpit-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .cockpit-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+
+  .cockpit-metric-card {
+    padding: 0.75rem 0.6rem;
+  }
+
+  .cockpit-metric-val {
+    font-size: 1.3rem;
+  }
+
+  .cockpit-metric-lbl {
+    font-size: 0.68rem;
+  }
+
+  .cockpit-visual-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .lifecycle-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .engagement-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .engagement-box {
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+  }
+
+  .estimator-card {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+  }
+
+  .estimator-result-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Small Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+  .services-hero-modern {
+    padding: 2.75rem 0 3.75rem 0;
+  }
+
+  .services-hero-modern h1 {
+    font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+  }
+
+  .services-hero-modern .text-lead {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+
+  .services-hero-cta-wrap {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .services-hero-cta-wrap .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.88rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-stat-badge {
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+  }
+
+  .services-control-wrapper {
+    margin-top: -1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .services-control-card {
+    padding: 0.85rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .services-search-input {
+    padding: 10px 36px 10px 38px;
+    font-size: 0.85rem;
+  }
+
+  .modern-service-card {
+    padding: 1.35rem 1rem;
+    border-radius: 16px;
+  }
+
+  .service-card-header {
+    margin-bottom: 0.85rem;
+  }
+
+  .service-icon-wrapper {
+    width: 46px;
+    height: 46px;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    margin-bottom: 0.85rem;
+  }
+
+  .modern-service-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card-desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-bottom: 0.85rem;
+  }
+
+  .service-checklist {
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .service-checklist li {
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .service-tech-tags {
+    gap: 4px;
+    margin-bottom: 1.15rem;
+  }
+
+  .service-tech-tag {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+  }
+
+  .cockpit-tab-panel {
+    padding: 1.25rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .cockpit-grid h3 {
+    font-size: 1.3rem;
+  }
+
+  .cockpit-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .cockpit-metric-card {
+    padding: 0.6rem 0.35rem;
+    border-radius: 8px;
+  }
+
+  .cockpit-metric-val {
+    font-size: 1.1rem;
+  }
+
+  .cockpit-metric-lbl {
+    font-size: 0.6rem;
+  }
+
+  .cockpit-visual-card {
+    padding: 1.25rem 0.85rem;
+    border-radius: 14px;
+  }
+
+  .cockpit-blueprint-list {
+    gap: 8px;
+  }
+
+  .cockpit-blueprint-list li {
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .lifecycle-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .lifecycle-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .lifecycle-step-num {
+    font-size: 1.65rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .engagement-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .estimator-card {
+    padding: 1.35rem 0.85rem;
+  }
+
+  .estimator-result-card {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .estimator-result-val {
+    font-size: 1.75rem;
+  }
+}
+
+/* Ultra-Compact Mobile (360px and below) */
+@media (max-width: 360px) {
+  .services-hero-modern h1 {
+    font-size: 1.45rem;
+  }
+
+  .filter-pill-btn {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+
+  .cockpit-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .cockpit-metric-val {
+    font-size: 1.25rem;
+  }
+}
