@@ -171,6 +171,160 @@
 }
 
 /* ==========================================================================
+   TOP UTILITY NAV BAR (Modern & Elegant Design)
+   ========================================================================== */
+.site-topbar {
+  background: #020718;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  font-size: 0.815rem;
+  color: #cbd5e1;
+  z-index: 1002;
+  position: relative;
+  max-height: 44px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 7px 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header.scrolled .site-topbar {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transform: translateY(-100%);
+  border-bottom-color: transparent;
+  pointer-events: none;
+}
+
+.topbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.815rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.topbar-link:hover {
+  color: #00c8ff;
+}
+
+.topbar-icon {
+  color: #0e5cbf; 
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.topbar-link:hover .topbar-icon {
+  color: #00c8ff;
+  transform: scale(1.15);
+}
+
+.topbar-locations-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 1.25rem;
+}
+
+.topbar-location-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #cbd5e1;
+  font-size: 0.815rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.topbar-location-item:hover {
+  color: #ffffff;
+}
+
+.topbar-location-item .topbar-icon {
+  color: #0e5cbf;
+  font-size: 0.8rem;
+}
+
+.topbar-loc-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-social-btn {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topbar-social-btn:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 85, 212, 0.35);
+}
+
+.topbar-social-btn.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.topbar-social-btn.facebook:hover {
+  background: #1877f2;
+}
+
+.topbar-social-btn.youtube:hover {
+  background: #ff0000;
+}
+
+.topbar-social-btn.whatsapp:hover {
+  background: #25d366;
+}
+
+/* ==========================================================================
    REDESIGNED MODERN CRISP WHITE SITE HEADER & NAVBAR
    ========================================================================== */
 .site-header {
@@ -178,18 +332,25 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
   z-index: 1000;
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   transition: all var(--transition-normal);
 }
 
-.site-header.scrolled {
+.site-header:not(:has(.header-main-nav)) {
+  height: var(--header-height);
+  align-items: center;
+}
+
+.site-header:not(:has(.header-main-nav)).scrolled {
   height: var(--header-height-scrolled);
+}
+
+.site-header.scrolled {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -197,11 +358,22 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
+.header-main-nav {
+  height: var(--header-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: height var(--transition-normal);
+}
+
+.site-header.scrolled .header-main-nav {
+  height: var(--header-height-scrolled);
+}
+
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   gap: 1.25rem;
 }
 
@@ -508,6 +680,7 @@
   z-index: 3;
   max-width: 860px;
   margin: 0 auto;
+  margin-top: 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2111,6 +2284,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

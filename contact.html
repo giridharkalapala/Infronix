@@ -39,145 +39,197 @@
        Redesigned Modern Glassmorphism Header
        ========================================================================== -->
   <header class="site-header" role="banner">
-    <div class="container header-container">
-      <a href="./index.html" class="brand-logo" aria-label="Infronix Global Home">
-        <img src="./assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
-      </a>
-
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
-        <a href="./index.html" class="nav-link">Home</a>
-
-        <div class="nav-item-has-dropdown">
-          <a href="./services.html" class="nav-link" aria-haspopup="true">
-            What We Do
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
+    <!-- Top Utility Bar (Disappears smoothly on scroll) -->
+    <div class="site-topbar" id="site-topbar">
+      <div class="container topbar-container">
+        <!-- Left: Mobile number, Email & 3 Locations -->
+        <div class="topbar-left">
+          <a href="tel:+918897290104" class="topbar-link" aria-label="Direct Phone Call">
+            <i class="fa-solid fa-phone topbar-icon"></i>
+            <span>+91 8897290104</span>
           </a>
-          <div class="nav-dropdown" role="menu">
-            <a href="./services/ai-automation.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🤖</div>
-              <div>
-                <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
-                <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
-              </div>
-            </a>
-            <a href="./services/data-analytics.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📊</div>
-              <div>
-                <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
-                <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
-              </div>
-            </a>
-            <div class="dropdown-item-has-submenu">
-              <a href="./services/application-engineering.html" class="dropdown-link" role="menuitem">
-                <div class="dropdown-link-icon">⚙️</div>
-                <div style="flex-grow: 1;">
-                  <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2.5">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </div>
-                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
-                </div>
-              </a>
-              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
-                <a href="./services/web-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🌐</span>
-                  <div>
-                    <span class="subdropdown-title">Web Engineering</span>
-                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
-                  </div>
-                </a>
-                <a href="./services/mobile-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">📱</span>
-                  <div>
-                    <span class="subdropdown-title">Mobile Engineering</span>
-                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
-                  </div>
-                </a>
-                <a href="./services/custom-software-development.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🧩</span>
-                  <div>
-                    <span class="subdropdown-title">Custom Software Development</span>
-                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <a href="./services/cybersecurity.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🛡️</div>
-              <div>
-                <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
-                <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
-              </div>
-            </a>
-            <a href="./services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="./services/ui-ux-design.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">✨</div>
-              <div>
-                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
-                <span class="dropdown-link-desc">Enterprise design systems</span>
-              </div>
-            </a>
-            <a href="./services/global-talent.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">👥</div>
-              <div>
-                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
-                <span class="dropdown-link-desc">Dedicated offshore engineering</span>
-              </div>
-            </a>
-            <a href="./services/project-management.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📋</div>
-              <div>
-                <span class="dropdown-link-title">Project Management</span>
-                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
-              </div>
-            </a>
-            <a href="./services/quality-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🎯</div>
-              <div>
-                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
-                <span class="dropdown-link-desc">CMMI-3 automated regression</span>
-              </div>
-            </a>
+          <a href="mailto:info@infronix.com" class="topbar-link" aria-label="Email Inquiries">
+            <i class="fa-solid fa-envelope topbar-icon"></i>
+            <span>info@infronix.com</span>
+          </a>
+          <div class="topbar-locations-wrap" aria-label="Global Office Locations">
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Bangalore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Indore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Kolkata</span>
+            </span>
           </div>
         </div>
-        <a href="./technologies.html" class="nav-link">Technologies</a>
-        <a href="./about.html" class="nav-link">Who We Are</a>
-        <a href="./gallery.html" class="nav-link">Gallery</a>
-        <a href="./contact.html" class="nav-link active">Contact</a>
-      </nav>
 
-      <!-- Action Button & Hamburger -->
-      <div class="nav-actions-wrap">
-        <a href="tel:+919908387005" class="nav-phone-link" aria-label="Direct Phone Support">
-          <span class="nav-live-dot"></span>
-          <span>+91 99083 87005</span>
+        <!-- Right: 4 Social Media Icons -->
+        <div class="topbar-right" aria-label="Social Media Channels">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn instagram"
+            aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn facebook"
+            aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn youtube"
+            aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://wa.me/918897290104" target="_blank" rel="noopener noreferrer"
+            class="topbar-social-btn whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar (Sticky Glassmorphism) -->
+    <div class="header-main-nav">
+      <div class="container header-container">
+        <a href="./index.html" class="brand-logo" aria-label="Infronix Global Home">
+          <img src="./assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
         </a>
 
-        <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
-          TALK TO US
-          <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+          <a href="./index.html" class="nav-link">Home</a>
 
-        <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
+          <div class="nav-item-has-dropdown">
+            <a href="./services.html" class="nav-link" aria-haspopup="true">
+              What We Do
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <a href="./services/ai-automation.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🤖</div>
+                <div>
+                  <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
+                  <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
+                </div>
+              </a>
+              <a href="./services/data-analytics.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📊</div>
+                <div>
+                  <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
+                  <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
+                </div>
+              </a>
+              <div class="dropdown-item-has-submenu">
+                <a href="./services/application-engineering.html" class="dropdown-link" role="menuitem">
+                  <div class="dropdown-link-icon">⚙️</div>
+                  <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                      <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </div>
+                    <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                  </div>
+                </a>
+                <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                  <a href="./services/web-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🌐</span>
+                    <div>
+                      <span class="subdropdown-title">Web Engineering</span>
+                      <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                    </div>
+                  </a>
+                  <a href="./services/mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">📱</span>
+                    <div>
+                      <span class="subdropdown-title">Mobile Engineering</span>
+                      <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                    </div>
+                  </a>
+                  <a href="./services/custom-software-development.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🧩</span>
+                    <div>
+                      <span class="subdropdown-title">Custom Software Development</span>
+                      <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a href="./services/cybersecurity.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🛡️</div>
+                <div>
+                  <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
+                  <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
+                </div>
+              </a>
+              <a href="./services/cloud-devops.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">☁️</div>
+                <div>
+                  <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                  <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
+                </div>
+              </a>
+              <a href="./services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">✨</div>
+                <div>
+                  <span class="dropdown-link-title">Experience &amp; Interface Design</span>
+                  <span class="dropdown-link-desc">Enterprise design systems</span>
+                </div>
+              </a>
+              <a href="./services/global-talent.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">👥</div>
+                <div>
+                  <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
+                  <span class="dropdown-link-desc">Dedicated offshore engineering</span>
+                </div>
+              </a>
+              <a href="./services/project-management.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📋</div>
+                <div>
+                  <span class="dropdown-link-title">Project Management</span>
+                  <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+                </div>
+              </a>
+              <a href="./services/quality-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🎯</div>
+                <div>
+                  <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
+                  <span class="dropdown-link-desc">CMMI-3 automated regression</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <a href="./technologies.html" class="nav-link">Technologies</a>
+          <a href="./about.html" class="nav-link">Who We Are</a>
+          <a href="./gallery.html" class="nav-link">Gallery</a>
+          <a href="./contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Action Button & Hamburger -->
+        <div class="nav-actions-wrap">
+          <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
+            TALK TO US
+            <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false"
+            aria-controls="mobile-nav">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -254,8 +306,8 @@
         REQUEST CONSULTATION
       </button>
       <p style="font-size: 0.85rem; text-align: center; color: var(--text-muted); line-height: 1.6;">
-        Email: <a href="mailto:info@infronix.com" style="color: var(--color-secondary);">info@infronix.com</a><br>
-        Direct: <a href="tel:+919908387005" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
+        Email: <a href="mailto:info@trysol.com" style="color: var(--color-secondary);">info@trysol.com</a><br>
+        Direct: <a href="tel:+91 8897290104" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
       </p>
     </div>
   </div>
@@ -318,7 +370,7 @@
                 <strong style="display: block; font-size: 1rem; color: var(--text-main);">Direct Contact
                   Numbers</strong>
                 <p style="font-size: 0.95rem; margin-top: 4px;">
-                  <a href="tel:+919908387005" style="color: var(--color-secondary); font-weight: 600;">+91 99083
+                  <a href="tel:+91 8897290104" style="color: var(--color-secondary); font-weight: 600;">+91 99083
                     87005</a><br>
                   <a href="tel:+918247430735" style="color: var(--color-secondary); font-weight: 600;">+91 82474
                     30735</a>
@@ -410,8 +462,9 @@
       <div class="container">
         <div class="section-header reveal">
           <div class="eyebrow">GLOBAL PRESENCE</div>
-          <h2>Where Innovation Meets Opportunity</h2>
-          <p>Our offices in Bangalore, Indore, and Kolkata connect talented teams, technology, and business expertise to deliver impactful digital solutions and create lasting value for our clients.</p>
+          <h2>Our Innovation Centers &amp; Hubs</h2>
+          <p>Serving enterprise clients across North America, EMEA, and APAC through our strategic delivery locations.
+          </p>
         </div>
 
         <div class="grid grid-3">
@@ -421,8 +474,8 @@
             <div style="font-size: 1.75rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-location-dot"></i></div>
             <h4>Bangalore</h4>
             <p style="font-size: 0.9rem; line-height: 1.6; margin-top: 0.5rem;">
-              Ground Floor & 1st Floor, 3 AND 6, 9 KONAPPANA AGRAHARA, near Infosys Gate 1, Electronic City Phase I,
-              Konappana Agrahara, Karnataka 560100
+              TOWER-A, Mantri Commercio, Unit 503, Marathahalli - Sarjapur Outer Ring Rd, Kaikondrahalli, Bengaluru
+              560103
             </p>
           </div>
 
@@ -451,7 +504,7 @@
       <div class="container">
         <div class="section-header reveal">
           <div class="eyebrow">GLOBAL OFFICE MAPS</div>
-          <h2>Meet us across our Branches</h2>
+          <h2>Meet us across our delivery hubs</h2>
           <p>Visit the team closest to your market and collaborate with our engineers, strategists, and product
             specialists.</p>
         </div>
@@ -465,9 +518,9 @@
             </div>
             <div class="mini-map-frame">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15559.576557393133!2d77.65224003259127!3d12.85011341970604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c977f017b1f%3A0x6334ef743ab72ecb!2sKonappana%20Agrahara!5e0!3m2!1sen!2sin!4v1787292312016!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                src="https://www.google.com/maps?q=Mantri%20Commercio%2C%20Marathahalli%20Sarjapur%20Outer%20Ring%20Road%2C%20Bengaluru%20India&z=13&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Bangalore office map">
+              </iframe>
             </div>
             <p>Ground Floor & 1st Floor, 3 AND 6, 9 KONAPPANA AGRAHARA, near Infosys Gate 1, Electronic City Phase I,
               Konappana Agrahara, Karnataka 560100
@@ -481,9 +534,9 @@
             </div>
             <div class="mini-map-frame">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7360.097657438292!2d75.87863703847493!3d22.72642641341754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd4773f75357%3A0xd4c16ad55b02adbe!2sNew%20Palasia%2C%20Indore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1787291966994!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                src="https://www.google.com/maps?q=Dubai%20Digital%20Park%2C%20Dubai%20Silicon%20Oasis%2C%20Dubai%20UAE&z=13&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Dubai office map">
+              </iframe>
             </div>
             <p>New Palasia, Indore, Madhya Pradesh 452018</p>
           </article>
@@ -494,10 +547,9 @@
               <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="mini-map-frame">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.007458070902!2d88.4255221242873!3d22.57882438274419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275baf7e5b2a1%3A0x6a95cd924ea387a5!2sDM%20Block%2C%20Sector%20V%2C%20Bidhannagar%2C%20Kolkata%2C%20West%20Bengal%20700091!5e0!3m2!1sen!2sin!4v1787292255808!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              <iframe src="https://www.google.com/maps?q=Midrand%20South%20Africa&z=12&output=embed" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="South Africa office map">
+              </iframe>
             </div>
             <p>DM Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091</p>
           </article>
@@ -552,11 +604,11 @@
               <i class="fa-solid fa-chevron-right"></i>
               Home
             </a>
-            <a href="./about.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Who We Are
             </a>
-            <a href="./services.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               What We Do
             </a>
@@ -564,11 +616,11 @@
               <i class="fa-solid fa-chevron-right"></i>
               Technology Matrix
             </a>
-            <a href="./gallery.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Life &amp; Gallery
             </a>
-            <a href="./contact.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Contact Us
             </a>
@@ -579,31 +631,31 @@
         <div class="footer-col">
           <div class="footer-col-title">Services</div>
           <div class="footer-links-list">
-            <a href="./services/ai-automation.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               AI &amp; Automation
             </a>
-            <a href="./services/data-analytics.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Data Engineering
             </a>
-            <a href="./services/cloud-devops.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Cloud &amp; DevOps
             </a>
-            <a href="./services/cybersecurity.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Cybersecurity
             </a>
-            <a href="./services/application-engineering.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               App Engineering
             </a>
-            <a href="./services/ui-ux-design.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               UI/UX Design
             </a>
-            <a href="./services/global-talent.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Global Talent Pods
             </a>
@@ -614,23 +666,23 @@
         <div class="footer-col">
           <div class="footer-col-title">Technologies</div>
           <div class="footer-links-list">
-            <a href="./services/ai-automation.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Artificial Intelligence
             </a>
-            <a href="./services/data-analytics.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Data &amp; Analytics
             </a>
-            <a href="./services/cloud-devops.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Cloud Solutions
             </a>
-            <a href="./services/cybersecurity.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Cyber Resilience
             </a>
-            <a href="./services/quality-engineering.html" class="footer-link">
+            <a href="#" class="footer-link">
               <i class="fa-solid fa-chevron-right"></i>
               Quality Assurance
             </a>
@@ -649,7 +701,7 @@
               </div>
               <div>
                 <strong>Email Inquiries:</strong>
-                <a href="mailto:info@Infronix.com">info@Infronix.com</a>
+                <a href="mailto:info@infronix.com">info@infronix.com</a>
               </div>
             </div>
 
@@ -660,8 +712,7 @@
               </div>
               <div>
                 <strong>Direct Telephone:</strong>
-                <a href="tel:+919908387005">+91 99083 87005</a><br>
-                <a href="tel:+918247430735">+91 82474 30735</a>
+                <a href="tel:+91 8897290104">+91 88972 90104</a>
               </div>
             </div>
 
@@ -672,7 +723,7 @@
               </div>
               <div>
                 <strong>Global Headquarters:</strong>
-                <span>Vaishnavi's Cynosure, 6th Fl, Gachibowli, Hyderabad 500032</span>
+                <span>New Palasia, Indore, Madhya Pradesh 452018</span>
               </div>
             </div>
 
@@ -682,16 +733,23 @@
 
       <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <div>&copy; 2026 Infronix Global Pvt. Ltd. All Rights Reserved. (ISO 9001 &bull; ISO 27001 &bull; CMMI Level 3)
+        <div>&copy; 2026 Infronix Global Pvt. Ltd. All Rights Reserved. Designed & developed by Sunseaz Technologies Pvt Ltd
         </div>
         <div class="footer-legal-links">
-          <a href="./privacy-policy.html" class="footer-link">Privacy Policy</a>
-          <a href="./contact.html" class="footer-link">Terms of Service</a>
-          <a href="./contact.html" class="footer-link">Security Governance</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <a href="#" class="footer-link">Security Governance</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Floating Back to Top Button -->
+  <a href="#" id="back-to-top" aria-label="Back to Top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </a>
 
   <script src="./js/main.js"></script>
   <script src="./js/navigation.js"></script>
@@ -813,7 +871,7 @@
     </div>
   </div>
 
-  <!-- Floating Speed-Dial Multi-Channel Contact Hub -->
+    <!-- Floating Speed-Dial Multi-Channel Contact Hub -->
   <div id="floating-contact-widget" class="floating-contact-widget" role="region" aria-label="Instant Contact Channels">
     <button id="speed-dial-trigger" class="speed-dial-trigger" aria-expanded="false"
       aria-label="Open Multi-Channel Quick Support">
@@ -823,8 +881,8 @@
     </button>
 
     <div class="speed-dial-menu" role="menu">
-      <a href="https://web.whatsapp.com/send?phone=919908387005" target="_blank" rel="noopener noreferrer"
-        class="speed-dial-item" role="menuitem">
+      <!-- WhatsApp Direct -->
+      <a href="https://web.whatsapp.com/send?phone=918897290104" target="_blank" rel="noopener noreferrer" class="speed-dial-item" role="menuitem">
         <span class="speed-dial-label">WhatsApp Live Chat</span>
         <div class="speed-dial-btn whatsapp" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -834,7 +892,8 @@
         </div>
       </a>
 
-      <a href="tel:+919908387005" class="speed-dial-item" role="menuitem">
+      <!-- Direct Phone -->
+      <a href="tel:+918897290104" class="speed-dial-item" role="menuitem">
         <span class="speed-dial-label">Direct Phone Call</span>
         <div class="speed-dial-btn phone" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -844,7 +903,8 @@
         </div>
       </a>
 
-      <a href="mailto:info@Infronix.com" class="speed-dial-item" role="menuitem">
+      <!-- Email Direct -->
+      <a href="mailto:info@infronix.com" class="speed-dial-item" role="menuitem">
         <span class="speed-dial-label">Email Solution RFP</span>
         <div class="speed-dial-btn email" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -854,6 +914,7 @@
         </div>
       </a>
 
+      <!-- Quick Consultation Trigger -->
       <a href="#" class="speed-dial-item" role="menuitem" data-open-modal="consultation-modal">
         <span class="speed-dial-label">Book 1-on-1 Consultation</span>
         <div class="speed-dial-btn consult" aria-hidden="true">
