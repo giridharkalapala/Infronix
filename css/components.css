@@ -1870,6 +1870,99 @@
   color: #0055d4;
 }
 
+/* Mobile Nav Dropdown & Submenu */
+.mobile-nav-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-dropdown-toggle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-nav-dropdown-toggle-wrap .mobile-nav-link {
+  flex: 1;
+}
+
+.mobile-nav-dropdown-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+.mobile-nav-dropdown-btn:hover,
+.mobile-nav-dropdown.is-open .mobile-nav-dropdown-btn {
+  background: #0055d4;
+  color: #ffffff;
+  border-color: #0055d4;
+}
+
+.mobile-dropdown-arrow {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-dropdown.is-open .mobile-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.mobile-nav-sublist {
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0.5rem 0.25rem 0.5rem 0.85rem;
+  margin: 0.35rem 0 0.5rem 0.5rem;
+  border-left: 2px solid rgba(0, 85, 212, 0.2);
+  animation: slideDownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-dropdown.is-open .mobile-nav-sublist {
+  display: flex;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-sublink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.mobile-nav-sublink:hover,
+.mobile-nav-sublink.active {
+  background: #f1f5f9;
+  color: #0055d4;
+  font-weight: 600;
+}
+
 /* ==========================================================================
    REDESIGNED ENTERPRISE HERO SECTION
    ========================================================================== */

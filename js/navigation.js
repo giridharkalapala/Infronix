@@ -1,11 +1,12 @@
 /**
  * TRYSOL GLOBAL SERVICES - NAVIGATION & HEADER CONTROLLER
- * Handles Sticky Glassmorphism Header, Mobile Drawer Menu, and Route Highlights
+ * Handles Sticky Glassmorphism Header, Mobile Drawer Menu, Dropdown Accordion, and Route Highlights
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
+  initMobileDropdowns();
   highlightActiveNav();
 });
 
@@ -35,7 +36,7 @@ function initMobileMenu() {
   const hamburger = document.querySelector('.hamburger-btn');
   const drawer = document.querySelector('.mobile-nav-drawer');
   const backdrop = document.querySelector('.mobile-nav-backdrop');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const navLinks = document.querySelectorAll('.mobile-nav-drawer a');
   const closeBtns = document.querySelectorAll('.mobile-nav-close-btn, [data-close-nav]');
 
   if (!hamburger || !drawer) return;
@@ -70,12 +71,15 @@ function initMobileMenu() {
   }
 
   closeBtns.forEach((btn) => {
-    btn.addEventListener('click', closeMenu);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
   });
 
-  mobileLinks.forEach((link) => {
+  // Close drawer on any navigation link click (with a brief delay for tactile feedback)
+  navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      // Small delay to allow visual click feedback before close
       setTimeout(closeMenu, 120);
     });
   });
@@ -96,22 +100,50 @@ function initMobileMenu() {
 }
 
 /**
- * 3. Highlight Current Active Route in Header
+ * 3. Mobile Navigation Dropdown Accordions
+ */
+function initMobileDropdowns() {
+  const dropdownContainers = document.querySelectorAll('.mobile-nav-dropdown');
+
+  dropdownContainers.forEach((dropdown) => {
+    const toggleBtn = dropdown.querySelector('.mobile-nav-dropdown-btn');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('is-open');
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+}
+
+/**
+ * 4. Highlight Current Active Route in Header & Mobile Nav
  */
 function highlightActiveNav() {
   const currentPath = window.location.pathname.toLowerCase();
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+  const currentFile = currentPath.split('/').filter(Boolean).pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink');
 
   navLinks.forEach((link) => {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    const cleanHref = href.replace('./', '').replace('../', '').replace('/', '').toLowerCase();
-    const cleanCurrent = currentPath.split('/').pop() || 'index.html';
+    const linkFile = href.split('/').filter(Boolean).pop()?.toLowerCase();
 
-    if (cleanHref === cleanCurrent || (cleanHref === 'index.html' && (cleanCurrent === '' || cleanCurrent === '/'))) {
+    if (linkFile && (linkFile === currentFile || (currentFile === '' && linkFile === 'index.html'))) {
       link.classList.add('active');
     }
   });
-}
 
+  // Auto-expand mobile dropdown if any child sublink is active or if current page is in services
+  document.querySelectorAll('.mobile-nav-dropdown').forEach((dropdown) => {
+    const hasActiveChild = dropdown.querySelector('.mobile-nav-sublink.active, .mobile-nav-link.active');
+    if (hasActiveChild) {
+      dropdown.classList.add('is-open');
+      const toggleBtn = dropdown.querySelector('.mobile-nav-dropdown-btn');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+}

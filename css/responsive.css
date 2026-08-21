@@ -1061,4 +1061,8 @@
     letter-spacing: normal;
     line-height: 21px;
   }
+
+  .ai-neural-visual {
+    display: none !important;
+  }
 }
