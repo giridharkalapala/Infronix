@@ -38,146 +38,198 @@
   <!-- ==========================================================================
        Redesigned Modern Glassmorphism Header
        ========================================================================== -->
-    <header class="site-header" role="banner">
-    <div class="container header-container">
-      <a href="../index.html" class="brand-logo" aria-label="Infronix Global Home">
-        <img src="../assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
-      </a>
-
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
-        <a href="../index.html" class="nav-link">Home</a>
-
-        <div class="nav-item-has-dropdown">
-          <a href="../services.html" class="nav-link active" aria-haspopup="true">
-            What We Do
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
+  <header class="site-header" role="banner">
+    <!-- Top Utility Bar (Disappears smoothly on scroll) -->
+    <div class="site-topbar" id="site-topbar">
+      <div class="container topbar-container">
+        <!-- Left: Mobile number, Email & 3 Locations -->
+        <div class="topbar-left">
+          <a href="tel:+918897290104" class="topbar-link" aria-label="Direct Phone Call">
+            <i class="fa-solid fa-phone topbar-icon"></i>
+            <span>+91 8897290104</span>
           </a>
-          <div class="nav-dropdown" role="menu">
-            <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🤖</div>
-              <div>
-                <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
-                <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
-              </div>
-            </a>
-            <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📊</div>
-              <div>
-                <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
-                <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
-              </div>
-            </a>
-            <div class="dropdown-item-has-submenu">
-              <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
-                <div class="dropdown-link-icon">⚙️</div>
-                <div style="flex-grow: 1;">
-                  <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2.5">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </div>
-                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
-                </div>
-              </a>
-              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
-                <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🌐</span>
-                  <div>
-                    <span class="subdropdown-title">Web Engineering</span>
-                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
-                  </div>
-                </a>
-                <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">📱</span>
-                  <div>
-                    <span class="subdropdown-title">Mobile Engineering</span>
-                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
-                  </div>
-                </a>
-                <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🧩</span>
-                  <div>
-                    <span class="subdropdown-title">Custom Software Development</span>
-                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🛡️</div>
-              <div>
-                <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
-                <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
-              </div>
-            </a>
-            <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">✨</div>
-              <div>
-                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
-                <span class="dropdown-link-desc">Enterprise design systems</span>
-              </div>
-            </a>
-            <a href="./global-talent.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">👥</div>
-              <div>
-                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
-                <span class="dropdown-link-desc">Dedicated offshore engineering</span>
-              </div>
-            </a>
-            <a href="./project-management.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📋</div>
-              <div>
-                <span class="dropdown-link-title">Project Management</span>
-                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
-              </div>
-            </a>
-            <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🎯</div>
-              <div>
-                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
-                <span class="dropdown-link-desc">CMMI-3 automated regression</span>
-              </div>
-            </a>
+          <a href="mailto:info@infronix.com" class="topbar-link" aria-label="Email Inquiries">
+            <i class="fa-solid fa-envelope topbar-icon"></i>
+            <span>info@infronix.com</span>
+          </a>
+          <div class="topbar-locations-wrap" aria-label="Global Office Locations">
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Bangalore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Indore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Kolkata</span>
+            </span>
           </div>
         </div>
-        <a href="../technologies.html" class="nav-link">Technologies</a>
-        <a href="../about.html" class="nav-link">Who We Are</a>
-        <a href="../gallery.html" class="nav-link">Gallery</a>
-        <a href="../contact.html" class="nav-link">Contact</a>
-      </nav>
 
-      <!-- Action Button & Hamburger -->
-      <div class="nav-actions-wrap">
-        <a href="tel:+919908387005" class="nav-phone-link" aria-label="Direct Phone Support">
-          <span class="nav-live-dot"></span>
-          <span>+91 99083 87005</span>
+        <!-- Right: 4 Social Media Icons -->
+        <div class="topbar-right" aria-label="Social Media Channels">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn instagram"
+            aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn facebook"
+            aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn youtube"
+            aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://wa.me/918897290104" target="_blank" rel="noopener noreferrer"
+            class="topbar-social-btn whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar (Sticky Glassmorphism) -->
+    <div class="header-main-nav">
+      <div class="container header-container">
+        <a href="../index.html" class="brand-logo" aria-label="Infronix Global Home">
+          <img src="../assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
         </a>
 
-        <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
-          TALK TO US
-          <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+          <a href="../index.html" class="nav-link">Home</a>
 
-        <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
+          <div class="nav-item-has-dropdown">
+            <a href="../services.html" class="nav-link active" aria-haspopup="true">
+              What We Do
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <a href="./ai-automation.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🤖</div>
+                <div>
+                  <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
+                  <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
+                </div>
+              </a>
+              <a href="./data-analytics.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📊</div>
+                <div>
+                  <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
+                  <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
+                </div>
+              </a>
+              <div class="dropdown-item-has-submenu">
+                <a href="./application-engineering.html" class="dropdown-link" role="menuitem">
+                  <div class="dropdown-link-icon">⚙️</div>
+                  <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                      <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </div>
+                    <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                  </div>
+                </a>
+                <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                  <a href="./web-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🌐</span>
+                    <div>
+                      <span class="subdropdown-title">Web Engineering</span>
+                      <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                    </div>
+                  </a>
+                  <a href="./mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">📱</span>
+                    <div>
+                      <span class="subdropdown-title">Mobile Engineering</span>
+                      <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                    </div>
+                  </a>
+                  <a href="./custom-software-development.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🧩</span>
+                    <div>
+                      <span class="subdropdown-title">Custom Software Development</span>
+                      <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a href="./cybersecurity.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🛡️</div>
+                <div>
+                  <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
+                  <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
+                </div>
+              </a>
+              <a href="./cloud-devops.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">☁️</div>
+                <div>
+                  <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                  <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
+                </div>
+              </a>
+              <a href="./ui-ux-design.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">✨</div>
+                <div>
+                  <span class="dropdown-link-title">Experience &amp; Interface Design</span>
+                  <span class="dropdown-link-desc">Enterprise design systems</span>
+                </div>
+              </a>
+              <a href="./global-talent.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">👥</div>
+                <div>
+                  <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
+                  <span class="dropdown-link-desc">Dedicated offshore engineering</span>
+                </div>
+              </a>
+              <a href="./project-management.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📋</div>
+                <div>
+                  <span class="dropdown-link-title">Project Management</span>
+                  <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+                </div>
+              </a>
+              <a href="./quality-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🎯</div>
+                <div>
+                  <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
+                  <span class="dropdown-link-desc">CMMI-3 automated regression</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <a href="../technologies.html" class="nav-link">Technologies</a>
+          <a href="../about.html" class="nav-link">Who We Are</a>
+          <a href="../gallery.html" class="nav-link">Gallery</a>
+          <a href="../contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Action Button & Hamburger -->
+        <div class="nav-actions-wrap">
+          <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
+            TALK TO US
+            <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false"
+            aria-controls="mobile-nav">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -196,35 +248,46 @@
           <div class="mobile-nav-dropdown-toggle-wrap">
             <a href="../services.html" class="mobile-nav-link">What We Do</a>
             <button class="mobile-nav-dropdown-btn" aria-expanded="false" aria-label="Toggle Services Dropdown">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mobile-dropdown-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                class="mobile-dropdown-arrow">
                 <path d="M6 9l6 6 6-6"></path>
               </svg>
             </button>
           </div>
           <div class="mobile-nav-sublist">
             <a href="./ai-automation.html" class="mobile-nav-sublink"><span>🤖</span> AI &amp; Cognitive Automation</a>
-            <a href="./data-analytics.html" class="mobile-nav-sublink"><span>📊</span> Data &amp; Insights Engineering</a>
+            <a href="./data-analytics.html" class="mobile-nav-sublink"><span>📊</span> Data &amp; Insights
+              Engineering</a>
             <div class="mobile-nav-subdropdown">
               <div class="mobile-nav-subdropdown-toggle-wrap">
-                <a href="./application-engineering.html" class="mobile-nav-sublink"><span>⚙️</span> Product &amp; App Engineering</a>
-                <button class="mobile-nav-subdropdown-btn" aria-expanded="false" aria-label="Toggle Product &amp; App Engineering Submenu">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mobile-subdropdown-arrow">
+                <a href="./application-engineering.html" class="mobile-nav-sublink"><span>⚙️</span> Product &amp; App
+                  Engineering</a>
+                <button class="mobile-nav-subdropdown-btn" aria-expanded="false"
+                  aria-label="Toggle Product &amp; App Engineering Submenu">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    class="mobile-subdropdown-arrow">
                     <path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </button>
               </div>
               <div class="mobile-nav-nested-list">
                 <a href="./web-engineering.html" class="mobile-nav-nested-link"><span>🌐</span> Web Engineering</a>
-                <a href="./mobile-engineering.html" class="mobile-nav-nested-link"><span>📱</span> Mobile Engineering</a>
-                <a href="./custom-software-development.html" class="mobile-nav-nested-link"><span>🧩</span> Custom Software Development</a>
+                <a href="./mobile-engineering.html" class="mobile-nav-nested-link"><span>📱</span> Mobile
+                  Engineering</a>
+                <a href="./custom-software-development.html" class="mobile-nav-nested-link"><span>🧩</span> Custom
+                  Software Development</a>
               </div>
             </div>
-            <a href="./cybersecurity.html" class="mobile-nav-sublink"><span>🛡️</span> Cybersecurity &amp; Resilience</a>
-            <a href="./cloud-devops.html" class="mobile-nav-sublink"><span>☁️</span> Cloud Transformation &amp; DevOps</a>
-            <a href="./ui-ux-design.html" class="mobile-nav-sublink"><span>✨</span> Experience &amp; Interface Design</a>
+            <a href="./cybersecurity.html" class="mobile-nav-sublink"><span>🛡️</span> Cybersecurity &amp;
+              Resilience</a>
+            <a href="./cloud-devops.html" class="mobile-nav-sublink"><span>☁️</span> Cloud Transformation &amp;
+              DevOps</a>
+            <a href="./ui-ux-design.html" class="mobile-nav-sublink"><span>✨</span> Experience &amp; Interface
+              Design</a>
             <a href="./global-talent.html" class="mobile-nav-sublink"><span>👥</span> Global Talent &amp; Delivery</a>
             <a href="./project-management.html" class="mobile-nav-sublink"><span>📋</span> Project Management</a>
-            <a href="./quality-engineering.html" class="mobile-nav-sublink"><span>🎯</span> Quality Engineering &amp; QA</a>
+            <a href="./quality-engineering.html" class="mobile-nav-sublink"><span>🎯</span> Quality Engineering &amp;
+              QA</a>
           </div>
         </div>
         <a href="../technologies.html" class="mobile-nav-link">Technologies</a>
@@ -240,7 +303,7 @@
       </button>
       <p style="font-size: 0.85rem; text-align: center; color: var(--text-muted); line-height: 1.6;">
         Email: <a href="mailto:info@trysol.com" style="color: var(--color-secondary);">info@trysol.com</a><br>
-        Direct: <a href="tel:+919908387005" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
+        Direct: <a href="tel:+91 8897290104" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
       </p>
     </div>
   </div>
@@ -251,9 +314,12 @@
          ========================================================================== -->
     <section class="ai-ref-hero">
       <!-- 20-Second Ambient Tech Video Background -->
-      <video class="ai-hero-ambient-video" autoplay muted loop playsinline poster="../assets/images/ai/hero-ai-cyborg.jpg">
+      <video class="ai-hero-ambient-video" autoplay muted loop playsinline
+        poster="../assets/images/ai/hero-ai-cyborg.jpg">
         <source src="../assets/images/ai/ai-hero-bg.mp4" type="video/mp4">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4" type="video/mp4">
+        <source
+          src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-with-glowing-blue-and-purple-lights-31846-large.mp4"
+          type="video/mp4">
       </video>
 
       <!-- 60 FPS Neural Plexus Dynamic Simulation Canvas -->
@@ -275,7 +341,8 @@
           <h1>Data &amp; Advanced Analytics</h1>
 
           <p>
-            Transform petabyte-scale data into real-time business intelligence with modern lakehouse pipelines, Snowflake architectures, and predictive analytics.
+            Transform petabyte-scale data into real-time business intelligence with modern lakehouse pipelines,
+            Snowflake architectures, and predictive analytics.
           </p>
 
           <div class="ai-ref-hero-btns">
@@ -312,7 +379,8 @@
                 </div>
               </div>
               <p>
-                Design Snowflake, Databricks, and AWS Redshift lakehouses combining the structured speed of data warehouses with the flexible agility of multi-cloud data lakes.
+                Design Snowflake, Databricks, and AWS Redshift lakehouses combining the structured speed of data
+                warehouses with the flexible agility of multi-cloud data lakes.
               </p>
             </div>
 
@@ -328,7 +396,8 @@
                 </div>
               </div>
               <p>
-                Deliver interactive Power BI and Tableau dashboards with sub-second query speeds, giving stakeholders instant visibility into live revenue, customer retention, and operations.
+                Deliver interactive Power BI and Tableau dashboards with sub-second query speeds, giving stakeholders
+                instant visibility into live revenue, customer retention, and operations.
               </p>
             </div>
 
@@ -344,7 +413,8 @@
                 </div>
               </div>
               <p>
-                Empower decision-makers with statistical forecast models, automated customer churn alerts, inventory demand optimization, and real-time fraud detection engines.
+                Empower decision-makers with statistical forecast models, automated customer churn alerts, inventory
+                demand optimization, and real-time fraud detection engines.
               </p>
             </div>
 
@@ -356,7 +426,8 @@
     <!-- ==========================================================================
          Section 3: 6-Card Solutions Image Grid
          ========================================================================== -->
-    <section id="data-solutions" class="section" style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
+    <section id="data-solutions" class="section"
+      style="padding-top: 1rem; padding-bottom: 4.5rem; background: #f8fafc;">
       <div class="container">
         <div class="ai-section-heading-wrap reveal">
           <span class="ai-section-eyebrow">&bull; DATA &amp; ANALYTICS CAPABILITIES &bull;</span>
@@ -367,9 +438,11 @@
         <div class="ai-solutions-image-grid reveal">
 
           <!-- Card 1: Data Strategy & Advisory -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Data Strategy & Advisory">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Data Strategy & Advisory">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Strategy &amp; Advisory" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+                alt="Data Strategy &amp; Advisory" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Data Strategy &amp; Architecture</h4>
@@ -377,9 +450,11 @@
           </div>
 
           <!-- Card 2: Modern Data Engineering & Pipelines -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Modern Data Engineering & Pipelines">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Modern Data Engineering & Pipelines">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" alt="Modern Data Engineering &amp; Pipelines" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80"
+                alt="Modern Data Engineering &amp; Pipelines" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Modern Data Engineering &amp; Pipelines</h4>
@@ -387,9 +462,11 @@
           </div>
 
           <!-- Card 3: Cloud Data Warehousing & Lakes -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Cloud Data Warehousing & Lakes">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Cloud Data Warehousing & Lakes">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Cloud Data Warehousing &amp; Lakes" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80"
+                alt="Cloud Data Warehousing &amp; Lakes" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Cloud Data Warehousing &amp; Lakes</h4>
@@ -397,9 +474,11 @@
           </div>
 
           <!-- Card 4: Business Intelligence & Dashboards -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Business Intelligence & Dashboards">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Business Intelligence & Dashboards">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business Intelligence &amp; Dashboards" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+                alt="Business Intelligence &amp; Dashboards" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Business Intelligence &amp; Dashboards</h4>
@@ -407,9 +486,11 @@
           </div>
 
           <!-- Card 5: Predictive Analytics & ML Forecasting -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Predictive Analytics & ML Forecasting">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Predictive Analytics & ML Forecasting">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80" alt="Predictive Analytics &amp; ML Forecasting" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80"
+                alt="Predictive Analytics &amp; ML Forecasting" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Predictive Analytics &amp; ML Forecasting</h4>
@@ -417,9 +498,11 @@
           </div>
 
           <!-- Card 6: Enterprise Big Data Solutions -->
-          <div class="ai-solution-img-card" data-open-modal="consultation-modal" data-service-name="Enterprise Big Data Solutions">
+          <div class="ai-solution-img-card" data-open-modal="consultation-modal"
+            data-service-name="Enterprise Big Data Solutions">
             <div class="ai-solution-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Enterprise Big Data Solutions" loading="lazy" width="400" height="400">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
+                alt="Enterprise Big Data Solutions" loading="lazy" width="400" height="400">
             </div>
             <div class="ai-solution-card-label">
               <h4>Enterprise Big Data Solutions</h4>
@@ -658,7 +741,9 @@
               </button>
               <div class="dark-faq-body">
                 <p>
-                  A data lake stores raw unstructured and structured data at low cost, whereas a modern lakehouse (like Snowflake or Databricks) overlays ACID transactions, data governance, and high-performance SQL query engines on top of object storage.
+                  A data lake stores raw unstructured and structured data at low cost, whereas a modern lakehouse (like
+                  Snowflake or Databricks) overlays ACID transactions, data governance, and high-performance SQL query
+                  engines on top of object storage.
                 </p>
               </div>
             </div>
@@ -671,7 +756,9 @@
               </button>
               <div class="dark-faq-body">
                 <p>
-                  We leverage distributed message queues (Apache Kafka, AWS Kinesis) and streaming engines (Spark Streaming, Flink) with schema registry validation to stream, enrich, and store events within milliseconds of creation.
+                  We leverage distributed message queues (Apache Kafka, AWS Kinesis) and streaming engines (Spark
+                  Streaming, Flink) with schema registry validation to stream, enrich, and store events within
+                  milliseconds of creation.
                 </p>
               </div>
             </div>
@@ -684,7 +771,8 @@
               </button>
               <div class="dark-faq-body">
                 <p>
-                  We establish automated data lineage tracking, column-level masking, role-based access control (RBAC), and continuous data quality testing via dbt and Monte Carlo observability platforms.
+                  We establish automated data lineage tracking, column-level masking, role-based access control (RBAC),
+                  and continuous data quality testing via dbt and Monte Carlo observability platforms.
                 </p>
               </div>
             </div>
@@ -697,7 +785,8 @@
               </button>
               <div class="dark-faq-body">
                 <p>
-                  Yes. We build native change-data-capture (CDC) pipelines using tools like Fivetran, Airbyte, and Debezium to replicate and synchronize transactions without placing load on production ERPs.
+                  Yes. We build native change-data-capture (CDC) pipelines using tools like Fivetran, Airbyte, and
+                  Debezium to replicate and synchronize transactions without placing load on production ERPs.
                 </p>
               </div>
             </div>
@@ -710,7 +799,8 @@
               </button>
               <div class="dark-faq-body">
                 <p>
-                  Using our modular data acceleration templates and dbt core models, we typically stand up an MVP production lakehouse and first automated executive dashboard within 4 to 6 weeks.
+                  Using our modular data acceleration templates and dbt core models, we typically stand up an MVP
+                  production lakehouse and first automated executive dashboard within 4 to 6 weeks.
                 </p>
               </div>
             </div>
@@ -730,7 +820,8 @@
 
           <!-- Left Content -->
           <div class="ai-partner-left-content">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Data Analytics Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80"
+              alt="Data Analytics Architecture" class="ai-partner-cube-img" width="320" height="320" loading="lazy">
             <span class="ai-partner-eyebrow">&bull; SCALABLE DATA PLATFORMS &bull;</span>
             <h2>Unlock the Full Value in Your Enterprise Data</h2>
 
@@ -780,7 +871,9 @@
                 <input type="email" class="form-input" placeholder="Your Email" required>
               </div>
               <div class="form-group">
-                <textarea class="form-textarea" rows="3" placeholder="Tell us about your data sources, volume, existing warehouse, or analytics goals..." required></textarea>
+                <textarea class="form-textarea" rows="3"
+                  placeholder="Tell us about your data sources, volume, existing warehouse, or analytics goals..."
+                  required></textarea>
               </div>
               <button type="submit" class="ai-partner-submit-btn">
                 <span>Send Message</span>
@@ -947,7 +1040,7 @@
               </div>
               <div>
                 <strong>Direct Telephone:</strong>
-                <a href="tel:+919908387005">+91 99083 87005</a><br>
+                <a href="tel:+91 8897290104">+91 99083 87005</a><br>
                 <a href="tel:+918247430735">+91 82474 30735</a>
               </div>
             </div>
@@ -1120,7 +1213,7 @@
         </div>
       </a>
 
-      <a href="tel:+919908387005" class="speed-dial-item" role="menuitem">
+      <a href="tel:+91 8897290104" class="speed-dial-item" role="menuitem">
         <span class="speed-dial-label">Direct Phone Call</span>
         <div class="speed-dial-btn phone" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">

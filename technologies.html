@@ -25,146 +25,198 @@
   <div class="custom-cursor-dot"></div>
   <div class="custom-cursor-aura"></div>
 
-    <header class="site-header" role="banner">
-    <div class="container header-container">
-      <a href="./index.html" class="brand-logo" aria-label="Infronix Global Home">
-        <img src="./assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
-      </a>
-
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
-        <a href="./index.html" class="nav-link">Home</a>
-
-        <div class="nav-item-has-dropdown">
-          <a href="./services.html" class="nav-link" aria-haspopup="true">
-            What We Do
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
+  <header class="site-header" role="banner">
+    <!-- Top Utility Bar (Disappears smoothly on scroll) -->
+    <div class="site-topbar" id="site-topbar">
+      <div class="container topbar-container">
+        <!-- Left: Mobile number, Email & 3 Locations -->
+        <div class="topbar-left">
+          <a href="tel:+918897290104" class="topbar-link" aria-label="Direct Phone Call">
+            <i class="fa-solid fa-phone topbar-icon"></i>
+            <span>+91 8897290104</span>
           </a>
-          <div class="nav-dropdown" role="menu">
-            <a href="./services/ai-automation.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🤖</div>
-              <div>
-                <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
-                <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
-              </div>
-            </a>
-            <a href="./services/data-analytics.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📊</div>
-              <div>
-                <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
-                <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
-              </div>
-            </a>
-            <div class="dropdown-item-has-submenu">
-              <a href="./services/application-engineering.html" class="dropdown-link" role="menuitem">
-                <div class="dropdown-link-icon">⚙️</div>
-                <div style="flex-grow: 1;">
-                  <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <span class="dropdown-link-title">Product &amp; App Engineering</span>
-                    <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2.5">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </div>
-                  <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
-                </div>
-              </a>
-              <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
-                <a href="./services/web-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🌐</span>
-                  <div>
-                    <span class="subdropdown-title">Web Engineering</span>
-                    <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
-                  </div>
-                </a>
-                <a href="./services/mobile-engineering.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">📱</span>
-                  <div>
-                    <span class="subdropdown-title">Mobile Engineering</span>
-                    <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
-                  </div>
-                </a>
-                <a href="./services/custom-software-development.html" class="subdropdown-link" role="menuitem">
-                  <span class="subdropdown-icon">🧩</span>
-                  <div>
-                    <span class="subdropdown-title">Custom Software Development</span>
-                    <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <a href="./services/cybersecurity.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🛡️</div>
-              <div>
-                <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
-                <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
-              </div>
-            </a>
-            <a href="./services/cloud-devops.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">☁️</div>
-              <div>
-                <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
-                <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
-              </div>
-            </a>
-            <a href="./services/ui-ux-design.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">✨</div>
-              <div>
-                <span class="dropdown-link-title">Experience &amp; Interface Design</span>
-                <span class="dropdown-link-desc">Enterprise design systems</span>
-              </div>
-            </a>
-            <a href="./services/global-talent.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">👥</div>
-              <div>
-                <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
-                <span class="dropdown-link-desc">Dedicated offshore engineering</span>
-              </div>
-            </a>
-            <a href="./services/project-management.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">📋</div>
-              <div>
-                <span class="dropdown-link-title">Project Management</span>
-                <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
-              </div>
-            </a>
-            <a href="./services/quality-engineering.html" class="dropdown-link" role="menuitem">
-              <div class="dropdown-link-icon">🎯</div>
-              <div>
-                <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
-                <span class="dropdown-link-desc">CMMI-3 automated regression</span>
-              </div>
-            </a>
+          <a href="mailto:info@infronix.com" class="topbar-link" aria-label="Email Inquiries">
+            <i class="fa-solid fa-envelope topbar-icon"></i>
+            <span>info@infronix.com</span>
+          </a>
+          <div class="topbar-locations-wrap" aria-label="Global Office Locations">
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Bangalore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Indore</span>
+            </span>
+            <span class="topbar-loc-sep" aria-hidden="true">•</span>
+            <span class="topbar-location-item">
+              <i class="fa-solid fa-location-dot topbar-icon"></i>
+              <span>Kolkata</span>
+            </span>
           </div>
         </div>
-        <a href="./technologies.html" class="nav-link active">Technologies</a>
-        <a href="./about.html" class="nav-link">Who We Are</a>
-        <a href="./gallery.html" class="nav-link">Gallery</a>
-        <a href="./contact.html" class="nav-link">Contact</a>
-      </nav>
 
-      <!-- Action Button & Hamburger -->
-      <div class="nav-actions-wrap">
-        <a href="tel:+919908387005" class="nav-phone-link" aria-label="Direct Phone Support">
-          <span class="nav-live-dot"></span>
-          <span>+91 99083 87005</span>
+        <!-- Right: 4 Social Media Icons -->
+        <div class="topbar-right" aria-label="Social Media Channels">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn instagram"
+            aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn facebook"
+            aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="topbar-social-btn youtube"
+            aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="https://wa.me/918897290104" target="_blank" rel="noopener noreferrer"
+            class="topbar-social-btn whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar (Sticky Glassmorphism) -->
+    <div class="header-main-nav">
+      <div class="container header-container">
+        <a href="./index.html" class="brand-logo" aria-label="Infronix Global Home">
+          <img src="./assets/logo/logo.png" alt="Infronix Global Pvt. Ltd. Logo" width="240" height="65">
         </a>
 
-        <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
-          TALK TO US
-          <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+          <a href="./index.html" class="nav-link">Home</a>
 
-        <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
+          <div class="nav-item-has-dropdown">
+            <a href="./services.html" class="nav-link" aria-haspopup="true">
+              What We Do
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <a href="./services/ai-automation.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🤖</div>
+                <div>
+                  <span class="dropdown-link-title">AI &amp; Cognitive Automation</span>
+                  <span class="dropdown-link-desc">Autonomous LLM agents &amp; MLOps</span>
+                </div>
+              </a>
+              <a href="./services/data-analytics.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📊</div>
+                <div>
+                  <span class="dropdown-link-title">Data &amp; Insights Engineering</span>
+                  <span class="dropdown-link-desc">Snowflake, Lakehouses &amp; BI</span>
+                </div>
+              </a>
+              <div class="dropdown-item-has-submenu">
+                <a href="./services/application-engineering.html" class="dropdown-link" role="menuitem">
+                  <div class="dropdown-link-icon">⚙️</div>
+                  <div style="flex-grow: 1;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span class="dropdown-link-title">Product &amp; App Engineering</span>
+                      <svg class="submenu-caret" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </div>
+                    <span class="dropdown-link-desc">Web, Mobile &amp; Custom Software</span>
+                  </div>
+                </a>
+                <div class="nav-subdropdown" role="menu" aria-label="Product &amp; App Engineering Sub-Services">
+                  <a href="./services/web-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🌐</span>
+                    <div>
+                      <span class="subdropdown-title">Web Engineering</span>
+                      <span class="subdropdown-desc">Next.js, React &amp; SaaS Portals</span>
+                    </div>
+                  </a>
+                  <a href="./services/mobile-engineering.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">📱</span>
+                    <div>
+                      <span class="subdropdown-title">Mobile Engineering</span>
+                      <span class="subdropdown-desc">iOS, Android &amp; Flutter Apps</span>
+                    </div>
+                  </a>
+                  <a href="./services/custom-software-development.html" class="subdropdown-link" role="menuitem">
+                    <span class="subdropdown-icon">🧩</span>
+                    <div>
+                      <span class="subdropdown-title">Custom Software Development</span>
+                      <span class="subdropdown-desc">Enterprise Backend &amp; Microservices</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <a href="./services/cybersecurity.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🛡️</div>
+                <div>
+                  <span class="dropdown-link-title">Cybersecurity &amp; Resilience</span>
+                  <span class="dropdown-link-desc">Zero-Trust &amp; 24/7 Managed SOC</span>
+                </div>
+              </a>
+              <a href="./services/cloud-devops.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">☁️</div>
+                <div>
+                  <span class="dropdown-link-title">Cloud Transformation &amp; DevOps</span>
+                  <span class="dropdown-link-desc">Kubernetes, Terraform &amp; GitOps</span>
+                </div>
+              </a>
+              <a href="./services/ui-ux-design.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">✨</div>
+                <div>
+                  <span class="dropdown-link-title">Experience &amp; Interface Design</span>
+                  <span class="dropdown-link-desc">Enterprise design systems</span>
+                </div>
+              </a>
+              <a href="./services/global-talent.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">👥</div>
+                <div>
+                  <span class="dropdown-link-title">Global Talent &amp; Delivery</span>
+                  <span class="dropdown-link-desc">Dedicated offshore engineering</span>
+                </div>
+              </a>
+              <a href="./services/project-management.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">📋</div>
+                <div>
+                  <span class="dropdown-link-title">Project Management</span>
+                  <span class="dropdown-link-desc">Agile workflows &amp; governance</span>
+                </div>
+              </a>
+              <a href="./services/quality-engineering.html" class="dropdown-link" role="menuitem">
+                <div class="dropdown-link-icon">🎯</div>
+                <div>
+                  <span class="dropdown-link-title">Quality Engineering &amp; Assurance</span>
+                  <span class="dropdown-link-desc">CMMI-3 automated regression</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <a href="./technologies.html" class="nav-link">Technologies</a>
+          <a href="./about.html" class="nav-link">Who We Are</a>
+          <a href="./gallery.html" class="nav-link">Gallery</a>
+          <a href="./contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Action Button & Hamburger -->
+        <div class="nav-actions-wrap">
+          <button class="btn btn-accent btn-sm" data-open-modal="consultation-modal">
+            TALK TO US
+            <svg class="btn-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false"
+            aria-controls="mobile-nav">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -183,35 +235,50 @@
           <div class="mobile-nav-dropdown-toggle-wrap">
             <a href="./services.html" class="mobile-nav-link">What We Do</a>
             <button class="mobile-nav-dropdown-btn" aria-expanded="false" aria-label="Toggle Services Dropdown">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mobile-dropdown-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                class="mobile-dropdown-arrow">
                 <path d="M6 9l6 6 6-6"></path>
               </svg>
             </button>
           </div>
           <div class="mobile-nav-sublist">
-            <a href="./services/ai-automation.html" class="mobile-nav-sublink"><span>🤖</span> AI &amp; Cognitive Automation</a>
-            <a href="./services/data-analytics.html" class="mobile-nav-sublink"><span>📊</span> Data &amp; Insights Engineering</a>
+            <a href="./services/ai-automation.html" class="mobile-nav-sublink"><span>🤖</span> AI &amp; Cognitive
+              Automation</a>
+            <a href="./services/data-analytics.html" class="mobile-nav-sublink"><span>📊</span> Data &amp; Insights
+              Engineering</a>
             <div class="mobile-nav-subdropdown">
               <div class="mobile-nav-subdropdown-toggle-wrap">
-                <a href="./services/application-engineering.html" class="mobile-nav-sublink"><span>⚙️</span> Product &amp; App Engineering</a>
-                <button class="mobile-nav-subdropdown-btn" aria-expanded="false" aria-label="Toggle Product &amp; App Engineering Submenu">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mobile-subdropdown-arrow">
+                <a href="./services/application-engineering.html" class="mobile-nav-sublink"><span>⚙️</span> Product
+                  &amp; App Engineering</a>
+                <button class="mobile-nav-subdropdown-btn" aria-expanded="false"
+                  aria-label="Toggle Product &amp; App Engineering Submenu">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    class="mobile-subdropdown-arrow">
                     <path d="M6 9l6 6 6-6"></path>
                   </svg>
                 </button>
               </div>
               <div class="mobile-nav-nested-list">
-                <a href="./services/web-engineering.html" class="mobile-nav-nested-link"><span>🌐</span> Web Engineering</a>
-                <a href="./services/mobile-engineering.html" class="mobile-nav-nested-link"><span>📱</span> Mobile Engineering</a>
-                <a href="./services/custom-software-development.html" class="mobile-nav-nested-link"><span>🧩</span> Custom Software Development</a>
+                <a href="./services/web-engineering.html" class="mobile-nav-nested-link"><span>🌐</span> Web
+                  Engineering</a>
+                <a href="./services/mobile-engineering.html" class="mobile-nav-nested-link"><span>📱</span> Mobile
+                  Engineering</a>
+                <a href="./services/custom-software-development.html" class="mobile-nav-nested-link"><span>🧩</span>
+                  Custom Software Development</a>
               </div>
             </div>
-            <a href="./services/cybersecurity.html" class="mobile-nav-sublink"><span>🛡️</span> Cybersecurity &amp; Resilience</a>
-            <a href="./services/cloud-devops.html" class="mobile-nav-sublink"><span>☁️</span> Cloud Transformation &amp; DevOps</a>
-            <a href="./services/ui-ux-design.html" class="mobile-nav-sublink"><span>✨</span> Experience &amp; Interface Design</a>
-            <a href="./services/global-talent.html" class="mobile-nav-sublink"><span>👥</span> Global Talent &amp; Delivery</a>
-            <a href="./services/project-management.html" class="mobile-nav-sublink"><span>📋</span> Project Management</a>
-            <a href="./services/quality-engineering.html" class="mobile-nav-sublink"><span>🎯</span> Quality Engineering &amp; QA</a>
+            <a href="./services/cybersecurity.html" class="mobile-nav-sublink"><span>🛡️</span> Cybersecurity &amp;
+              Resilience</a>
+            <a href="./services/cloud-devops.html" class="mobile-nav-sublink"><span>☁️</span> Cloud Transformation &amp;
+              DevOps</a>
+            <a href="./services/ui-ux-design.html" class="mobile-nav-sublink"><span>✨</span> Experience &amp; Interface
+              Design</a>
+            <a href="./services/global-talent.html" class="mobile-nav-sublink"><span>👥</span> Global Talent &amp;
+              Delivery</a>
+            <a href="./services/project-management.html" class="mobile-nav-sublink"><span>📋</span> Project
+              Management</a>
+            <a href="./services/quality-engineering.html" class="mobile-nav-sublink"><span>🎯</span> Quality Engineering
+              &amp; QA</a>
           </div>
         </div>
         <a href="./technologies.html" class="mobile-nav-link">Technologies</a>
@@ -227,7 +294,7 @@
       </button>
       <p style="font-size: 0.85rem; text-align: center; color: var(--text-muted); line-height: 1.6;">
         Email: <a href="mailto:info@trysol.com" style="color: var(--color-secondary);">info@trysol.com</a><br>
-        Direct: <a href="tel:+919908387005" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
+        Direct: <a href="tel:+91 8897290104" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
       </p>
     </div>
   </div>
@@ -515,7 +582,7 @@
               <div class="footer-contact-icon-box"><i class="fa-solid fa-phone"></i></div>
               <div>
                 <strong>Direct Telephone:</strong>
-                <a href="tel:+919908387005">+91 99083 87005</a><br>
+                <a href="tel:+91 8897290104">+91 99083 87005</a><br>
                 <a href="tel:+918247430735">+91 82474 30735</a>
               </div>
             </div>
