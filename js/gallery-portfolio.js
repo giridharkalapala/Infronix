@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - GALLERY & PORTFOLIO ENGINE + ACCESSIBLE LIGHTBOX
+ * infronix GLOBAL SERVICES - GALLERY & PORTFOLIO ENGINE + ACCESSIBLE LIGHTBOX
  * Handles Client-Side Filtering and Modal Lightbox Controls
  */
 
@@ -51,7 +51,7 @@ function initLightbox() {
 
   async function shareCurrentImage() {
     const imageUrl = lightboxImg.src;
-    const title = lightboxCaption.textContent || 'Trysol Gallery Image';
+    const title = lightboxCaption.textContent || 'infronix Gallery Image';
 
     try {
       if (navigator.share) {
@@ -84,7 +84,7 @@ function initLightbox() {
 
     const item = currentItems[currentIndex];
     const img = item.querySelector('img');
-    const caption = item.getAttribute('data-title') || img.getAttribute('alt') || 'Trysol Gallery';
+    const caption = item.getAttribute('data-title') || img.getAttribute('alt') || 'infronix Gallery';
 
     lightboxImg.src = img.src;
     lightboxImg.alt = caption;

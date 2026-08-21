@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - ANIMATED COUNTERS ENGINE
+ * infronix GLOBAL SERVICES - ANIMATED COUNTERS ENGINE
  * Uses IntersectionObserver to trigger smooth numeric animations on viewport entry
  */
 

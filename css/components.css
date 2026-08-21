@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRYSOL GLOBAL SERVICES - UI COMPONENTS & MODULES
+   infronix GLOBAL SERVICES - UI COMPONENTS & MODULES
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -1937,6 +1937,7 @@
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2896,7 +2897,7 @@
 
 .office-map-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -3435,9 +3436,9 @@
 }
 
 /* ==========================================================================
-   ABOUT TRYSOL - MODERN STORYTELLING LAYOUT
+   ABOUT infronix - MODERN STORYTELLING LAYOUT
    ========================================================================== */
-.about-hero-trysol {
+.about-hero-infronix {
   position: relative;
   overflow: hidden;
   background:
@@ -3447,7 +3448,7 @@
   padding-bottom: 2.5rem;
 }
 
-.about-hero-trysol::before {
+.about-hero-infronix::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -3471,13 +3472,13 @@
   max-width: 620px;
 }
 
-.about-hero-trysol .breadcrumb-container {
+.about-hero-infronix .breadcrumb-container {
   display: flex;
   justify-content: center;
   margin-bottom: 1.8rem;
 }
 
-.about-hero-trysol .breadcrumb-list {
+.about-hero-infronix .breadcrumb-list {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
@@ -3492,14 +3493,14 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-.about-hero-trysol .breadcrumb-item {
+.about-hero-infronix .breadcrumb-item {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.about-hero-trysol .breadcrumb-link {
+.about-hero-infronix .breadcrumb-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -3509,7 +3510,7 @@
   text-decoration: none;
 }
 
-.about-hero-trysol .breadcrumb-link i {
+.about-hero-infronix .breadcrumb-link i {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3522,11 +3523,11 @@
   color: #5dd7ff;
 }
 
-.about-hero-trysol .breadcrumb-link:hover {
+.about-hero-infronix .breadcrumb-link:hover {
   color: #8fe9ff;
 }
 
-.about-hero-trysol .breadcrumb-separator {
+.about-hero-infronix .breadcrumb-separator {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3534,7 +3535,7 @@
   font-size: 0.8rem;
 }
 
-.about-hero-trysol .breadcrumb-item.active {
+.about-hero-infronix .breadcrumb-item.active {
   color: #8fe9ff;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -3703,7 +3704,7 @@
   text-transform: uppercase;
 }
 
-.about-trysol-story {
+.about-infronix-story {
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
 }
 
@@ -4336,7 +4337,7 @@
 }
 
 /* ==========================================================================
-   ABOUT TRYSOL - UNIQUE ELEGANT LAYERED EDITORIAL SECTION
+   ABOUT infronix - UNIQUE ELEGANT LAYERED EDITORIAL SECTION
    ========================================================================== */
 .about-section-wrapper {
   position: relative;
@@ -8368,4 +8369,10 @@
   .cockpit-metrics-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.gallery-item img {
+  /* height: 271px; */
+  /* width: 408px; */
+  height: 420px;
 }

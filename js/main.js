@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - MAIN JAVASCRIPT CONTROLLER
+ * infronix GLOBAL SERVICES - MAIN JAVASCRIPT CONTROLLER
  * Handles Page Preloader, Top Scroll Progress, Back-to-Top, and Desktop Custom Cursor
  */
 

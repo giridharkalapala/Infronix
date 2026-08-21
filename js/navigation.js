@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - NAVIGATION & HEADER CONTROLLER
+ * infronix GLOBAL SERVICES - NAVIGATION & HEADER CONTROLLER
  * Handles Sticky Glassmorphism Header, Mobile Drawer Menu, Dropdown Accordions, and Route Highlights
  */
 

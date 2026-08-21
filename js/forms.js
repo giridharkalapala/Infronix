@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - CONTACT & INQUIRY FORM CONTROLLER
+ * infronix GLOBAL SERVICES - CONTACT & INQUIRY FORM CONTROLLER
  * Handles interactive client-side form validation, floating inputs, and animated feedback states
  */
 
@@ -88,7 +88,7 @@ function initContactForms() {
             feedbackBox.className = 'form-feedback is-success';
             feedbackBox.innerHTML = `
               <strong>Inquiry Received Successfully!</strong><br>
-              Thank you for contacting Trysol Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.
+              Thank you for contacting infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.
             `;
           }
 

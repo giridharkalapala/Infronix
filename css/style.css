@@ -1,5 +1,5 @@
 /* ==========================================================================
-   INFRONIX / TRYSOL GLOBAL SERVICES - CORE DESIGN SYSTEM & STYLES
+   INFRONIX / infronix GLOBAL SERVICES - CORE DESIGN SYSTEM & STYLES
    Brand Color System Calibrated to Official Corporate Logo:
    - Primary Midnight Navy: #031038 / #061642
    - Vivid Royal Blue: #0055d4 / #0066ff
@@ -326,7 +326,7 @@ p {
   /* padding-top: clamp(3.5rem, 7vw, 7rem);
   padding-bottom: clamp(3.5rem, 7vw, 7rem); */
   padding-top: 50px;
-    padding-bottom: 50px;
+  padding-bottom: 50px;
   position: relative;
   width: 100%;
 }

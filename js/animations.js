@@ -1,5 +1,5 @@
 /**
- * TRYSOL GLOBAL SERVICES - ANIMATION & CANVAS ENGINE
+ * infronix GLOBAL SERVICES - ANIMATION & CANVAS ENGINE
  * Handles Canvas Particle Neural Network and Viewport Scroll Reveals
  */
 

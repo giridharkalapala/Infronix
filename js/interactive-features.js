@@ -1,5 +1,5 @@
 /**
- * Infronix / Trysol Global Services - Interactive Features Engine
+ * Infronix / infronix Global Services - Interactive Features Engine
  * Includes:
  * 1. Floating Speed-Dial Contact Hub
  * 2. Universal Modal System (Consultation & Video Modals)
