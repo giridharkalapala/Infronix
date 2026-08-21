@@ -6051,8 +6051,11 @@
    Masonry Gallery & Accessible Lightbox
    -------------------------------------------------------------------------- */
 .gallery-grid {
-  columns: 3 320px;
-  column-gap: 1.6rem;
+  /* columns: 3 320px;
+  column-gap: 1.6rem; */
+      display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .gallery-item {
