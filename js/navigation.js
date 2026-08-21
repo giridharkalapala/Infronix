@@ -1,6 +1,6 @@
 /**
  * TRYSOL GLOBAL SERVICES - NAVIGATION & HEADER CONTROLLER
- * Handles Sticky Glassmorphism Header, Mobile Drawer Menu, Dropdown Accordion, and Route Highlights
+ * Handles Sticky Glassmorphism Header, Mobile Drawer Menu, Dropdown Accordions, and Route Highlights
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -100,11 +100,11 @@ function initMobileMenu() {
 }
 
 /**
- * 3. Mobile Navigation Dropdown Accordions
+ * 3. Mobile Navigation Dropdown & Sub-Dropdown Accordions
  */
 function initMobileDropdowns() {
+  // Level 1 Dropdowns (e.g. Services)
   const dropdownContainers = document.querySelectorAll('.mobile-nav-dropdown');
-
   dropdownContainers.forEach((dropdown) => {
     const toggleBtn = dropdown.querySelector('.mobile-nav-dropdown-btn');
     if (!toggleBtn) return;
@@ -116,6 +116,20 @@ function initMobileDropdowns() {
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
+
+  // Level 2 Sub-Dropdowns (e.g. Product & App Engineering sub-services)
+  const subDropdownContainers = document.querySelectorAll('.mobile-nav-subdropdown');
+  subDropdownContainers.forEach((subDropdown) => {
+    const toggleBtn = subDropdown.querySelector('.mobile-nav-subdropdown-btn');
+    if (!toggleBtn) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = subDropdown.classList.toggle('is-open');
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
 }
 
 /**
@@ -124,7 +138,7 @@ function initMobileDropdowns() {
 function highlightActiveNav() {
   const currentPath = window.location.pathname.toLowerCase();
   const currentFile = currentPath.split('/').filter(Boolean).pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-sublink, .mobile-nav-nested-link, .subdropdown-link');
 
   navLinks.forEach((link) => {
     const href = link.getAttribute('href');
@@ -137,9 +151,19 @@ function highlightActiveNav() {
     }
   });
 
-  // Auto-expand mobile dropdown if any child sublink is active or if current page is in services
+  // Auto-expand mobile subdropdowns if any child nested link is active
+  document.querySelectorAll('.mobile-nav-subdropdown').forEach((subDropdown) => {
+    const hasActiveChild = subDropdown.querySelector('.mobile-nav-nested-link.active, .mobile-nav-sublink.active');
+    if (hasActiveChild) {
+      subDropdown.classList.add('is-open');
+      const toggleBtn = subDropdown.querySelector('.mobile-nav-subdropdown-btn');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Auto-expand main mobile dropdowns if any child link is active
   document.querySelectorAll('.mobile-nav-dropdown').forEach((dropdown) => {
-    const hasActiveChild = dropdown.querySelector('.mobile-nav-sublink.active, .mobile-nav-link.active');
+    const hasActiveChild = dropdown.querySelector('.mobile-nav-sublink.active, .mobile-nav-nested-link.active, .mobile-nav-link.active');
     if (hasActiveChild) {
       dropdown.classList.add('is-open');
       const toggleBtn = dropdown.querySelector('.mobile-nav-dropdown-btn');

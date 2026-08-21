@@ -1963,6 +1963,87 @@
   font-weight: 600;
 }
 
+/* Mobile Nested Sub-Dropdown (Product & App Engineering Sub-Services) */
+.mobile-nav-subdropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-subdropdown-toggle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-nav-subdropdown-toggle-wrap .mobile-nav-sublink {
+  flex: 1;
+}
+
+.mobile-nav-subdropdown-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.mobile-nav-subdropdown-btn:hover,
+.mobile-nav-subdropdown.is-open .mobile-nav-subdropdown-btn {
+  background: #e2e8f0;
+  color: #0055d4;
+}
+
+.mobile-subdropdown-arrow {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-subdropdown.is-open .mobile-subdropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.mobile-nav-nested-list {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.25rem 0 0.35rem 0.75rem;
+  margin: 0.15rem 0 0.35rem 1.25rem;
+  border-left: 2px solid rgba(0, 85, 212, 0.25);
+  animation: slideDownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-subdropdown.is-open .mobile-nav-nested-list {
+  display: flex;
+}
+
+.mobile-nav-nested-link {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #64748b;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.mobile-nav-nested-link:hover,
+.mobile-nav-nested-link.active {
+  background: #f1f5f9;
+  color: #0055d4;
+  font-weight: 600;
+}
+
 /* ==========================================================================
    REDESIGNED ENTERPRISE HERO SECTION
    ========================================================================== */
