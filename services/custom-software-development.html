@@ -292,7 +292,7 @@
       </button>
       <p style="font-size: 0.85rem; text-align: center; color: var(--text-muted); line-height: 1.6;">
         Email: <a href="mailto:info@infronix.in" style="color: var(--color-secondary);">info@infronix.in</a><br>
-        Direct: <a href="tel:++91 8088948921" style="color: var(--color-primary); font-weight: 600;">+91 8088948921</a>
+        Direct: <a href="tel:++91 8088948921" style="color: var(--color-primary); font-weight: 600;">+91 99083 87005</a>
       </p>
     </div>
   </div>
@@ -837,15 +837,16 @@
             <h3>Get in Touch</h3>
             <p>Schedule a custom software architecture review with our Principal Solutions Architects.</p>
 
-            <form id="ai-partner-contact-form" class="ai-partner-form" novalidate>
+            <form id="ai-partner-contact-form" class="ai-partner-form" action="../contact-submit.php" method="POST" novalidate>
+              <input type="hidden" name="form_type" value="AI Partner Inquiry">
               <div class="form-group">
-                <input type="text" class="form-input" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-input" placeholder="Your Name *" required>
               </div>
               <div class="form-group">
-                <input type="email" class="form-input" placeholder="Your Email" required>
+                <input type="email" name="email" class="form-input" placeholder="Your Email *" required>
               </div>
               <div class="form-group">
-                <textarea class="form-textarea" rows="3"
+                <textarea name="message" class="form-textarea" rows="3"
                   placeholder="Tell us about your system requirements, backend challenges, or legacy modernization goals..."
                   required></textarea>
               </div>
@@ -1066,7 +1067,7 @@
       </div>
 
       <div class="modal-body">
-        <form id="consultation-popup-form" class="modal-form-fields" novalidate>
+        <form id="consultation-popup-form" class="modal-form-fields" action="../contact-submit.php" method="POST" novalidate>
           <div class="form-group" style="margin-bottom: 1.25rem;">
             <label class="form-label" style="font-weight: 700; color: var(--color-primary);">Select Required
               Capabilities *</label>

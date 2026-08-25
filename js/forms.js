@@ -85,14 +85,20 @@ function initContactForms() {
           formData.append('form_type', 'Contact Form');
         }
 
-        // Determine form submission URL (handles root and subfolder paths)
-        const submitUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/') 
-          ? '../contact-submit.php' 
-          : 'contact-submit.php';
+        // Determine form submission URL & method directly from form attributes (with relative path fallback)
+        const submitUrl = form.getAttribute('action') || (
+          window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/') 
+            ? '../contact-submit.php' 
+            : 'contact-submit.php'
+        );
+        const submitMethod = (form.getAttribute('method') || 'POST').toUpperCase();
 
-        // Attempt submission to backend endpoint
+        // Attempt asynchronous AJAX submission with progressive enhancement
         fetch(submitUrl, {
-          method: 'POST',
+          method: submitMethod,
+          headers: {
+            'Accept': 'application/json'
+          },
           body: formData
         })
         .then(res => res.json())

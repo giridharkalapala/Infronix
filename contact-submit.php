@@ -1,15 +1,31 @@
 <?php
+/**
+ * Infronix Global Services - Pure Standalone Form Submission & Email Delivery Engine
+ * 
+ * Processes all website submissions (Contact Form, Consultation Modal, AI Partner Forms,
+ * Service Inquiries) and sends dual executive HTML emails:
+ * 1. Admin Lead Alert -> Sent to dharishbandi@gmail.com
+ * 2. Client Confirmation Receipt -> Sent to the visitor's email address
+ * 
+ * No database required. Clean, professional, ID-free email communication.
+ */
 
-// Set JSON Response Header
-if (!headers_sent()) {
-    header('Content-Type: application/json; charset=utf-8');
-}
+// Determine if request is an AJAX / Fetch API call or native standard form POST
+$isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false)
+    || (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false);
 
-// Only accept POST requests
+// Only accept POST requests (Redirect direct GET navigation back to homepage)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method Not Allowed']);
-    exit;
+    if ($isAjax) {
+        http_response_code(405);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode(['success' => false, 'message' => 'Method Not Allowed']);
+        exit;
+    } else {
+        header('Location: index.html');
+        exit;
+    }
 }
 
 // Email Delivery Configuration
@@ -26,12 +42,17 @@ define('SMTP_PASS', 'mapgrnmothrebdkl');
 // Anti-Spam Honeypot Verification (Bots filling hidden trap fields are silently dismissed)
 $honeypot = trim($_POST['website'] ?? $_POST['url'] ?? $_POST['honeypot'] ?? $_POST['b_name'] ?? '');
 if (!empty($honeypot)) {
-    // Return standard success to deceive automated spam bots without sending emails
-    echo json_encode([
-        'success' => true,
-        'message' => 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'
-    ]);
-    exit;
+    if ($isAjax) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => true,
+            'message' => 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'
+        ]);
+        exit;
+    } else {
+        render_html_confirmation_screen('Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.');
+        exit;
+    }
 }
 
 // 1. Sanitize & Normalize Form Inputs
@@ -134,12 +155,20 @@ try {
     // Graceful error logging
 }
 
-// 4. Return Success Response
-echo json_encode([
-    'success' => true,
-    'message' => 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'
-]);
-exit;
+// 4. Return Response based on request transport
+$successMsg = 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.';
+
+if ($isAjax) {
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode([
+        'success' => true,
+        'message' => $successMsg
+    ]);
+    exit;
+} else {
+    render_html_confirmation_screen($successMsg, $name, $email);
+    exit;
+}
 
 
 /**
@@ -458,6 +487,103 @@ function build_client_email_template(array $data): string {
       </td>
     </tr>
   </table>
+</body>
+</html>
+HTML;
+}
+
+/**
+ * Renders an executive branded HTML confirmation page for direct POST submissions (Progressive Enhancement)
+ */
+function render_html_confirmation_screen(string $message, string $name = 'Valued Client', string $email = ''): void {
+    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+    $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+    $safeMsg = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+
+    echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquiry Received | Infronix Global Services</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo/favicon.svg">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <style>
+    body {
+      background: #0a0f1d;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 24px;
+    }
+    .confirmation-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+    }
+    .success-badge {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #0ea5e9, #0055d4);
+      color: #ffffff;
+      font-size: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(14, 165, 233, 0.4);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 12px;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #0055d4, #0ea5e9);
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .back-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="confirmation-card">
+    <div class="success-badge">✓</div>
+    <h1>Inquiry Transmitted Successfully</h1>
+    <p>Thank you, <strong>{$safeName}</strong>. {$safeMsg}</p>
+    <a href="index.html" class="back-btn">&larr; Return to Infronix Global</a>
+  </div>
 </body>
 </html>
 HTML;

@@ -1763,10 +1763,6 @@ iframe {
   .estimator-result-card {
     padding: 1.5rem 1.25rem;
   }
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
 }
 
 /* Small Mobile Phones (480px and below) */
@@ -1943,10 +1939,6 @@ iframe {
 
   .estimator-result-val {
     font-size: 1.75rem;
-  }
-  .gallery-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
   }
 }
 

@@ -341,12 +341,18 @@ function initConsultationForm() {
       formData.set('services', checkedServices.join(', '));
     }
 
-    const apiUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
-      ? '../contact-submit.php'
-      : 'contact-submit.php';
+    const apiUrl = form.getAttribute('action') || (
+      window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
+        ? '../contact-submit.php'
+        : 'contact-submit.php'
+    );
+    const apiMethod = (form.getAttribute('method') || 'POST').toUpperCase();
 
     fetch(apiUrl, {
-      method: 'POST',
+      method: apiMethod,
+      headers: {
+        'Accept': 'application/json'
+      },
       body: formData
     })
     .then(res => res.json())
@@ -460,12 +466,18 @@ function initAiPartnerForm() {
       formData.append('message', textareas[0].value.trim());
     }
 
-    const apiUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
-      ? '../contact-submit.php'
-      : 'contact-submit.php';
+    const apiUrl = form.getAttribute('action') || (
+      window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
+        ? '../contact-submit.php'
+        : 'contact-submit.php'
+    );
+    const apiMethod = (form.getAttribute('method') || 'POST').toUpperCase();
 
     fetch(apiUrl, {
-      method: 'POST',
+      method: apiMethod,
+      headers: {
+        'Accept': 'application/json'
+      },
       body: formData
     })
     .then(res => res.json())
