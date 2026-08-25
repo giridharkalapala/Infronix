@@ -263,6 +263,30 @@ function initConsultationForm() {
   const modal = document.getElementById('consultation-modal');
   if (!form) return;
 
+  const nameInput = form.querySelector('[name="name"]');
+  const emailInput = form.querySelector('[name="email"]');
+  const phoneInput = form.querySelector('[name="phone"]');
+  const detailsInput = form.querySelector('[name="details"]');
+
+  // Input constraints
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.setAttribute('maxlength', '10');
+    phoneInput.setAttribute('inputmode', 'numeric');
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    });
+  }
+
+  if (detailsInput) {
+    detailsInput.setAttribute('maxlength', '250');
+  }
+
   // Service pill selections
   const pillLabels = form.querySelectorAll('.service-pill-label');
   pillLabels.forEach(label => {
@@ -281,15 +305,12 @@ function initConsultationForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const nameInput = form.querySelector('[name="name"]');
-    const emailInput = form.querySelector('[name="email"]');
-    const phoneInput = form.querySelector('[name="phone"]');
-
     let isValid = true;
 
     if (nameInput) {
-      if (!nameInput.value.trim()) {
-        showInputError(nameInput, 'Please enter your name');
+      const nameVal = nameInput.value.trim();
+      if (!nameVal || !/^[a-zA-Z\s]+$/.test(nameVal) || nameVal.length < 2) {
+        showInputError(nameInput, 'Please enter a valid name (alphabets only)');
         isValid = false;
       } else {
         clearInputError(nameInput);
@@ -297,7 +318,7 @@ function initConsultationForm() {
     }
 
     if (emailInput) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       if (!emailRegex.test(emailInput.value.trim())) {
         showInputError(emailInput, 'Please enter a valid work email');
         isValid = false;
@@ -306,13 +327,19 @@ function initConsultationForm() {
       }
     }
 
-    if (phoneInput && phoneInput.hasAttribute('required')) {
-      if (!phoneInput.value.trim() || phoneInput.value.trim().length < 6) {
-        showInputError(phoneInput, 'Please enter a valid phone number');
+    if (phoneInput) {
+      const phoneVal = phoneInput.value.trim();
+      if (!phoneVal || !/^[0-9]{10}$/.test(phoneVal)) {
+        showInputError(phoneInput, 'Please enter a valid 10-digit mobile number');
         isValid = false;
       } else {
         clearInputError(phoneInput);
       }
+    }
+
+    if (detailsInput && detailsInput.value.trim().length > 250) {
+      showInputError(detailsInput, 'Details must not exceed 250 characters');
+      isValid = false;
     }
 
     if (!isValid) return;
@@ -355,22 +382,26 @@ function initConsultationForm() {
       },
       body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-      const formFields = form.querySelector('.modal-form-fields');
-      const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
-
-      if (formFields) formFields.style.display = 'none';
-      if (successScreen) successScreen.classList.add('show');
-
-      showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
-
+    .then(async (res) => {
+      const data = await res.json().catch(() => ({ success: res.ok, message: res.statusText }));
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
       }
-      form.reset();
-      pillLabels.forEach(l => l.classList.remove('selected'));
+
+      if (data.success) {
+        const formFields = form.querySelector('.modal-form-fields');
+        const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
+
+        if (formFields) formFields.style.display = 'none';
+        if (successScreen) successScreen.classList.add('show');
+
+        showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
+        form.reset();
+        pillLabels.forEach(l => l.classList.remove('selected'));
+      } else {
+        showToast(`⚠️ ${data.message || 'Validation error occurred.'}`);
+      }
     })
     .catch(() => {
       const formFields = form.querySelector('.modal-form-fields');
@@ -419,6 +450,29 @@ function initAiPartnerForm() {
   const form = document.getElementById('ai-partner-contact-form');
   if (!form) return;
 
+  const nameInput = form.querySelector('[name="name"], input[type="text"]');
+  const emailInput = form.querySelector('[name="email"], input[type="email"]');
+  const phoneInput = form.querySelector('[name="phone"], input[type="tel"]');
+  const messageInput = form.querySelector('[name="message"], textarea');
+
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.setAttribute('maxlength', '10');
+    phoneInput.setAttribute('inputmode', 'numeric');
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    });
+  }
+
+  if (messageInput) {
+    messageInput.setAttribute('maxlength', '250');
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -433,6 +487,18 @@ function initAiPartnerForm() {
         input.style.borderColor = '';
       }
     });
+
+    if (nameInput && nameInput.value.trim() && !/^[a-zA-Z\s]+$/.test(nameInput.value.trim())) {
+      showToast('⚠️ Full Name must contain only alphabets and spaces.');
+      nameInput.style.borderColor = '#ef4444';
+      return;
+    }
+
+    if (phoneInput && phoneInput.value.trim() && !/^[0-9]{10}$/.test(phoneInput.value.trim())) {
+      showToast('⚠️ Mobile number must be exactly 10 digits.');
+      phoneInput.style.borderColor = '#ef4444';
+      return;
+    }
 
     if (!isValid) {
       showToast('⚠️ Please fill in all required fields.');
@@ -480,13 +546,17 @@ function initAiPartnerForm() {
       },
       body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-      showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
-      form.reset();
+    .then(async (res) => {
+      const data = await res.json().catch(() => ({ success: res.ok, message: res.statusText }));
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
+      }
+      if (data.success) {
+        showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
+        form.reset();
+      } else {
+        showToast(`⚠️ ${data.message || 'Validation error occurred.'}`);
       }
     })
     .catch(() => {

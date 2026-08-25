@@ -60,15 +60,12 @@ $formType = trim($_POST['form_type'] ?? 'Website Inquiry');
 
 // Name
 $name = trim($_POST['name'] ?? $_POST['full_name'] ?? $_POST['user_name'] ?? '');
-if (empty($name)) {
-    $name = 'Valued Client';
-}
 
 // Email
 $email = trim($_POST['email'] ?? $_POST['work_email'] ?? $_POST['user_email'] ?? '');
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-// Phone
+// Phone / Mobile
 $phone = trim($_POST['phone'] ?? $_POST['tel'] ?? $_POST['mobile'] ?? '');
 
 // Company
@@ -98,29 +95,71 @@ if (empty($service)) {
 // Budget info (if provided)
 $budget = trim($_POST['budget'] ?? '');
 
-// Message / Scope
+// Message / Project Overview / Scope
 $rawMessage = trim($_POST['message'] ?? $_POST['details'] ?? $_POST['requirements'] ?? $_POST['notes'] ?? '');
+
+// 2. Strict Server-Side Validation Rules
+$errors = [];
+
+// [Validation 1] Name: Only alphabets and spaces, no numbers or special symbols
+if (empty($name)) {
+    $errors[] = 'Full Name is required.';
+} elseif (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
+    $errors[] = 'Name must contain only alphabets and spaces (numbers and special symbols are not allowed).';
+} elseif (strlen($name) < 2) {
+    $errors[] = 'Name must be at least 2 characters long.';
+}
+
+// [Validation 2] Email: Valid work email address
+if (empty($email)) {
+    $errors[] = 'Work Email address is required.';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+    $errors[] = 'Please provide a valid work email address.';
+}
+
+// [Validation 3] Mobile / Phone: Exactly 10 digits only (more than 10 digits not accepted)
+if (empty($phone)) {
+    $errors[] = 'Mobile number is required.';
+} elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
+    $errors[] = 'Mobile number must be exactly 10 digits only (more or less than 10 digits, letters, or symbols are not accepted).';
+}
+
+// [Validation 4] Company: Only alphabets and space
+if (!empty($company) && !preg_match('/^[a-zA-Z\s]+$/', $company)) {
+    $errors[] = 'Company field should accept only alphabets and spaces.';
+}
+
+// [Validation 5] Project Overview / Scope: Required and maximum 250 characters
+if (empty($rawMessage)) {
+    $errors[] = 'Project Overview / Scope is required.';
+} elseif (mb_strlen($rawMessage, 'UTF-8') > 250) {
+    $errors[] = 'Project Overview / Scope must not exceed 250 characters (currently ' . mb_strlen($rawMessage, 'UTF-8') . ' characters).';
+}
+
+// Return validation errors if any check fails
+if (!empty($errors)) {
+    $errorMessage = implode(' ', $errors);
+    if ($isAjax) {
+        http_response_code(400);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => false,
+            'message' => $errorMessage,
+            'errors'  => $errors
+        ]);
+        exit;
+    } else {
+        render_html_error_screen($errorMessage, $errors);
+        exit;
+    }
+}
 
 $messageParts = [];
 if (!empty($budget)) {
     $messageParts[] = "[Project Budget: {$budget}]";
 }
-if (!empty($rawMessage)) {
-    $messageParts[] = $rawMessage;
-} else {
-    $messageParts[] = "Submitted inquiry via {$formType}.";
-}
+$messageParts[] = $rawMessage;
 $finalMessage = implode("\n\n", $messageParts);
-
-// 2. Validate Email Address
-if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Please provide a valid work email address.'
-    ]);
-    exit;
-}
 
 // 3. Dispatch Dual Professional Emails
 $timestamp = date('F d, Y \a\t h:i A T');
@@ -583,6 +622,114 @@ function render_html_confirmation_screen(string $message, string $name = 'Valued
     <h1>Inquiry Transmitted Successfully</h1>
     <p>Thank you, <strong>{$safeName}</strong>. {$safeMsg}</p>
     <a href="index.html" class="back-btn">&larr; Return to Infronix Global</a>
+  </div>
+</body>
+</html>
+HTML;
+}
+
+/**
+ * Renders an executive branded HTML error page for direct POST submissions with validation issues
+ */
+function render_html_error_screen(string $message, array $errors = []): void {
+    $safeMsg = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+    
+    $errorItemsHtml = '';
+    if (!empty($errors)) {
+        $errorItemsHtml .= '<ul style="text-align:left; color:#f87171; font-size:14px; line-height:1.7; margin:0 0 24px 0; padding-left:24px;">';
+        foreach ($errors as $err) {
+            $errorItemsHtml .= '<li>' . htmlspecialchars($err, ENT_QUOTES, 'UTF-8') . '</li>';
+        }
+        $errorItemsHtml .= '</ul>';
+    }
+
+    echo <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Error | Infronix Global Services</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo/favicon.svg">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <style>
+    body {
+      background: #0a0f1d;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 24px;
+    }
+    .error-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+    }
+    .error-badge {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #ef4444, #b91c1c);
+      color: #ffffff;
+      font-size: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.4);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 12px;
+    }
+    p {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+    }
+    .back-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-card">
+    <div class="error-badge">✕</div>
+    <h1>Validation Notice</h1>
+    <p>Please correct the following issues to complete your inquiry:</p>
+    {$errorItemsHtml}
+    <button onclick="history.back()" class="back-btn">&larr; Return &amp; Correct Form</button>
   </div>
 </body>
 </html>
