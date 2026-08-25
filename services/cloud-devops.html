@@ -844,8 +844,7 @@
               </div>
               <div class="form-group">
                 <textarea name="message" class="form-textarea" rows="3"
-                  placeholder="Tell us about your cloud infrastructure, Kubernetes, or DevOps goals..."
-                  required></textarea>
+                  placeholder="Tell us about your cloud infrastructure, Kubernetes, or DevOps goals (optional)..."></textarea>
               </div>
               <button type="submit" class="ai-partner-submit-btn">
                 <span>Send Message</span>
@@ -1115,8 +1114,8 @@
           <div class="grid grid-2" style="gap: 1rem; margin-bottom: 1rem;">
             <div class="form-group">
               <label class="form-label" for="modal-phone">Phone Number *</label>
-              <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="+1 (555) 000-0000"
-                required>
+              <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="10-digit mobile number"
+                maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
             </div>
 
             <div class="form-group">
@@ -1131,9 +1130,9 @@
           </div>
 
           <div class="form-group" style="margin-bottom: 1.5rem;">
-            <label class="form-label" for="modal-details">Project Scope &amp; Target Timeline</label>
+            <label class="form-label" for="modal-details">Project Scope &amp; Target Timeline (Optional)</label>
             <textarea id="modal-details" name="details" class="form-textarea" rows="3"
-              placeholder="Briefly describe your objectives, existing tech stack, or engineering team goals..."></textarea>
+              placeholder="Briefly describe your objectives, existing tech stack, or engineering team goals (optional)..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">

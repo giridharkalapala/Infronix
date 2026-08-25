@@ -843,7 +843,7 @@
                 <input type="email" name="email" class="form-input" placeholder="Work Email *" required>
               </div>
               <div class="form-group">
-                <textarea name="message" class="form-textarea" rows="4" placeholder="Your Message *" required></textarea>
+                <textarea name="message" class="form-textarea" rows="4" placeholder="Your Message (Optional)"></textarea>
               </div>
               <button type="submit" class="ai-partner-submit-btn">
                 Send Message &nbsp;&rarr;
@@ -1092,10 +1092,27 @@
             </div>
           </div>
 
+          <div class="grid grid-2" style="gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label class="form-label" for="modal-phone">Phone Number *</label>
+              <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="10-digit mobile number"
+                maxlength="10" pattern="[0-9]{10}" inputmode="numeric" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="modal-budget">Estimated Project Budget</label>
+              <select id="modal-budget" name="budget" class="form-select">
+                <option value="$25k - $50k">$25,000 – $50,000</option>
+                <option value="$50k - $100k" selected>$50,000 – $100,000</option>
+                <option value="$100k - $250k">$100,000 – $250,000</option>
+                <option value="$250k+">$250,000+ (Enterprise Scale)</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-group" style="margin-bottom: 1.5rem;">
-            <label class="form-label" for="modal-details">Project Scope &amp; Target Timeline</label>
+            <label class="form-label" for="modal-details">Project Scope &amp; Target Timeline (Optional)</label>
             <textarea id="modal-details" name="details" class="form-textarea" rows="3"
-              placeholder="Briefly describe your AI objectives, data sources, or roadmap goals..."></textarea>
+              placeholder="Briefly describe your AI objectives, data sources, or roadmap goals (optional)..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">

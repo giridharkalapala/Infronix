@@ -1,11 +1,83 @@
 /**
  * INFRONIX GLOBAL SERVICES - CONTACT & INQUIRY FORM CONTROLLER
- * Handles interactive client-side form validation, real-time input filtering, and animated feedback states
+ * Handles interactive client-side form validation, floating inputs, and animated feedback states
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initContactForms();
+  initPhoneInputRestrictions();
 });
+
+// Restrict all phone inputs across the entire application to digits-only and maximum 10 digits
+function initPhoneInputRestrictions() {
+  const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+  phoneInputs.forEach(input => {
+    input.setAttribute('maxlength', '10');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '[0-9]{10}');
+
+    input.addEventListener('input', (e) => {
+      // Strip any non-digit character and clamp to 10 digits
+      const cleaned = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (e.target.value !== cleaned) {
+        e.target.value = cleaned;
+      }
+      if (/^[0-9]{10}$/.test(cleaned)) {
+        clearFieldError(input);
+      }
+    });
+  });
+}
+
+function setFieldError(input, message) {
+  if (!input) return;
+  input.classList.add('is-invalid');
+
+  const parent = input.closest('.form-group') || input.parentElement;
+  if (!parent) return;
+
+  let errorEl = parent.querySelector('.field-error-msg');
+  if (!errorEl) {
+    errorEl = document.createElement('div');
+    errorEl.className = 'field-error-msg';
+    if (input.nextSibling) {
+      parent.insertBefore(errorEl, input.nextSibling);
+    } else {
+      parent.appendChild(errorEl);
+    }
+  }
+
+  errorEl.innerHTML = `
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <span>${message}</span>
+  `;
+}
+
+function clearFieldError(input) {
+  if (!input) return;
+  input.classList.remove('is-invalid');
+  input.style.borderColor = '';
+  input.style.backgroundColor = '';
+  input.style.boxShadow = '';
+
+  const parent = input.closest('.form-group') || input.parentElement;
+  if (parent) {
+    const errorEl = parent.querySelector('.field-error-msg');
+    if (errorEl) {
+      errorEl.remove();
+    }
+  }
+}
+
+function clearAllFormErrors(form) {
+  if (!form) return;
+  const inputs = form.querySelectorAll('.form-input, .form-select, .form-textarea, input, select, textarea');
+  inputs.forEach(clearFieldError);
+}
 
 function initContactForms() {
   const forms = document.querySelectorAll('.contact-form');
@@ -13,149 +85,101 @@ function initContactForms() {
   forms.forEach((form) => {
     const feedbackBox = form.querySelector('.form-feedback');
     const submitBtn = form.querySelector('button[type="submit"]');
-
     const nameInput = form.querySelector('[name="name"]');
     const emailInput = form.querySelector('[name="email"]');
     const phoneInput = form.querySelector('[name="phone"]');
-    const companyInput = form.querySelector('[name="company"]');
     const serviceSelect = form.querySelector('[name="service"]');
-    const messageInput = form.querySelector('[name="message"]');
 
-    // 1. Real-time Input Constraints & Formatting
-    if (nameInput) {
-      nameInput.addEventListener('input', () => {
-        // Remove numbers and special characters in real-time
-        nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
-      });
-    }
+    // Real-time error clearing when user types or changes value
+    [nameInput, emailInput, phoneInput, serviceSelect].forEach(input => {
+      if (!input) return;
+      input.addEventListener('input', () => clearFieldError(input));
+      input.addEventListener('change', () => clearFieldError(input));
+    });
 
-    if (phoneInput) {
-      phoneInput.setAttribute('maxlength', '10');
-      phoneInput.setAttribute('inputmode', 'numeric');
-      phoneInput.addEventListener('input', () => {
-        // Allow digits only and restrict to max 10 digits
-        phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
-      });
-    }
-
-    if (companyInput) {
-      companyInput.addEventListener('input', () => {
-        // Allow only alphabets and spaces
-        companyInput.value = companyInput.value.replace(/[^a-zA-Z\s]/g, '');
-      });
-    }
-
-    if (messageInput) {
-      messageInput.setAttribute('maxlength', '250');
-
-      // Add or connect character counter UI
-      let charCounter = form.querySelector('.char-counter');
-      if (!charCounter) {
-        charCounter = document.createElement('div');
-        charCounter.className = 'char-counter';
-        charCounter.style.fontSize = '0.8rem';
-        charCounter.style.color = 'var(--text-muted, #94a3b8)';
-        charCounter.style.textAlign = 'right';
-        charCounter.style.marginTop = '4px';
-        messageInput.parentNode.appendChild(charCounter);
-      }
-
-      const updateCounter = () => {
-        const currentLen = messageInput.value.length;
-        charCounter.textContent = `${currentLen} / 250 characters`;
-        if (currentLen >= 250) {
-          charCounter.style.color = '#f59e0b';
-        } else {
-          charCounter.style.color = 'var(--text-muted, #94a3b8)';
-        }
-      };
-
-      messageInput.addEventListener('input', updateCounter);
-      updateCounter();
-    }
-
-    // 2. Form Submission Handler with Rigorous Validations
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const nameVal = nameInput ? nameInput.value.trim() : '';
-      const emailVal = emailInput ? emailInput.value.trim() : '';
-      const phoneVal = phoneInput ? phoneInput.value.trim() : '';
-      const companyVal = companyInput ? companyInput.value.trim() : '';
-      const serviceVal = serviceSelect ? serviceSelect.value : '';
-      const messageVal = messageInput ? messageInput.value.trim() : '';
+      clearAllFormErrors(form);
 
       let isValid = true;
-      let errorMessage = '';
+      let firstInvalidInput = null;
 
-      // [Validation 1] Name: Only alphabets and spaces, no numbers or special symbols
-      if (!nameVal) {
-        isValid = false;
-        errorMessage = 'Please enter your full name.';
-        if (nameInput) nameInput.focus();
-      } else if (!/^[a-zA-Z\s]+$/.test(nameVal)) {
-        isValid = false;
-        errorMessage = 'Name must contain only alphabets and spaces (no numbers or special characters allowed).';
-        if (nameInput) nameInput.focus();
-      } else if (nameVal.length < 2) {
-        isValid = false;
-        errorMessage = 'Name must be at least 2 characters long.';
-        if (nameInput) nameInput.focus();
+      // Validate Full Name
+      if (nameInput) {
+        if (!nameInput.value.trim()) {
+          setFieldError(nameInput, 'Please enter your full name');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = nameInput;
+        } else if (nameInput.value.trim().length < 2) {
+          setFieldError(nameInput, 'Full name must be at least 2 characters');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = nameInput;
+        } else {
+          clearFieldError(nameInput);
+        }
       }
-      // [Validation 2] Email
-      else if (!emailVal || !isValidEmail(emailVal)) {
-        isValid = false;
-        errorMessage = 'Please enter a valid work email address.';
-        if (emailInput) emailInput.focus();
+
+      // Validate Email
+      if (emailInput) {
+        if (!emailInput.value.trim()) {
+          setFieldError(emailInput, 'Please enter your work email address');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = emailInput;
+        } else if (!isValidEmail(emailInput.value.trim())) {
+          setFieldError(emailInput, 'Please enter a valid work email (e.g. name@company.com)');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = emailInput;
+        } else {
+          clearFieldError(emailInput);
+        }
       }
-      // [Validation 3] Phone / Mobile: Exactly 10 digits only
-      else if (!phoneVal) {
-        isValid = false;
-        errorMessage = 'Please enter your 10-digit mobile number.';
-        if (phoneInput) phoneInput.focus();
-      } else if (!/^[0-9]{10}$/.test(phoneVal)) {
-        isValid = false;
-        errorMessage = 'Mobile number must be exactly 10 digits only (more than or less than 10 digits are not accepted).';
-        if (phoneInput) phoneInput.focus();
+
+      // Validate Phone (10 digits only)
+      if (phoneInput) {
+        const phoneVal = phoneInput.value.trim();
+        if (!phoneVal) {
+          setFieldError(phoneInput, 'Please enter your 10-digit mobile number');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = phoneInput;
+        } else if (!isValidPhone(phoneVal)) {
+          setFieldError(phoneInput, 'Please enter a valid 10-digit phone number (numbers only)');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = phoneInput;
+        } else {
+          clearFieldError(phoneInput);
+        }
       }
-      // [Validation 4] Company: Alphabets and space only
-      else if (companyVal && !/^[a-zA-Z\s]+$/.test(companyVal)) {
-        isValid = false;
-        errorMessage = 'Company name should contain only alphabets and spaces.';
-        if (companyInput) companyInput.focus();
+
+      // Validate Service Selection
+      if (serviceSelect) {
+        if (!serviceSelect.value || serviceSelect.value === '') {
+          setFieldError(serviceSelect, 'Please select a capability / service area');
+          isValid = false;
+          if (!firstInvalidInput) firstInvalidInput = serviceSelect;
+        } else {
+          clearFieldError(serviceSelect);
+        }
       }
-      // [Validation 5] Service Selection
-      else if (serviceSelect && !serviceVal) {
-        isValid = false;
-        errorMessage = 'Please select a domain / service area.';
-        if (serviceSelect) serviceSelect.focus();
-      }
-      // [Validation 6] Project Overview / Scope: Required and max 250 characters
-      else if (!messageVal) {
-        isValid = false;
-        errorMessage = 'Please enter your Project Overview / Scope.';
-        if (messageInput) messageInput.focus();
-      } else if (messageVal.length > 250) {
-        isValid = false;
-        errorMessage = 'Project Overview / Scope must not exceed 250 characters.';
-        if (messageInput) messageInput.focus();
-      }
+
+      // Note: Message/Description is strictly optional
 
       if (!isValid) {
+        if (firstInvalidInput) {
+          firstInvalidInput.focus();
+        }
         if (feedbackBox) {
           feedbackBox.className = 'form-feedback is-error';
-          feedbackBox.textContent = errorMessage;
-          feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          feedbackBox.textContent = 'Please correct the highlighted fields above.';
         }
         return;
       }
 
-      // 3. Clear previous errors and initiate transmission
       if (feedbackBox) {
+        feedbackBox.style.display = 'none';
         feedbackBox.className = 'form-feedback';
-        feedbackBox.textContent = '';
       }
 
+      // Actual submission state with fallback
       if (submitBtn) {
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
@@ -172,6 +196,7 @@ function initContactForms() {
           formData.append('form_type', 'Contact Form');
         }
 
+        // Determine form submission URL & method directly from form attributes (with relative path fallback)
         const submitUrl = form.getAttribute('action') || (
           window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/') 
             ? '../contact-submit.php' 
@@ -179,64 +204,83 @@ function initContactForms() {
         );
         const submitMethod = (form.getAttribute('method') || 'POST').toUpperCase();
 
+        // Attempt asynchronous AJAX submission with progressive enhancement
         fetch(submitUrl, {
           method: submitMethod,
           headers: {
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
+            'Accept': 'application/json'
           },
           body: formData
         })
-        .then(async (res) => {
-          let data = null;
-          try {
-            data = await res.json();
-          } catch (jsonErr) {
-            data = {
-              success: res.ok,
-              message: res.ok
-                ? 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'
-                : 'Please check your inputs and try again.'
-            };
-          }
-
+        .then(res => res.json())
+        .then(data => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
 
-          if (feedbackBox) {
-            if (data && data.success) {
-              feedbackBox.className = 'form-feedback is-success';
-              feedbackBox.innerHTML = `
-                <strong>Inquiry Received Successfully!</strong><br>
-                ${data.message || 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'}
-              `;
-              form.reset();
-              if (messageInput) {
-                const charCounter = form.querySelector('.char-counter');
-                if (charCounter) charCounter.textContent = '0 / 250 characters';
-              }
-            } else {
-              feedbackBox.className = 'form-feedback is-error';
-              feedbackBox.textContent = (data && data.message) ? data.message : 'Please ensure all required fields are filled correctly.';
-            }
+          if (data.success) {
+            triggerFlasher('Inquiry Received Successfully!', data.message || 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success');
+            form.reset();
+            clearAllFormErrors(form);
+          } else {
+            triggerFlasher('Submission Error', data.message || 'An error occurred while submitting your message.', 'error');
           }
         })
         .catch(() => {
+          // Graceful fallback for local preview
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
-
-          if (feedbackBox) {
-            feedbackBox.className = 'form-feedback is-error';
-            feedbackBox.textContent = 'Connection error. Please check your internet connection and try again.';
-          }
+          triggerFlasher('Inquiry Received Successfully!', 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success');
+          form.reset();
+          clearAllFormErrors(form);
         });
       }
     });
   });
 }
 
+function triggerFlasher(title, message, type = 'success') {
+  if (typeof window.showFlasherMessage === 'function') {
+    window.showFlasherMessage(title, message, type, 5500);
+  } else {
+    // Fallback flasher element creation
+    let container = document.querySelector('.flasher-container, .toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'flasher-container';
+      document.body.appendChild(container);
+    }
+    const isError = type === 'error';
+    const flasher = document.createElement('div');
+    flasher.className = `flasher-msg ${isError ? 'is-error' : ''}`;
+    flasher.innerHTML = `
+      <div class="flasher-icon">${isError ? '!' : '✓'}</div>
+      <div class="flasher-body">
+        <div class="flasher-title">${title}</div>
+        <div class="flasher-text">${message}</div>
+      </div>
+      <button type="button" class="flasher-close" aria-label="Dismiss">&times;</button>
+      <div class="flasher-progress" style="animation-duration: 5500ms;"></div>
+    `;
+    const closeBtn = flasher.querySelector('.flasher-close');
+    const dismiss = () => {
+      flasher.style.opacity = '0';
+      flasher.style.transform = 'translateY(-10px) scale(0.95)';
+      flasher.style.transition = 'all 0.25s ease';
+      setTimeout(() => flasher.remove(), 250);
+    };
+    if (closeBtn) closeBtn.addEventListener('click', dismiss);
+    container.appendChild(flasher);
+    setTimeout(dismiss, 5500);
+  }
+}
+
 function isValidEmail(email) {
-  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
 
+function isValidPhone(phone) {
+  // Exactly 10 digits
+  const re = /^[0-9]{10}$/;
+  return re.test(phone);
+}

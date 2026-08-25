@@ -131,32 +131,49 @@ function initHeroVideoControls() {
 }
 
 /* ==========================================================================
-   1. Toast Notification System
+   1. Flasher & Toast Notification System
    ========================================================================== */
-function showToast(message, duration = 4000) {
-  let container = document.querySelector('.toast-container');
+function showFlasherMessage(title, text, type = 'success', duration = 5000) {
+  let container = document.querySelector('.flasher-container, .toast-container');
   if (!container) {
     container = document.createElement('div');
-    container.className = 'toast-container';
+    container.className = 'flasher-container';
     document.body.appendChild(container);
   }
 
-  const toast = document.createElement('div');
-  toast.className = 'toast-msg';
-  toast.innerHTML = `
-    <span style="font-size: 1.25rem; color: var(--color-accent);">✓</span>
-    <div>${message}</div>
+  const isError = type === 'error';
+  const icon = isError ? '!' : '✓';
+  const flasher = document.createElement('div');
+  flasher.className = `flasher-msg ${isError ? 'is-error' : ''}`;
+  flasher.innerHTML = `
+    <div class="flasher-icon">${icon}</div>
+    <div class="flasher-body">
+      <div class="flasher-title">${title}</div>
+      <div class="flasher-text">${text}</div>
+    </div>
+    <button type="button" class="flasher-close" aria-label="Dismiss">&times;</button>
+    <div class="flasher-progress" style="animation-duration: ${duration}ms;"></div>
   `;
 
-  container.appendChild(toast);
+  const closeBtn = flasher.querySelector('.flasher-close');
+  const dismiss = () => {
+    flasher.style.opacity = '0';
+    flasher.style.transform = 'translateY(-10px) scale(0.95)';
+    flasher.style.transition = 'all 0.25s ease';
+    setTimeout(() => flasher.remove(), 250);
+  };
 
-  setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(50px)';
-    toast.style.transition = 'all 0.3s ease';
-    setTimeout(() => toast.remove(), 300);
-  }, duration);
+  if (closeBtn) closeBtn.addEventListener('click', dismiss);
+  container.appendChild(flasher);
+
+  setTimeout(dismiss, duration);
 }
+
+function showToast(message, duration = 4500) {
+  showFlasherMessage('Notification', message, 'success', duration);
+}
+
+window.showFlasherMessage = showFlasherMessage;
 window.showToast = showToast;
 
 /* ==========================================================================
@@ -258,6 +275,59 @@ function initUniversalModals() {
 /* ==========================================================================
    4. Consultation Popup Form Validation
    ========================================================================== */
+
+function setInteractiveFieldError(input, message) {
+  if (!input) return;
+  input.classList.add('is-invalid');
+  input.style.borderColor = '#ef4444';
+  input.style.backgroundColor = 'rgba(239, 68, 68, 0.04)';
+
+  const parent = input.closest('.form-group') || input.parentElement;
+  if (!parent) return;
+
+  let errorEl = parent.querySelector('.field-error-msg');
+  if (!errorEl) {
+    errorEl = document.createElement('div');
+    errorEl.className = 'field-error-msg';
+    if (input.nextSibling) {
+      parent.insertBefore(errorEl, input.nextSibling);
+    } else {
+      parent.appendChild(errorEl);
+    }
+  }
+
+  errorEl.innerHTML = `
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <span>${message}</span>
+  `;
+}
+
+function clearInteractiveFieldError(input) {
+  if (!input) return;
+  input.classList.remove('is-invalid');
+  input.style.borderColor = '';
+  input.style.backgroundColor = '';
+  input.style.boxShadow = '';
+
+  const parent = input.closest('.form-group') || input.parentElement;
+  if (parent) {
+    const errorEl = parent.querySelector('.field-error-msg');
+    if (errorEl) {
+      errorEl.remove();
+    }
+  }
+}
+
+function clearAllInteractiveFormErrors(form) {
+  if (!form) return;
+  const inputs = form.querySelectorAll('.form-input, .form-select, .form-textarea, input, select, textarea');
+  inputs.forEach(clearInteractiveFieldError);
+}
+
 function initConsultationForm() {
   const form = document.getElementById('consultation-popup-form');
   const modal = document.getElementById('consultation-modal');
@@ -266,25 +336,30 @@ function initConsultationForm() {
   const nameInput = form.querySelector('[name="name"]');
   const emailInput = form.querySelector('[name="email"]');
   const phoneInput = form.querySelector('[name="phone"]');
-  const detailsInput = form.querySelector('[name="details"]');
 
-  // Input constraints
-  if (nameInput) {
-    nameInput.addEventListener('input', () => {
-      nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
-    });
-  }
-
+  // Real-time restriction on phone number: digits only, max 10 characters
   if (phoneInput) {
     phoneInput.setAttribute('maxlength', '10');
     phoneInput.setAttribute('inputmode', 'numeric');
-    phoneInput.addEventListener('input', () => {
-      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    phoneInput.setAttribute('pattern', '[0-9]{10}');
+    phoneInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (/^[0-9]{10}$/.test(e.target.value)) {
+        clearInteractiveFieldError(phoneInput);
+      }
     });
   }
 
-  if (detailsInput) {
-    detailsInput.setAttribute('maxlength', '250');
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim().length >= 2) clearInteractiveFieldError(nameInput);
+    });
+  }
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) clearInteractiveFieldError(emailInput);
+    });
   }
 
   // Service pill selections
@@ -304,45 +379,61 @@ function initConsultationForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    clearAllInteractiveFormErrors(form);
 
     let isValid = true;
+    let firstInvalidInput = null;
 
     if (nameInput) {
-      const nameVal = nameInput.value.trim();
-      if (!nameVal || !/^[a-zA-Z\s]+$/.test(nameVal) || nameVal.length < 2) {
-        showInputError(nameInput, 'Please enter a valid name (alphabets only)');
+      if (!nameInput.value.trim()) {
+        setInteractiveFieldError(nameInput, 'Please enter your full name');
         isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = nameInput;
+      } else if (nameInput.value.trim().length < 2) {
+        setInteractiveFieldError(nameInput, 'Full name must be at least 2 characters');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = nameInput;
       } else {
-        clearInputError(nameInput);
+        clearInteractiveFieldError(nameInput);
       }
     }
 
     if (emailInput) {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
-        showInputError(emailInput, 'Please enter a valid work email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim()) {
+        setInteractiveFieldError(emailInput, 'Please enter your corporate email');
         isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = emailInput;
+      } else if (!emailRegex.test(emailInput.value.trim())) {
+        setInteractiveFieldError(emailInput, 'Please enter a valid corporate email');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = emailInput;
       } else {
-        clearInputError(emailInput);
+        clearInteractiveFieldError(emailInput);
       }
     }
 
     if (phoneInput) {
       const phoneVal = phoneInput.value.trim();
-      if (!phoneVal || !/^[0-9]{10}$/.test(phoneVal)) {
-        showInputError(phoneInput, 'Please enter a valid 10-digit mobile number');
+      if (!phoneVal) {
+        setInteractiveFieldError(phoneInput, 'Please enter your 10-digit mobile number');
         isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = phoneInput;
+      } else if (!/^[0-9]{10}$/.test(phoneVal)) {
+        setInteractiveFieldError(phoneInput, 'Please enter a valid 10-digit phone number (numbers only)');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = phoneInput;
       } else {
-        clearInputError(phoneInput);
+        clearInteractiveFieldError(phoneInput);
       }
     }
 
-    if (detailsInput && detailsInput.value.trim().length > 250) {
-      showInputError(detailsInput, 'Details must not exceed 250 characters');
-      isValid = false;
-    }
+    // Note: Project Scope / Target Timeline (Description) is strictly optional
 
-    if (!isValid) return;
+    if (!isValid) {
+      if (firstInvalidInput) firstInvalidInput.focus();
+      return;
+    }
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const origText = submitBtn ? submitBtn.innerHTML : '';
@@ -382,65 +473,46 @@ function initConsultationForm() {
       },
       body: formData
     })
-    .then(async (res) => {
-      const data = await res.json().catch(() => ({ success: res.ok, message: res.statusText }));
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = origText;
-      }
-
-      if (data.success) {
-        const formFields = form.querySelector('.modal-form-fields');
-        const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
-
-        if (formFields) formFields.style.display = 'none';
-        if (successScreen) successScreen.classList.add('show');
-
-        showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
-        form.reset();
-        pillLabels.forEach(l => l.classList.remove('selected'));
-      } else {
-        showToast(`⚠️ ${data.message || 'Validation error occurred.'}`);
-      }
-    })
-    .catch(() => {
-      const formFields = form.querySelector('.modal-form-fields');
+    .then(res => res.json())
+    .then(data => {
+      const formFields = form.querySelector('.modal-form-fields') || form;
       const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
+      if (formFields) formFields.style.display = 'block';
+      if (successScreen) {
+        successScreen.style.display = 'none';
+        successScreen.classList.remove('show');
+      }
 
-      if (formFields) formFields.style.display = 'none';
-      if (successScreen) successScreen.classList.add('show');
-
-      showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
+      showFlasherMessage('Inquiry Received Successfully!', data.message || 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success', 5500);
 
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
       }
       form.reset();
+      clearAllInteractiveFormErrors(form);
+      pillLabels.forEach(l => l.classList.remove('selected'));
+    })
+    .catch(() => {
+      const formFields = form.querySelector('.modal-form-fields') || form;
+      const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
+      if (formFields) formFields.style.display = 'block';
+      if (successScreen) {
+        successScreen.style.display = 'none';
+        successScreen.classList.remove('show');
+      }
+
+      showFlasherMessage('Inquiry Received Successfully!', 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success', 5500);
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
+      form.reset();
+      clearAllInteractiveFormErrors(form);
       pillLabels.forEach(l => l.classList.remove('selected'));
     });
   });
-
-  function showInputError(input, msg) {
-    input.style.borderColor = '#ef4444';
-    input.style.backgroundColor = 'rgba(239, 68, 68, 0.04)';
-  }
-
-  function clearInputError(input) {
-    input.style.borderColor = '';
-    input.style.backgroundColor = '';
-  }
-
-  // Reset screen handler
-  const resetBtn = modal ? modal.querySelector('.modal-reset-btn') : null;
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      const formFields = form.querySelector('.modal-form-fields');
-      const successScreen = modal.querySelector('.modal-success-screen');
-      if (formFields) formFields.style.display = 'block';
-      if (successScreen) successScreen.classList.remove('show');
-    });
-  }
 }
 
 /**
@@ -450,58 +522,81 @@ function initAiPartnerForm() {
   const form = document.getElementById('ai-partner-contact-form');
   if (!form) return;
 
-  const nameInput = form.querySelector('[name="name"], input[type="text"]');
-  const emailInput = form.querySelector('[name="email"], input[type="email"]');
-  const phoneInput = form.querySelector('[name="phone"], input[type="tel"]');
-  const messageInput = form.querySelector('[name="message"], textarea');
-
-  if (nameInput) {
-    nameInput.addEventListener('input', () => {
-      nameInput.value = nameInput.value.replace(/[^a-zA-Z\s]/g, '');
-    });
-  }
+  const nameInput = form.querySelector('[name="name"]') || form.querySelector('input[type="text"]');
+  const emailInput = form.querySelector('[name="email"]') || form.querySelector('input[type="email"]');
+  const phoneInput = form.querySelector('[name="phone"]') || form.querySelector('input[type="tel"]');
 
   if (phoneInput) {
     phoneInput.setAttribute('maxlength', '10');
     phoneInput.setAttribute('inputmode', 'numeric');
-    phoneInput.addEventListener('input', () => {
-      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    phoneInput.setAttribute('pattern', '[0-9]{10}');
+    phoneInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (/^[0-9]{10}$/.test(e.target.value)) {
+        clearInteractiveFieldError(phoneInput);
+      }
     });
   }
 
-  if (messageInput) {
-    messageInput.setAttribute('maxlength', '250');
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim().length >= 2) clearInteractiveFieldError(nameInput);
+    });
+  }
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) clearInteractiveFieldError(emailInput);
+    });
   }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    clearAllInteractiveFormErrors(form);
 
-    const inputs = form.querySelectorAll('input, textarea');
     let isValid = true;
+    let firstInvalidInput = null;
 
-    inputs.forEach(input => {
-      if (input.hasAttribute('required') && !input.value.trim()) {
-        input.style.borderColor = '#ef4444';
+    if (nameInput) {
+      if (!nameInput.value.trim()) {
+        setInteractiveFieldError(nameInput, 'Please enter your name');
         isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = nameInput;
+      } else if (nameInput.value.trim().length < 2) {
+        setInteractiveFieldError(nameInput, 'Name must be at least 2 characters');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = nameInput;
       } else {
-        input.style.borderColor = '';
+        clearInteractiveFieldError(nameInput);
       }
-    });
+    }
 
-    if (nameInput && nameInput.value.trim() && !/^[a-zA-Z\s]+$/.test(nameInput.value.trim())) {
-      showToast('⚠️ Full Name must contain only alphabets and spaces.');
-      nameInput.style.borderColor = '#ef4444';
-      return;
+    if (emailInput) {
+      if (!emailInput.value.trim()) {
+        setInteractiveFieldError(emailInput, 'Please enter your work email');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = emailInput;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        setInteractiveFieldError(emailInput, 'Please enter a valid work email');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = emailInput;
+      } else {
+        clearInteractiveFieldError(emailInput);
+      }
     }
 
     if (phoneInput && phoneInput.value.trim() && !/^[0-9]{10}$/.test(phoneInput.value.trim())) {
-      showToast('⚠️ Mobile number must be exactly 10 digits.');
-      phoneInput.style.borderColor = '#ef4444';
-      return;
+      setInteractiveFieldError(phoneInput, 'Please enter a valid 10-digit phone number');
+      isValid = false;
+      if (!firstInvalidInput) firstInvalidInput = phoneInput;
+    } else if (phoneInput) {
+      clearInteractiveFieldError(phoneInput);
     }
 
+    // Description / message is optional
+
     if (!isValid) {
-      showToast('⚠️ Please fill in all required fields.');
+      if (firstInvalidInput) firstInvalidInput.focus();
       return;
     }
 
@@ -546,22 +641,20 @@ function initAiPartnerForm() {
       },
       body: formData
     })
-    .then(async (res) => {
-      const data = await res.json().catch(() => ({ success: res.ok, message: res.statusText }));
+    .then(res => res.json())
+    .then(data => {
+      showFlasherMessage('Inquiry Received Successfully!', data.message || 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success', 6000);
+      form.reset();
+      clearAllInteractiveFormErrors(form);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
       }
-      if (data.success) {
-        showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
-        form.reset();
-      } else {
-        showToast(`⚠️ ${data.message || 'Validation error occurred.'}`);
-      }
     })
     .catch(() => {
-      showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
+      showFlasherMessage('Inquiry Received Successfully!', 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.', 'success', 6000);
       form.reset();
+      clearAllInteractiveFormErrors(form);
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;

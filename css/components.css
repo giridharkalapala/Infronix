@@ -6566,6 +6566,48 @@
 }
 
 /* --------------------------------------------------------------------------
+   Field-Level Inline Validation Error Badges & Inputs
+   -------------------------------------------------------------------------- */
+.field-error-msg {
+  color: #ef4444;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  line-height: 1.35;
+  animation: fieldErrorFade 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.field-error-msg svg {
+  flex-shrink: 0;
+  stroke: #ef4444;
+}
+
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid,
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.04) !important;
+  box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.15) !important;
+}
+
+@keyframes fieldErrorFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
    Enterprise Mega Footer
    -------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------
@@ -7056,30 +7098,48 @@
   box-shadow: 0 4px 10px rgba(0, 52, 161, 0.25);
 }
 
-/* Success Modal Screen */
-.modal-success-screen {
+/* --------------------------------------------------------------------------
+   Unified Global Success Screen & Card Styles
+   -------------------------------------------------------------------------- */
+.modal-success-screen,
+.form-success-card {
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   display: none;
 }
 
-.modal-success-screen.show {
+.modal-success-screen.show,
+.form-success-card.show {
   display: block;
-  animation: modalScaleUp 0.4s ease forwards;
+  animation: modalScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .modal-success-icon {
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.12);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15));
   color: #10b981;
   font-size: 2.25rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem auto;
   border: 2px solid #10b981;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+  animation: pulseSuccessIcon 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseSuccessIcon {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(16, 185, 129, 0.45);
+    transform: scale(1.05);
+  }
 }
 
 /* Video Showcase Modal Dialog */
@@ -7597,33 +7657,130 @@
   flex-wrap: wrap;
 }
 
-/* Toast Notifications */
-.toast-container {
+/* ==========================================================================
+   Executive Flasher & Toast Notifications
+   ========================================================================== */
+.toast-container,
+.flasher-container {
   position: fixed;
   top: 24px;
   right: 24px;
-  z-index: 10002;
+  z-index: 100000;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   pointer-events: none;
+  max-width: calc(100vw - 32px);
 }
 
-.toast-msg {
+.toast-msg,
+.flasher-msg {
   pointer-events: auto;
-  background: #031038;
+  background: rgba(4, 12, 32, 0.95);
   color: #ffffff;
-  padding: 14px 20px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xl);
-  border-left: 4px solid var(--color-accent);
-  font-size: 0.9rem;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(16, 185, 129, 0.35);
+  border-left: 5px solid #10b981;
+  font-size: 0.92rem;
   font-weight: 500;
   display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  animation: flasherSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-width: 440px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.toast-msg.is-error,
+.flasher-msg.is-error {
+  border-left-color: #ef4444;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(239, 68, 68, 0.35);
+}
+
+.flasher-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  animation: toastSlideIn 0.35s ease forwards;
-  max-width: 380px;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.flasher-msg.is-error .flasher-icon {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.flasher-body {
+  flex: 1;
+}
+
+.flasher-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.flasher-text {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.flasher-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+  margin-left: 4px;
+}
+
+.flasher-close:hover {
+  color: #ffffff;
+}
+
+.flasher-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #10b981;
+  width: 100%;
+  animation: flasherProgress 5s linear forwards;
+}
+
+.flasher-msg.is-error .flasher-progress {
+  background: #ef4444;
+}
+
+@keyframes flasherSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flasherProgress {
+  from { width: 100%; }
+  to { width: 0%; }
 }
 
 /* ==========================================================================

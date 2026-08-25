@@ -12,14 +12,8 @@
 
 // Determine if request is an AJAX / Fetch API call or native standard form POST
 $isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
-    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'json') !== false)
-    || (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'json') !== false)
-    || isset($_POST['form_type']);
-
-// Safe string length helper (handles environments without mbstring extension)
-function safe_str_length(string $str): int {
-    return function_exists('mb_strlen') ? mb_strlen($str, 'UTF-8') : strlen($str);
-}
+    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false)
+    || (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false);
 
 // Only accept POST requests (Redirect direct GET navigation back to homepage)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -66,13 +60,17 @@ $formType = trim($_POST['form_type'] ?? 'Website Inquiry');
 
 // Name
 $name = trim($_POST['name'] ?? $_POST['full_name'] ?? $_POST['user_name'] ?? '');
+if (empty($name)) {
+    $name = 'Valued Client';
+}
 
 // Email
 $email = trim($_POST['email'] ?? $_POST['work_email'] ?? $_POST['user_email'] ?? '');
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-// Phone / Mobile
-$phone = trim($_POST['phone'] ?? $_POST['tel'] ?? $_POST['mobile'] ?? '');
+// Phone (digits only normalization)
+$rawPhone = trim($_POST['phone'] ?? $_POST['tel'] ?? $_POST['mobile'] ?? '');
+$phone = preg_replace('/\D/', '', $rawPhone);
 
 // Company
 $company = trim($_POST['company'] ?? $_POST['org'] ?? $_POST['organization'] ?? '');
@@ -101,74 +99,46 @@ if (empty($service)) {
 // Budget info (if provided)
 $budget = trim($_POST['budget'] ?? '');
 
-// Message / Project Overview / Scope
+// Message / Description (Optional)
 $rawMessage = trim($_POST['message'] ?? $_POST['details'] ?? $_POST['requirements'] ?? $_POST['notes'] ?? '');
-
-// 2. Strict Server-Side Validation Rules
-$errors = [];
-
-// [Validation 1] Name: Only alphabets and spaces, no numbers or special symbols
-if (empty($name)) {
-    $errors[] = 'Full Name is required.';
-} elseif (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
-    $errors[] = 'Name must contain only alphabets and spaces (numbers and special symbols are not allowed).';
-} elseif (safe_str_length($name) < 2) {
-    $errors[] = 'Name must be at least 2 characters long.';
-}
-
-// [Validation 2] Email: Valid work email address
-if (empty($email)) {
-    $errors[] = 'Work Email address is required.';
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
-    $errors[] = 'Please provide a valid work email address.';
-}
-
-// [Validation 3] Mobile / Phone: Exactly 10 digits only (more than 10 digits not accepted)
-if (empty($phone)) {
-    $errors[] = 'Mobile number is required.';
-} elseif (!preg_match('/^[0-9]{10}$/', $phone)) {
-    $errors[] = 'Mobile number must be exactly 10 digits only (more or less than 10 digits, letters, or symbols are not accepted).';
-}
-
-// [Validation 4] Company: Only alphabets and space
-if (!empty($company) && !preg_match('/^[a-zA-Z\s]+$/', $company)) {
-    $errors[] = 'Company field should accept only alphabets and spaces.';
-}
-
-// [Validation 5] Project Overview / Scope: Required and maximum 250 characters
-$rawMessageLen = safe_str_length($rawMessage);
-if (empty($rawMessage)) {
-    $errors[] = 'Project Overview / Scope is required.';
-} elseif ($rawMessageLen > 250) {
-    $errors[] = 'Project Overview / Scope must not exceed 250 characters (currently ' . $rawMessageLen . ' characters).';
-}
-
-// Return validation errors if any check fails
-if (!empty($errors)) {
-    $errorMessage = implode(' ', $errors);
-    if ($isAjax) {
-        http_response_code(400);
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode([
-            'success' => false,
-            'message' => $errorMessage,
-            'errors'  => $errors
-        ]);
-        exit;
-    } else {
-        render_html_error_screen($errorMessage, $errors);
-        exit;
-    }
-}
 
 $messageParts = [];
 if (!empty($budget)) {
     $messageParts[] = "[Project Budget: {$budget}]";
 }
-$messageParts[] = $rawMessage;
+if (!empty($rawMessage)) {
+    $messageParts[] = $rawMessage;
+} else {
+    $messageParts[] = "Submitted inquiry via {$formType}. (No additional description provided)";
+}
 $finalMessage = implode("\n\n", $messageParts);
 
-// 3. Dispatch Dual Professional Emails
+// 2. Validate Inputs
+// 2a. Validate Email Address
+if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode([
+        'success' => false,
+        'message' => 'Please provide a valid work email address.'
+    ]);
+    exit;
+}
+
+// 2b. Validate Phone Number (Required for Contact Form & Consultation Request; must be exactly 10 digits)
+if (!empty($rawPhone) || in_array($formType, ['Contact Form', 'Consultation Request', 'Website Inquiry'])) {
+    if (empty($phone) || strlen($phone) !== 10) {
+        http_response_code(400);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success' => false,
+            'message' => 'Please provide a valid 10-digit phone number (numbers only).'
+        ]);
+        exit;
+    }
+}
+
+// 3. Prepare Payload & Timestamps
 $timestamp = date('F d, Y \a\t h:i A T');
 
 $emailPayload = [
@@ -182,45 +152,69 @@ $emailPayload = [
     'timestamp' => $timestamp
 ];
 
-// Send emails
-$adminDelivered = false;
-$userDelivered = false;
-
-try {
-    // 1. Admin Email (dharishbandi@gmail.com)
-    $adminSubject = "🚨 New Inquiry: {$formType} — {$name}";
-    $adminHtml = build_admin_email_template($emailPayload);
-    $adminDelivered = send_smtp_email(ADMIN_EMAIL, $adminSubject, $adminHtml, $email);
-
-    // 2. Client Acknowledgment Receipt
-    $clientSubject = "Thank you for contacting Infronix Global Services";
-    $clientHtml = build_client_email_template($emailPayload);
-    $userDelivered = send_smtp_email($email, $clientSubject, $clientHtml, ADMIN_EMAIL);
-
-} catch (Exception $e) {
-    // Graceful error logging
-}
-
-// 4. Return Response based on request transport
 $successMsg = 'Thank you for reaching out to Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.';
 
+// 4. Return Instant Response to User / Browser (Zero-Latency Submission)
 if ($isAjax) {
+    ignore_user_abort(true);
+    @set_time_limit(90);
+
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode([
+    header('Connection: close');
+
+    $responseJson = json_encode([
         'success' => true,
         'message' => $successMsg
     ]);
-    exit;
-} else {
+
+    header('Content-Length: ' . strlen($responseJson));
+    echo $responseJson;
+
+    // Flush buffers and close HTTP socket connection immediately
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request();
+    } else {
+        while (ob_get_level() > 0) {
+            ob_end_flush();
+        }
+        flush();
+    }
+}
+
+// 5. Dispatch Dual Professional Emails via Single High-Speed Authenticated Session
+$adminSubject = "🚨 New Inquiry: {$formType} — {$name}";
+$adminHtml = build_admin_email_template($emailPayload);
+
+$clientSubject = "Thank you for contacting Infronix Global Services";
+$clientHtml = build_client_email_template($emailPayload);
+
+dispatch_fast_dual_smtp_emails(
+    [
+        'to'      => ADMIN_EMAIL,
+        'subject' => $adminSubject,
+        'html'    => $adminHtml,
+        'replyTo' => $email
+    ],
+    [
+        'to'      => $email,
+        'subject' => $clientSubject,
+        'html'    => $clientHtml,
+        'replyTo' => ADMIN_EMAIL
+    ]
+);
+
+// If native POST request (non-AJAX)
+if (!$isAjax) {
     render_html_confirmation_screen($successMsg, $name, $email);
     exit;
 }
+exit;
 
 
 /**
- * Sends HTML Email via Direct SSL SMTP Connection with fallback
+ * Sends both Admin Alert and Client Confirmation over a single high-speed authenticated SSL connection
  */
-function send_smtp_email(string $to, string $subject, string $htmlBody, ?string $replyTo = null): bool {
+function dispatch_fast_dual_smtp_emails(array $adminData, array $clientData): void {
     $host = SMTP_HOST;
     $port = SMTP_PORT;
     $username = SMTP_USER;
@@ -234,10 +228,15 @@ function send_smtp_email(string $to, string $subject, string $htmlBody, ?string 
         ]
     ]);
 
-    $socket = @stream_socket_client("{$host}:{$port}", $errno, $errstr, 12, STREAM_CLIENT_CONNECT, $context);
+    $socket = @stream_socket_client("{$host}:{$port}", $errno, $errstr, 4, STREAM_CLIENT_CONNECT, $context);
     if (!$socket) {
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
+        send_php_mail_fallback(ADMIN_EMAIL, $adminData['subject'], $adminData['html'], $adminData['replyTo']);
+        if (!empty($clientData['to'])) {
+            send_php_mail_fallback($clientData['to'], $clientData['subject'], $clientData['html'], ADMIN_EMAIL);
+        }
+        return;
     }
+    stream_set_timeout($socket, 4);
 
     // Read greeting
     fgets($socket, 515);
@@ -253,70 +252,81 @@ function send_smtp_email(string $to, string $subject, string $htmlBody, ?string 
     $res = fgets($socket, 515);
     if (substr($res, 0, 3) !== '334') {
         fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
+        return;
     }
 
     fputs($socket, base64_encode($username) . "\r\n");
     $res = fgets($socket, 515);
     if (substr($res, 0, 3) !== '334') {
         fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
+        return;
     }
 
     fputs($socket, base64_encode($password) . "\r\n");
     $res = fgets($socket, 515);
     if (substr($res, 0, 3) !== '235') {
         fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
+        return;
     }
 
-    // MAIL FROM
+    // 1. Send Admin Email
     fputs($socket, "MAIL FROM: <{$username}>\r\n");
-    $res = fgets($socket, 515);
-    if (substr($res, 0, 3) !== '250') {
-        fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
-    }
+    fgets($socket, 515);
 
-    // RCPT TO
-    fputs($socket, "RCPT TO: <{$to}>\r\n");
-    $res = fgets($socket, 515);
-    if (substr($res, 0, 3) !== '250' && substr($res, 0, 3) !== '251') {
-        fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
-    }
+    fputs($socket, "RCPT TO: <" . ADMIN_EMAIL . ">\r\n");
+    fgets($socket, 515);
 
-    // DATA
     fputs($socket, "DATA\r\n");
-    $res = fgets($socket, 515);
-    if (substr($res, 0, 3) !== '354') {
-        fclose($socket);
-        return send_php_mail_fallback($to, $subject, $htmlBody, $replyTo);
-    }
+    fgets($socket, 515);
 
-    // Headers & Encoded Body
     $fromHeader = '=?UTF-8?B?' . base64_encode(MAIL_FROM_NAME) . '?= <' . $username . '>';
-    $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+    $adminSubjectEncoded = '=?UTF-8?B?' . base64_encode($adminData['subject']) . '?=';
 
-    $data = "Date: " . date('r') . "\r\n";
-    $data .= "To: <{$to}>\r\n";
-    $data .= "From: {$fromHeader}\r\n";
-    if (!empty($replyTo)) {
-        $data .= "Reply-To: <{$replyTo}>\r\n";
+    $adminMsg = "Date: " . date('r') . "\r\n"
+        . "To: <" . ADMIN_EMAIL . ">\r\n"
+        . "From: {$fromHeader}\r\n"
+        . (!empty($adminData['replyTo']) ? "Reply-To: <{$adminData['replyTo']}>\r\n" : "")
+        . "Subject: {$adminSubjectEncoded}\r\n"
+        . "MIME-Version: 1.0\r\n"
+        . "Content-Type: text/html; charset=UTF-8\r\n"
+        . "Content-Transfer-Encoding: base64\r\n\r\n"
+        . chunk_split(base64_encode($adminData['html'])) . "\r\n.\r\n";
+
+    fputs($socket, $adminMsg);
+    fgets($socket, 515);
+
+    // 2. Send Client Confirmation Email on the SAME session via RSET
+    if (!empty($clientData['to'])) {
+        fputs($socket, "RSET\r\n");
+        fgets($socket, 515);
+
+        fputs($socket, "MAIL FROM: <{$username}>\r\n");
+        fgets($socket, 515);
+
+        fputs($socket, "RCPT TO: <{$clientData['to']}>\r\n");
+        fgets($socket, 515);
+
+        fputs($socket, "DATA\r\n");
+        fgets($socket, 515);
+
+        $clientSubjectEncoded = '=?UTF-8?B?' . base64_encode($clientData['subject']) . '?=';
+
+        $clientMsg = "Date: " . date('r') . "\r\n"
+            . "To: <{$clientData['to']}>\r\n"
+            . "From: {$fromHeader}\r\n"
+            . "Reply-To: <" . ADMIN_EMAIL . ">\r\n"
+            . "Subject: {$clientSubjectEncoded}\r\n"
+            . "MIME-Version: 1.0\r\n"
+            . "Content-Type: text/html; charset=UTF-8\r\n"
+            . "Content-Transfer-Encoding: base64\r\n\r\n"
+            . chunk_split(base64_encode($clientData['html'])) . "\r\n.\r\n";
+
+        fputs($socket, $clientMsg);
+        fgets($socket, 515);
     }
-    $data .= "Subject: {$encodedSubject}\r\n";
-    $data .= "MIME-Version: 1.0\r\n";
-    $data .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $data .= "Content-Transfer-Encoding: base64\r\n\r\n";
-    $data .= chunk_split(base64_encode($htmlBody)) . "\r\n.\r\n";
-
-    fputs($socket, $data);
-    $res = fgets($socket, 515);
 
     fputs($socket, "QUIT\r\n");
     fclose($socket);
-
-    return (substr($res, 0, 3) === '250');
 }
 
 /**
@@ -347,15 +357,6 @@ function build_admin_email_template(array $data): string {
     $time     = htmlspecialchars($data['timestamp'], ENT_QUOTES, 'UTF-8');
 
     $rawPhone = preg_replace('/[^0-9+]/', '', $data['phone'] ?? '');
-
-    $callClientBtn = '';
-    if (!empty($rawPhone)) {
-        $callClientBtn = <<<HTML
-              <a href="tel:{$rawPhone}" style="display:inline-block; background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; font-size:14px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:8px; margin:4px 6px;">
-                📞 Call Client
-              </a>
-HTML;
-    }
 
     return <<<HTML
 <!DOCTYPE html>
@@ -436,7 +437,17 @@ HTML;
               <a href="mailto:{$email}?subject=Regarding%20your%20inquiry%20to%20Infronix%20Global" style="display:inline-block; background:#0055d4; color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; padding:13px 26px; border-radius:8px; margin:4px 6px;">
                 ✉ Reply to Client
               </a>
-              {$callClientBtn}
+HTML;
+
+    if (!empty($rawPhone)) {
+        return $adminHtml . <<<HTML
+              <a href="tel:{$rawPhone}" style="display:inline-block; background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; font-size:14px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:8px; margin:4px 6px;">
+                📞 Call Client
+              </a>
+HTML;
+    }
+
+    return $adminHtml . <<<HTML
             </td>
           </tr>
         </table>
@@ -628,114 +639,6 @@ function render_html_confirmation_screen(string $message, string $name = 'Valued
     <h1>Inquiry Transmitted Successfully</h1>
     <p>Thank you, <strong>{$safeName}</strong>. {$safeMsg}</p>
     <a href="index.html" class="back-btn">&larr; Return to Infronix Global</a>
-  </div>
-</body>
-</html>
-HTML;
-}
-
-/**
- * Renders an executive branded HTML error page for direct POST submissions with validation issues
- */
-function render_html_error_screen(string $message, array $errors = []): void {
-    $safeMsg = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-    
-    $errorItemsHtml = '';
-    if (!empty($errors)) {
-        $errorItemsHtml .= '<ul style="text-align:left; color:#f87171; font-size:14px; line-height:1.7; margin:0 0 24px 0; padding-left:24px;">';
-        foreach ($errors as $err) {
-            $errorItemsHtml .= '<li>' . htmlspecialchars($err, ENT_QUOTES, 'UTF-8') . '</li>';
-        }
-        $errorItemsHtml .= '</ul>';
-    }
-
-    echo <<<HTML
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Submission Error | Infronix Global Services</title>
-  <link rel="icon" type="image/svg+xml" href="./assets/logo/favicon.svg">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <style>
-    body {
-      background: #0a0f1d;
-      color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 24px;
-    }
-    .error-card {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      border-radius: 16px;
-      padding: 40px 32px;
-      max-width: 540px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
-    }
-    .error-badge {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, #ef4444, #b91c1c);
-      color: #ffffff;
-      font-size: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 0 24px rgba(239, 68, 68, 0.4);
-    }
-    h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
-      margin: 0 0 12px;
-    }
-    p {
-      color: #94a3b8;
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0 0 20px;
-    }
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      color: #ffffff;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
-      border: none;
-      font-size: 14px;
-    }
-    .back-btn:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-  </style>
-</head>
-<body>
-  <div class="error-card">
-    <div class="error-badge">✕</div>
-    <h1>Validation Notice</h1>
-    <p>Please correct the following issues to complete your inquiry:</p>
-    {$errorItemsHtml}
-    <button onclick="history.back()" class="back-btn">&larr; Return &amp; Correct Form</button>
   </div>
 </body>
 </html>
