@@ -12,8 +12,14 @@
 
 // Determine if request is an AJAX / Fetch API call or native standard form POST
 $isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
-    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false)
-    || (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false);
+    || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'json') !== false)
+    || (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'json') !== false)
+    || isset($_POST['form_type']);
+
+// Safe string length helper (handles environments without mbstring extension)
+function safe_str_length(string $str): int {
+    return function_exists('mb_strlen') ? mb_strlen($str, 'UTF-8') : strlen($str);
+}
 
 // Only accept POST requests (Redirect direct GET navigation back to homepage)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -106,7 +112,7 @@ if (empty($name)) {
     $errors[] = 'Full Name is required.';
 } elseif (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
     $errors[] = 'Name must contain only alphabets and spaces (numbers and special symbols are not allowed).';
-} elseif (strlen($name) < 2) {
+} elseif (safe_str_length($name) < 2) {
     $errors[] = 'Name must be at least 2 characters long.';
 }
 
@@ -130,10 +136,11 @@ if (!empty($company) && !preg_match('/^[a-zA-Z\s]+$/', $company)) {
 }
 
 // [Validation 5] Project Overview / Scope: Required and maximum 250 characters
+$rawMessageLen = safe_str_length($rawMessage);
 if (empty($rawMessage)) {
     $errors[] = 'Project Overview / Scope is required.';
-} elseif (mb_strlen($rawMessage, 'UTF-8') > 250) {
-    $errors[] = 'Project Overview / Scope must not exceed 250 characters (currently ' . mb_strlen($rawMessage, 'UTF-8') . ' characters).';
+} elseif ($rawMessageLen > 250) {
+    $errors[] = 'Project Overview / Scope must not exceed 250 characters (currently ' . $rawMessageLen . ' characters).';
 }
 
 // Return validation errors if any check fails
@@ -341,6 +348,15 @@ function build_admin_email_template(array $data): string {
 
     $rawPhone = preg_replace('/[^0-9+]/', '', $data['phone'] ?? '');
 
+    $callClientBtn = '';
+    if (!empty($rawPhone)) {
+        $callClientBtn = <<<HTML
+              <a href="tel:{$rawPhone}" style="display:inline-block; background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; font-size:14px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:8px; margin:4px 6px;">
+                📞 Call Client
+              </a>
+HTML;
+    }
+
     return <<<HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -420,17 +436,7 @@ function build_admin_email_template(array $data): string {
               <a href="mailto:{$email}?subject=Regarding%20your%20inquiry%20to%20Infronix%20Global" style="display:inline-block; background:#0055d4; color:#ffffff; font-size:14px; font-weight:600; text-decoration:none; padding:13px 26px; border-radius:8px; margin:4px 6px;">
                 ✉ Reply to Client
               </a>
-HTML;
-
-    if (!empty($rawPhone)) {
-        return $adminHtml . <<<HTML
-              <a href="tel:{$rawPhone}" style="display:inline-block; background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; font-size:14px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:8px; margin:4px 6px;">
-                📞 Call Client
-              </a>
-HTML;
-    }
-
-    return $adminHtml . <<<HTML
+              {$callClientBtn}
             </td>
           </tr>
         </table>

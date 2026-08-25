@@ -182,17 +182,29 @@ function initContactForms() {
         fetch(submitUrl, {
           method: submitMethod,
           headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
           },
           body: formData
         })
         .then(async (res) => {
-          const data = await res.json().catch(() => ({ success: res.ok, message: res.statusText }));
+          let data = null;
+          try {
+            data = await res.json();
+          } catch (jsonErr) {
+            data = {
+              success: res.ok,
+              message: res.ok
+                ? 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'
+                : 'Please check your inputs and try again.'
+            };
+          }
+
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
 
           if (feedbackBox) {
-            if (data.success) {
+            if (data && data.success) {
               feedbackBox.className = 'form-feedback is-success';
               feedbackBox.innerHTML = `
                 <strong>Inquiry Received Successfully!</strong><br>
@@ -205,7 +217,7 @@ function initContactForms() {
               }
             } else {
               feedbackBox.className = 'form-feedback is-error';
-              feedbackBox.textContent = data.message || 'An error occurred while submitting your message.';
+              feedbackBox.textContent = (data && data.message) ? data.message : 'Please ensure all required fields are filled correctly.';
             }
           }
         })
@@ -214,13 +226,9 @@ function initContactForms() {
           submitBtn.innerHTML = originalText;
 
           if (feedbackBox) {
-            feedbackBox.className = 'form-feedback is-success';
-            feedbackBox.innerHTML = `
-              <strong>Inquiry Received Successfully!</strong><br>
-              Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.
-            `;
+            feedbackBox.className = 'form-feedback is-error';
+            feedbackBox.textContent = 'Connection error. Please check your internet connection and try again.';
           }
-          form.reset();
         });
       }
     });
