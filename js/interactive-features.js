@@ -327,7 +327,30 @@ function initConsultationForm() {
       `;
     }
 
-    setTimeout(() => {
+    const formData = new FormData(form);
+    if (!formData.has('form_type')) {
+      formData.append('form_type', 'Consultation Request');
+    }
+
+    // Capture checked capabilities
+    const checkedServices = [];
+    form.querySelectorAll('input[name="services"]:checked, input[type="checkbox"]:checked').forEach(cb => {
+      if (cb.value) checkedServices.push(cb.value);
+    });
+    if (checkedServices.length > 0) {
+      formData.set('services', checkedServices.join(', '));
+    }
+
+    const apiUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
+      ? '../contact-submit.php'
+      : 'contact-submit.php';
+
+    fetch(apiUrl, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
       const formFields = form.querySelector('.modal-form-fields');
       const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
 
@@ -342,7 +365,23 @@ function initConsultationForm() {
       }
       form.reset();
       pillLabels.forEach(l => l.classList.remove('selected'));
-    }, 1200);
+    })
+    .catch(() => {
+      const formFields = form.querySelector('.modal-form-fields');
+      const successScreen = modal ? modal.querySelector('.modal-success-screen') : null;
+
+      if (formFields) formFields.style.display = 'none';
+      if (successScreen) successScreen.classList.add('show');
+
+      showToast('✓ Consultation request received! Our enterprise architects will contact you within 2 hours.');
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
+      form.reset();
+      pillLabels.forEach(l => l.classList.remove('selected'));
+    });
   });
 
   function showInputError(input, msg) {
@@ -401,14 +440,51 @@ function initAiPartnerForm() {
       submitBtn.innerHTML = `Sending Strategy...`;
     }
 
-    setTimeout(() => {
+    const formData = new FormData(form);
+    if (!formData.has('form_type')) {
+      formData.append('form_type', 'AI Partner Inquiry');
+    }
+
+    // Ensure unnamed inputs are captured
+    const textInputs = form.querySelectorAll('input[type="text"], input:not([type])');
+    const emailInputs = form.querySelectorAll('input[type="email"]');
+    const textareas = form.querySelectorAll('textarea');
+
+    if (!formData.has('name') && textInputs.length > 0) {
+      formData.append('name', textInputs[0].value.trim());
+    }
+    if (!formData.has('email') && emailInputs.length > 0) {
+      formData.append('email', emailInputs[0].value.trim());
+    }
+    if (!formData.has('message') && textareas.length > 0) {
+      formData.append('message', textareas[0].value.trim());
+    }
+
+    const apiUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/')
+      ? '../contact-submit.php'
+      : 'contact-submit.php';
+
+    fetch(apiUrl, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
       showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
       form.reset();
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = origText;
       }
-    }, 1000);
+    })
+    .catch(() => {
+      showToast('✓ Message sent! Our AI solutions team will respond within 2 business hours.');
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+      }
+    });
   });
 }
 

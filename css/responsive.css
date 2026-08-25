@@ -1763,7 +1763,6 @@ iframe {
   .estimator-result-card {
     padding: 1.5rem 1.25rem;
   }
-
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -1947,7 +1946,8 @@ iframe {
   }
   .gallery-grid {
     grid-template-columns: repeat(1, 1fr);
-}
+    gap: 10px;
+  }
 }
 
 /* Ultra-Compact Mobile (360px and below) */

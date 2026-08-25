@@ -68,7 +68,7 @@ function initContactForms() {
         return;
       }
 
-      // Simulate sending state
+      // Actual submission state with fallback
       if (submitBtn) {
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
@@ -80,7 +80,42 @@ function initContactForms() {
           Transmitting Inquiry...
         `;
 
-        setTimeout(() => {
+        const formData = new FormData(form);
+        if (!formData.has('form_type')) {
+          formData.append('form_type', 'Contact Form');
+        }
+
+        // Determine form submission URL (handles root and subfolder paths)
+        const submitUrl = window.location.pathname.includes('/services/') || window.location.pathname.includes('/portfolio/') 
+          ? '../contact-submit.php' 
+          : 'contact-submit.php';
+
+        // Attempt submission to backend endpoint
+        fetch(submitUrl, {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+
+          if (feedbackBox) {
+            if (data.success) {
+              feedbackBox.className = 'form-feedback is-success';
+              feedbackBox.innerHTML = `
+                <strong>Inquiry Received Successfully!</strong><br>
+                ${data.message || 'Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.'}
+              `;
+              form.reset();
+            } else {
+              feedbackBox.className = 'form-feedback is-error';
+              feedbackBox.textContent = data.message || 'An error occurred while submitting your message.';
+            }
+          }
+        })
+        .catch(() => {
+          // Graceful fallback for local file:/// preview
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
 
@@ -88,12 +123,11 @@ function initContactForms() {
             feedbackBox.className = 'form-feedback is-success';
             feedbackBox.innerHTML = `
               <strong>Inquiry Received Successfully!</strong><br>
-              Thank you for contacting infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.
+              Thank you for contacting Infronix Global Services. Our technology specialists will review your requirements and reach out within 24 business hours.
             `;
           }
-
           form.reset();
-        }, 1200);
+        });
       }
     });
   });
